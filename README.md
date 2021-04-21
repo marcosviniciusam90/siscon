@@ -1,8 +1,8 @@
 ## Clean code não existe aqui! :(
-Desenvolvi este sistema quando ainda estava na faculdade, me faltava conhecimento de boas práticas.
+Desenvolvi este sistema quando ainda estava na faculdade (~2017), me faltava conhecimento de boas práticas.
 
 ## Não foi utilizada uma tecnologia de ponta
-Como disse acima, me faltava conhecimento também de tecnologias de mercado.
+Como disse acima, me faltava também o conhecimento de tecnologias de mercado.
 
 ## Por que disponibilizar o projeto?
 Quis disponibilizar o projeto, pois apesar dos pesares, o sistema ficou com uma interface bonita e intuitiva para o usuário.<br/>
