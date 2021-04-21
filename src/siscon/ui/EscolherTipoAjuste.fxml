@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="127.0" prefWidth="406.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.EscolherTipoAjusteController">
+    <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="31.0" layoutY="17.0" text="Como deve ser feito o ajuste ?">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="73.0" prefHeight="60.0" prefWidth="396.0" style="-fx-background-color: #ccc;">
+         <children>
+            <Button layoutX="21.0" layoutY="17.0" mnemonicParsing="false" onAction="#clkCancelar" text="CANCELAR" />
+            <Button layoutX="127.0" layoutY="17.0" mnemonicParsing="false" onAction="#clkAmbas" prefHeight="26.0" prefWidth="74.0" text="AMBAS" />
+            <Button layoutX="213.0" layoutY="17.0" mnemonicParsing="false" onAction="#clkInicial" prefHeight="26.0" prefWidth="74.0" text="INICIAL" />
+            <Button layoutX="299.0" layoutY="17.0" mnemonicParsing="false" onAction="#clkFinal" prefHeight="26.0" prefWidth="74.0" text="FINAL" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="31.0" layoutY="52.0" text="Quais datas devem ser ajustadas:" />
+      <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="336.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/interrogacao.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

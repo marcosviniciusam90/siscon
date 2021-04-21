@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2018-05-15T14:01:54 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_EventosOrganizador" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77e40810-60b0-4fd4-bc1a-339906192eab">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SisCon"/>
+	<parameter name="Titulo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Subtitulo" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from evento INNER JOIN categoriaevento ON evento.cat_cod = categoriaevento.cat_cod INNER JOIN pessoa ON evento.pes_cod = pessoa.pes_cod]]>
+	</queryString>
+	<field name="eve_cod" class="java.lang.Integer"/>
+	<field name="eve_descricao" class="java.lang.String"/>
+	<field name="pes_cod" class="java.lang.Integer"/>
+	<field name="eve_datainicio" class="java.sql.Date"/>
+	<field name="eve_datafim" class="java.sql.Date"/>
+	<field name="eve_status" class="java.lang.String"/>
+	<field name="eve_observacao" class="java.lang.String"/>
+	<field name="cat_cod" class="java.lang.Integer"/>
+	<field name="COLUMN_9" class="java.lang.Integer"/>
+	<field name="cat_descricao" class="java.lang.String"/>
+	<field name="cat_status" class="java.lang.String"/>
+	<field name="pes_nome" class="java.lang.String"/>
+	<field name="pes_bairro" class="java.lang.String"/>
+	<field name="pes_tipo_log" class="java.lang.String"/>
+	<field name="pes_logradouro" class="java.lang.String"/>
+	<field name="pes_numero" class="java.lang.String"/>
+	<field name="cid_cod" class="java.lang.Integer"/>
+	<field name="pes_fone" class="java.lang.String"/>
+	<field name="pes_email" class="java.lang.String"/>
+	<field name="pes_foto" class="java.lang.Object"/>
+	<field name="pes_cep" class="java.lang.String"/>
+	<field name="pes_cpf" class="java.lang.String"/>
+	<field name="pes_nasc" class="java.sql.Date"/>
+	<field name="COLUMN_24" class="java.lang.Integer"/>
+	<field name="pes_fone2" class="java.lang.String"/>
+	<field name="pes_interfone" class="java.lang.String"/>
+	<field name="pes_categoria" class="java.lang.String"/>
+	<field name="pes_supervisor" class="java.lang.Integer"/>
+	<field name="pes_descricao" class="java.lang.String"/>
+	<field name="pes_condutor" class="java.lang.String"/>
+	<field name="pes_status" class="java.lang.String"/>
+	<field name="pes_dataadmissao" class="java.sql.Date"/>
+	<field name="pes_datademissao" class="java.sql.Date"/>
+	<field name="pes_salario" class="java.math.BigDecimal"/>
+	<field name="pes_usuario" class="java.lang.String"/>
+	<field name="pes_senha" class="java.lang.String"/>
+	<field name="pes_nivel" class="java.lang.Integer"/>
+	<field name="pes_ultimamov" class="java.lang.String"/>
+	<field name="pes_acesso" class="java.lang.String"/>
+	<sortField name="pes_nome"/>
+	<sortField name="pes_cod"/>
+	<sortField name="eve_descricao"/>
+	<sortField name="eve_datainicio"/>
+	<sortField name="eve_cod"/>
+	<variable name="qtde_eventos" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[!($F{eve_status}.equals("D")) ? 1 : 0]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{pes_cod}]]></groupExpression>
+		<groupHeader>
+			<band height="67">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<textField>
+					<reportElement mode="Opaque" x="-20" y="10" width="595" height="53" forecolor="#006699" backcolor="#E6E6E6" uuid="6212be73-9957-4542-9e2e-da7440e4230d">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<box topPadding="2" leftPadding="20"/>
+					<textElement verticalAlignment="Top">
+						<font size="15" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pes_nome}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="39" width="70" height="22" uuid="e9fc082f-40f4-4faf-8120-c4dc437d8c81">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cód]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="40" y="39" width="70" height="22" uuid="54be3b14-7bf8-47d5-8a91-3891bb3c8984">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Evento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="248" y="39" width="85" height="22" uuid="18e51ef6-15ad-44c9-927b-d10efdefeb82">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Categoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="362" y="39" width="85" height="22" uuid="f5af0547-6be7-40f6-ad5b-efbc03268675">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Período]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="488" y="39" width="67" height="22" uuid="f247ccff-936a-4565-b687-f655864a0a30">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Situação]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="370" y="12" width="185" height="27" forecolor="#006699" backcolor="#E6E6E6" uuid="abe8c6a4-f7d0-4ec9-b58e-251c1cfbb7c9">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<box topPadding="4"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="13" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pes_fone}.equals("") ? $F{pes_interfone}.equals("") ? "- - - - - - - - - - - - -" : "Interfone: "+$F{pes_interfone} : $F{pes_categoria}.equals("Associado") ?  $F{pes_interfone}.equals("") ?   $F{pes_fone}:  $F{pes_fone} + " / " +$F{pes_interfone} : $F{pes_fone}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="38f25c5c-46d7-486e-b9c7-412103de5773"/>
+				<staticText>
+					<reportElement x="20" y="11" width="150" height="43" forecolor="#FFFFFF" uuid="bf560f3b-ff0f-4629-a8cc-6369c27d9a6f"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SisCon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="56" width="203" height="30" forecolor="#FFFFFF" uuid="19c2f715-3cf3-4f3a-8044-ddf224fa3890"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Gerenciador de Condomínios]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="160" y="27" width="415" height="20" forecolor="#FFFFFF" uuid="f3950e6b-e876-4905-a3e2-fd007539b7d4">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Titulo}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="223" y="50" width="352" height="42" forecolor="#FFFF00" uuid="fdd1fd60-77d0-489a-9c0c-44282b11f7c1">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Subtitulo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="48226c48-f2ed-4809-a3fd-a88a2431156e"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="40" y="0" width="200" height="20" uuid="4f890e76-92a1-455e-9ecd-4a75d1ebf74a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{eve_descricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="100" height="20" uuid="02def642-908a-4163-9fcf-3bba62ed1dce">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{eve_cod}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement x="248" y="0" width="102" height="20" uuid="e8c71fd3-7c93-43c9-847f-627b04659249">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cat_descricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="362" y="0" width="135" height="20" uuid="47c37821-7e64-49df-96b1-807e5182eddd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{eve_datainicio}.equals($F{eve_datafim}) ? new SimpleDateFormat("dd/MM/yyyy").format($F{eve_datainicio}) : new SimpleDateFormat("dd/MM/yyyy").format($F{eve_datainicio}) +" a "+new SimpleDateFormat("dd/MM/yyyy").format($F{eve_datafim})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="0" width="75" height="20" uuid="66bac338-edbc-4393-a6f9-59cf8b966cf7">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{eve_status}.equals("A") ? "Andamento" : "Finalizado"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f668ab51-02dd-4bc4-b5ea-8728b5578828">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="4cac3c23-1714-452e-989f-32bc812deb14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c98e38b3-6419-4227-a49b-74e4ccc981a8">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="55">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<rectangle>
+				<reportElement x="0" y="15" width="556" height="40" backcolor="#CCCCCC" uuid="7a21f4fa-5001-470b-93b1-7744e9d0e56f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="">
+				<reportElement x="70" y="28" width="62" height="14" uuid="2cf42e54-f603-4985-b4ed-89405eba81a1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{qtde_eventos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="28" width="80" height="14" uuid="6b3b72ec-120d-4f3b-a8f3-d2f74d04c4bf">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Eventos:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

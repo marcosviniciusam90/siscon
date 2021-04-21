@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.AjudaEventosController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/ajuda.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="9.0" text="Quando ver este ícone, passe o mouse para obter ajuda">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="34.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #446d95;">
+         <children>
+            <Hyperlink layoutX="14.0" layoutY="46.0" onAction="#clkRegistrarEvento" text="Como faço para registrar um evento ?" />
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/help.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="14.0" layoutY="72.0" onAction="#clkParticipantes" text="Como faço para adicionar/alterar/excluir participantes ?" />
+            <Hyperlink layoutX="14.0" layoutY="98.0" onAction="#clkAjustarPeriodo" text="Pra que serve o botão &quot;Ajustar Período&quot; ?" />
+            <Hyperlink layoutX="14.0" layoutY="124.0" onAction="#clkFinalidade" text="Qual a finalidade de registrar eventos e participantes ?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="234.0" prefHeight="355.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;">
+         <children>
+            <ScrollPane fx:id="scrollpane" prefHeight="355.0" prefWidth="600.0">
+              <content>
+                <AnchorPane fx:id="apTexto" minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="598.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Na tela principal, no menu &quot;Operações&quot;, clique em &quot;Eventos&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbRegistrarEvento" layoutX="14.0" layoutY="14.0" text="Como faço para registrar um evento ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) Em seguida, clique no botão &quot;Novo&quot;, inferior a tabela de Eventos. Preencha todas as informações do evento, indicando os participantes, se houver. Antes de adicionar participantes, é necessário informar o período de duração do evento, quando o evento decorrer num único dia, coloque a data inicial e final para aquele dia. Definido o período, utilize o botão &quot;Definir&quot; para adicionar ou alterar participantes." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3) Quando tudo estiver preenchido, clique em &quot;Confirmar&quot;. Se não der certo, verifique se todos os campos foram preenchidos corretamente, os campos incorretos serão indicados em vermelho." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Você pode adicionar, alterar e excluir participantes de um evento. No cadastro do evento, primeiramente é necessário informar o período de duração do evento, feito isso, utilize o botão &quot;Definir&quot; para adicionar, alterar ou excluir participantes. Para alterar ou excluir um participante, basta clicar sobre o mesmo e ir na opção desejada." wrappingWidth="552.0" />
+                        <Label fx:id="lbParticipantes" layoutX="14.0" layoutY="233.0" text="Como faço para adicionar/alterar/excluir participantes ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Com o intuito de melhorar a usabilidade, esta funcionalidade permite ajustar o período de participação dos participantes selecionados para o mesmo do evento. É possível ajustar a data inicial e/ou data final. Obs: você pode selecionar mais de um participante, basta segurar a tecla CTRL ou SHIFT e selecionar com o MOUSE." wrappingWidth="552.0" />
+                        <Label fx:id="lbAjustarPeriodo" layoutX="14.0" layoutY="342.0" text="Pra que serve o botão &quot;Ajustar Período&quot; ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tem a finalidade de gerenciar situações eventuais (obras, entregas, etc), identificando as pessoas relacionadas. Os participantes dos eventos, quando autorizados e com seu período de participação vigente, se o evento estiver em andamento, o participante terá entrada livre, não sendo necessária uma autorização especial." wrappingWidth="552.0" />
+                        <Label fx:id="lbFinalidade" layoutX="14.0" layoutY="449.0" text="Qual a finalidade de registrar eventos e participantes ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Obs: você também pode alterar ou desativar eventos, basta selecionar o evento na lista e clicar na opção desejada, alterar/conferir os dados e &quot;Confirmar&quot;." wrappingWidth="552.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

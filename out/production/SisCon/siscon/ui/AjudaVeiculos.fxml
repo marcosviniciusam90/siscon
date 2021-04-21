@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.AjudaVeiculosController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/ajuda.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="9.0" text="Quando ver este ícone, passe o mouse para obter ajuda">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="34.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #446d95;">
+         <children>
+            <Hyperlink layoutX="14.0" layoutY="72.0" onAction="#clkCadastrar" text="Como faço para cadastrar um veículo ?" />
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/help.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="14.0" layoutY="98.0" onAction="#clkPreencher" text="Como preencher os campos ?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="234.0" prefHeight="355.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;">
+         <children>
+            <ScrollPane fx:id="scrollpane" prefHeight="355.0" prefWidth="600.0" vvalue="1.0">
+              <content>
+                <AnchorPane fx:id="apTexto" minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="598.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Na tela principal, no menu &quot;Cadastros&quot;, clique em &quot;Veículos&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbCadastrar" layoutX="14.0" layoutY="14.0" text="Como faço para cadastrar um veículo ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) Em seguida, clique no botão &quot;Novo&quot;, inferior a tabela de Veículos. Preencha todas as informações do veículo, indicando o proprietário do mesmo." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3) Quando tudo estiver preenchido, clique em &quot;Confirmar&quot;. Se não der certo, verifique se todos os campos foram preenchidos corretamente, os campos incorretos serão indicados em vermelho." wrappingWidth="552.0" />
+                        <Label fx:id="lbPreencher" layoutX="14.0" layoutY="200.0" text="Como preencher os campos ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Obs: você também pode alterar ou desativar veículos, basta selecionar o veículo na lista e clicar na opção desejada, alterar/conferir os dados e &quot;Confirmar&quot;." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria/Marca/Cor: selecione a opção desejada. Se não encontrar a opção desejada nas listas, clique no botão &quot;+&quot; para adicionar, na janela que se abrirá, o processo para adicionar a categoria, marca ou cor, é idêntico ao de cadastrar veículo." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proprietário: deve ser indicado o proprietário do veículo." wrappingWidth="552.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

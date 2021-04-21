@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.prototipos.CadPessoaController">
+    <children>
+    <AnchorPane fx:id="apPessoas" layoutX="7.0" layoutY="163.0" prefHeight="409.0" prefWidth="973.0">
+                <children>
+                  <BorderPane layoutX="2.0" layoutY="-146.0" prefHeight="558.0" prefWidth="971.0">
+    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="262.0">
+                                 <children>
+                              <Group fx:id="apTabelaPessoas" layoutX="5.0">
+                                 <children>
+                        <HBox alignment="CENTER" layoutY="-10.0" prefHeight="35.0" prefWidth="266.0" spacing="5.0">
+                           <children>
+                                    <ComboBox prefHeight="25.0" prefWidth="116.0" promptText="Categoria">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                              <TextField fx:id="PESSOAStxPesquisa" onKeyPressed="#PESSOASkpPesquisar" prefHeight="25.0" prefWidth="161.0" promptText="Pesquise por nome/cpf da pessoa">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                              <Button fx:id="PESSOASbtPesquisa" mnemonicParsing="false" onAction="#PESSOASclkPesquisar" text="Ir">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="PESSOAStabela" layoutY="32.0" onMouseClicked="#PESSOASclkTabela" prefHeight="433.0" prefWidth="267.0">
+                          <columns>
+                            <TableColumn fx:id="PESSOAScolNome" prefWidth="130.0" text="Nome" />
+                            <TableColumn fx:id="PESSOAScolCPF" prefWidth="95.0" text="CPF" />
+                                    <TableColumn fx:id="PESSOAScolCPF1" prefWidth="40.0" text="Categ." />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                        <Button fx:id="PESSOASbtNovo" layoutX="18.0" layoutY="476.0" mnemonicParsing="false" onAction="#PESSOASclkNovo" text="NOVO" textFill="#3903fc">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                        <Button fx:id="PESSOASbtAlterar" layoutX="94.0" layoutY="476.0" mnemonicParsing="false" onAction="#PESSOASclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                        <Button fx:id="PESSOASbtApagar" layoutX="183.0" layoutY="476.0" mnemonicParsing="false" onAction="#PESSOASclkApagar" text="EXCLUIR" textFill="#fa1005">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apVeiculos" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="VEÍCULOS">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="VEICULOSlbNomePessoa" layoutX="89.0" layoutY="7.0" />
+                                    <AnchorPane layoutY="37.0" prefHeight="317.0" prefWidth="267.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <ComboBox fx:id="VEICULOScbCategoria" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="193.0" />
+                                          <Button fx:id="VEICULOSbtConfigCategoria" layoutX="222.0" layoutY="31.0" mnemonicParsing="false" onAction="#VEICULOSclkConfigCategoria" text="..." />
+                                          <ComboBox fx:id="VEICULOScbMarca" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="193.0" />
+                                          <Button fx:id="VEICULOSbtConfigMarca" layoutX="222.0" layoutY="92.0" mnemonicParsing="false" onAction="#VEICULOSclkConfigMarca" text="..." />
+                                          <Label fx:id="VEICULOSlbCategoria" layoutX="20.0" layoutY="10.0" text="Categoria:" />
+                                          <Label fx:id="VEICULOSlbMarca" layoutX="20.0" layoutY="71.0" text="Marca:" />
+                                          <Label fx:id="VEICULOSlbModelo" layoutX="20.0" layoutY="132.0" text="Modelo:" />
+                                          <TextField fx:id="VEICULOStfModelo" layoutX="20.0" layoutY="153.0" prefHeight="25.0" prefWidth="227.0" />
+                                          <ComboBox fx:id="VEICULOScbCor" layoutX="20.0" layoutY="214.0" prefHeight="25.0" prefWidth="193.0" />
+                                          <Button fx:id="VEICULOSbtConfigCor" layoutX="222.0" layoutY="214.0" mnemonicParsing="false" onAction="#VEICULOSclkConfigCor" text="..." />
+                                          <Label fx:id="VEICULOSlbPlaca" layoutX="20.0" layoutY="254.0" text="Placa:" />
+                                          <TextField fx:id="VEICULOStfPlaca" layoutX="20.0" layoutY="275.0" prefHeight="25.0" prefWidth="127.0" />
+                                          <Label fx:id="VEICULOSlbCor" layoutX="20.0" layoutY="193.0" text="Cor:" />
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutY="354.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="VEICULOSbtCancelar" mnemonicParsing="false" onAction="#VEICULOSclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="VEICULOSbtConfirmar" mnemonicParsing="false" onAction="#VEICULOSclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosPessoas" prefHeight="822.0" prefWidth="695.0" BorderPane.alignment="CENTER">
+         <children>
+                              
+                  <AnchorPane minWidth="382.0" prefHeight="504.0" prefWidth="695.0" style="-fx-background-color: silver;">
+                     <children>
+                        <Label fx:id="PESSOASlbCod" layoutX="19.0" layoutY="10.0" text="Código:" />
+                        <TextField fx:id="PESSOAStfCod" disable="true" editable="false" layoutX="19.0" layoutY="30.0" prefHeight="25.0" prefWidth="59.0" />
+                                          <ComboBox fx:id="PESSOAScbCategoria" layoutX="20.0" layoutY="85.0" prefHeight="25.0" prefWidth="107.0" />
+                                          <Button fx:id="PESSOASbtConfigCategoria" layoutX="134.0" layoutY="85.0" mnemonicParsing="false" onAction="#PESSOASclkConfigCategoria" text="..." />
+                                          <Label fx:id="PESSOASlbCategoria" layoutX="19.0" layoutY="65.0" text="Categoria:" />
+                        <Label fx:id="PESSOASlbCpf" layoutX="21.0" layoutY="124.0" text="CPF:" />
+                        <TextField fx:id="PESSOAStfCPF" layoutX="21.0" layoutY="144.0" prefHeight="25.0" prefWidth="138.0" />
+                        <Label fx:id="PESSOASlbNome" layoutX="21.0" layoutY="183.0" text="Nome:" />
+                        <TextField fx:id="PESSOAStfNome" layoutX="21.0" layoutY="203.0" prefHeight="25.0" prefWidth="286.0" />
+                        <Label fx:id="PESSOASlbFoto" layoutX="252.0" layoutY="4.0" text="Foto:" visible="false" />
+                        
+                        <AnchorPane layoutX="179.0" layoutY="24.0" maxHeight="244.0" maxWidth="180.0" prefHeight="157.0" prefWidth="126.0" style="-fx-background-color: lightgrey;">
+                           <children>
+                              <Button fx:id="PESSOASbtCarregarIMG" layoutX="2.0" layoutY="132.0" minWidth="62.0" mnemonicParsing="false" onAction="#PESSOASclkCarregaIMG" prefHeight="25.0" prefWidth="62.0" text="Carregar" />
+                              <Button fx:id="PESSOASbtApagarIMG" layoutX="70.0" layoutY="132.0" minWidth="55.0" mnemonicParsing="false" onAction="#PESSOASclkApagaIMG" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
+                              <ImageView fx:id="PESSOASimg" fitHeight="118.0" fitWidth="118.0" layoutX="31.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-image: url(&quot;siscon/icones\usuario.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center;">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                                   <image>
+                                                      <Image url="@icones/usuario.png" />
+                                                   </image>
+                              </ImageView>
+                                                <ImageView fx:id="PESSOASbtnCamera" fitHeight="32.0" fitWidth="32.0" layoutX="-45.0" layoutY="-47.0" onMouseClicked="#PESSOASclkCamera" onMouseExited="#PESSOASonMouseExitCamera" onMouseMoved="#PESSOASOnMouseOverCamera" pickOnBounds="true" preserveRatio="true" x="56.0" y="176.0">
+                                                   <image>
+                                                      <Image url="@icones/camera.png" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                           </children>
+                        </AnchorPane>                  
+                        <DatePicker fx:id="PESSOASdpData" layoutX="21.0" layoutY="265.0" prefHeight="25.0" prefWidth="119.0" />
+                        <ComboBox fx:id="PESSOAScbTipoLog" layoutX="21.0" layoutY="329.0" prefHeight="25.0" prefWidth="92.0" />
+                        <Label fx:id="PESSOASlbLog" layoutX="124.0" layoutY="309.0" text="Logradouro:" />
+                        <TextField fx:id="PESSOAStfLogradouro" layoutX="124.0" layoutY="329.0" prefHeight="25.0" prefWidth="136.0" />
+                        <Label fx:id="PESSOASlbNumero" layoutX="270.0" layoutY="309.0" text="Nº:" />
+                        <TextField fx:id="PESSOAStfNum" layoutX="270.0" layoutY="329.0" prefHeight="25.0" prefWidth="36.0" />
+                        <TextField fx:id="PESSOAStfCEP" layoutX="20.0" layoutY="395.0" prefHeight="25.0" prefWidth="85.0" />
+                        <Button layoutX="112.0" layoutY="395.0" mnemonicParsing="false" onAction="#PESSOASclkBuscaCep" prefHeight="25.0" prefWidth="27.0" text="Ir" />
+                        <Label fx:id="PESSOASlbBairro" layoutX="150.0" layoutY="375.0" text="Bairro:" />
+                        <TextField fx:id="PESSOAStfBairro" layoutX="150.0" layoutY="395.0" prefHeight="25.0" prefWidth="157.0" />
+                        <Label fx:id="PESSOASlbCidade" layoutX="97.0" layoutY="442.0" text="Cidade:" />
+                        <Label fx:id="PESSOASlbCep" layoutX="21.0" layoutY="375.0" text="CEP:" />
+                        
+                        
+                        <Label fx:id="PESSOASlbTipoLog" layoutX="21.0" layoutY="309.0" text="Tipo Logradouro:" />
+                        <ComboBox fx:id="PESSOAScbUF" layoutX="21.0" layoutY="462.0" onAction="#PESSOASclkUF" prefHeight="25.0" prefWidth="66.0" />
+                        <Label fx:id="PESSOASlbUf" layoutX="21.0" layoutY="442.0" text="UF:" />
+                        <ComboBox fx:id="PESSOAScbCidade" layoutX="97.0" layoutY="462.0" prefHeight="25.0" prefWidth="211.0" />
+                        <Label fx:id="PESSOASlbTelefone" layoutX="337.0" layoutY="10.0" text="Telefone 1:" />
+                        <TextField fx:id="PESSOAStfTelfone" layoutX="337.0" layoutY="30.0" prefHeight="25.0" prefWidth="118.0" />
+                        <TextField fx:id="PESSOAStfTelfone2" layoutX="466.0" layoutY="30.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <TextField fx:id="PESSOAStfInterfone" layoutX="607.0" layoutY="30.0" prefHeight="25.0" prefWidth="58.0" />
+                                          <Label fx:id="PESSOASlbInterfone" layoutX="607.0" layoutY="10.0" text="Interfone:" />
+                        <Label fx:id="PESSOASlbEmail" layoutX="337.0" layoutY="74.0" text="Email:" />
+                        <TextField fx:id="PESSOAStfEmail" layoutX="337.0" layoutY="94.0" prefHeight="25.0" prefWidth="329.0" />
+                        
+                        <Label fx:id="PESSOASlbData" layoutX="22.0" layoutY="245.0" text="Data nascimento:" />
+                        
+                        <Label fx:id="PESSOASlbTelefone2" layoutX="466.0" layoutY="10.0" text="Telefone 2 (opcional):" />
+                        
+                        <TextField fx:id="PESSOAStxPesquisarCPF" layoutX="150.0" layoutY="86.0" visible="false" />
+                                          <Label fx:id="PESSOASlbVeiculos" layoutX="337.0" layoutY="136.0" text="Veículos:" />
+                                          <TableView fx:id="PESSOAStabelaVeiculos" layoutX="337.0" layoutY="157.0" onMouseClicked="#PESSOASclkTabelaVeiculos" prefHeight="112.0" prefWidth="331.0">
+                                            <columns>
+                                              <TableColumn prefWidth="83.0" text="Marca" />
+                                              <TableColumn prefWidth="104.0" text="Modelo" />
+                                                <TableColumn prefWidth="73.0" text="Cor" />
+                                                <TableColumn prefWidth="77.0" text="Placa" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="PESSOASbtAdicionarVeiculo" layoutX="338.0" layoutY="277.0" mnemonicParsing="false" onAction="#PESSOASclkAdicionarVeiculo" text="Adicionar" />
+                                          <Button fx:id="PESSOASbtAlterarVeiculo" layoutX="489.0" layoutY="277.0" mnemonicParsing="false" onAction="#PESSOASclkAlterarVeiculo" text="Alterar" />
+                                          <Button fx:id="PESSOASbtExcluirVeiculo" layoutX="618.0" layoutY="277.0" mnemonicParsing="false" onAction="#PESSOASclkExcluirVeiculo" text="Excluir" />
+                              <Label fx:id="PESSOASlbVeiculos1" layoutX="337.0" layoutY="321.0" text="Dependentes:" />
+                              <TableView fx:id="PESSOAStabelaVeiculos1" layoutX="337.0" layoutY="342.0" onMouseClicked="#PESSOASclkTabelaVeiculos" prefHeight="112.0" prefWidth="333.0">
+                                 <columns>
+                                    <TableColumn prefWidth="182.0" text="Nome" />
+                                    <TableColumn prefWidth="87.0" text="Tipo" />
+                                    <TableColumn prefWidth="62.0" text="Condutor" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="PESSOASbtAdicionarVeiculo1" layoutX="338.0" layoutY="462.0" mnemonicParsing="false" onAction="#PESSOASclkAdicionarVeiculo" text="Adicionar" />
+                              <Button fx:id="PESSOASbtAlterarVeiculo1" layoutX="489.0" layoutY="462.0" mnemonicParsing="false" onAction="#PESSOASclkAlterarVeiculo" text="Alterar" />
+                              <Button fx:id="PESSOASbtExcluirVeiculo1" layoutX="620.0" layoutY="462.0" mnemonicParsing="false" onAction="#PESSOASclkExcluirVeiculo" text="Excluir" />
+                        
+                     </children>
+                  </AnchorPane>
+                                 
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                  
+                              <Button fx:id="PESSOASbtCancelar" mnemonicParsing="false" onAction="#PESSOASclkCancelar" text="CANCELAR" />
+                  <Button fx:id="PESSOASbtConfirmar" mnemonicParsing="false" onAction="#PESSOASclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+    </children>
+</AnchorPane>

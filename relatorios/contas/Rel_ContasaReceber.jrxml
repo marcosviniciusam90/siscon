@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2018-06-08T18:22:21 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_ContasaReceber" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77e40810-60b0-4fd4-bc1a-339906192eab">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SisCon"/>
+	<parameter name="Titulo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Subtitulo" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from parcelarec INNER JOIN contareceber ON contareceber.cr_cod = parcelarec.cr_cod 
+LEFT JOIN pessoa ON pessoa.pes_cod = contareceber.pes_cod 
+WHERE par_dtestorno is null and par_status = 'A']]>
+	</queryString>
+	<field name="cr_cod" class="java.lang.Integer"/>
+	<field name="par_numero" class="java.lang.Integer"/>
+	<field name="par_valor" class="java.math.BigDecimal"/>
+	<field name="par_dtvencimento" class="java.sql.Date"/>
+	<field name="par_dtpagamento" class="java.sql.Date"/>
+	<field name="pr_seq" class="java.lang.Integer"/>
+	<field name="par_valorpago" class="java.math.BigDecimal"/>
+	<field name="par_frmpgto" class="java.lang.String"/>
+	<field name="par_bolnumero" class="java.lang.String"/>
+	<field name="par_chequenumero" class="java.lang.String"/>
+	<field name="par_chequebanco" class="java.lang.String"/>
+	<field name="par_chequeconta" class="java.lang.String"/>
+	<field name="par_depid" class="java.lang.String"/>
+	<field name="par_status" class="java.lang.String"/>
+	<field name="par_dtestorno" class="java.sql.Date"/>
+	<field name="par_sequencia" class="java.lang.String"/>
+	<field name="cr_dtvencimento" class="java.sql.Date"/>
+	<field name="cr_numparcelas" class="java.lang.Integer"/>
+	<field name="cr_descricao" class="java.lang.String"/>
+	<field name="cr_valor" class="java.math.BigDecimal"/>
+	<field name="cr_observacao" class="java.lang.String"/>
+	<field name="cr_valorentrada" class="java.math.BigDecimal"/>
+	<field name="cr_horaregistro" class="java.sql.Timestamp"/>
+	<field name="pes_cod" class="java.lang.Integer"/>
+	<field name="cr_status" class="java.lang.String"/>
+	<field name="pes_nome" class="java.lang.String"/>
+	<field name="pes_bairro" class="java.lang.String"/>
+	<field name="pes_tipo_log" class="java.lang.String"/>
+	<field name="pes_logradouro" class="java.lang.String"/>
+	<field name="pes_numero" class="java.lang.String"/>
+	<field name="cid_cod" class="java.lang.Integer"/>
+	<field name="pes_fone" class="java.lang.String"/>
+	<field name="pes_email" class="java.lang.String"/>
+	<field name="pes_foto" class="java.lang.Object"/>
+	<field name="pes_cep" class="java.lang.String"/>
+	<field name="pes_cpf" class="java.lang.String"/>
+	<field name="pes_nasc" class="java.sql.Date"/>
+	<field name="pes_fone2" class="java.lang.String"/>
+	<field name="pes_interfone" class="java.lang.String"/>
+	<field name="pes_categoria" class="java.lang.String"/>
+	<field name="pes_supervisor" class="java.lang.Integer"/>
+	<field name="pes_descricao" class="java.lang.String"/>
+	<field name="pes_condutor" class="java.lang.String"/>
+	<field name="pes_status" class="java.lang.String"/>
+	<field name="pes_dataadmissao" class="java.sql.Date"/>
+	<field name="pes_datademissao" class="java.sql.Date"/>
+	<field name="pes_salario" class="java.math.BigDecimal"/>
+	<field name="pes_usuario" class="java.lang.String"/>
+	<field name="pes_senha" class="java.lang.String"/>
+	<field name="pes_nivel" class="java.lang.Integer"/>
+	<field name="pes_ultimamov" class="java.lang.String"/>
+	<field name="pes_acesso" class="java.lang.String"/>
+	<sortField name="par_dtvencimento"/>
+	<sortField name="cr_descricao"/>
+	<sortField name="par_numero"/>
+	<sortField name="pr_seq"/>
+	<variable name="total_valor" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{par_sequencia}.equals("N") ? $F{par_valor} : 0]]></variableExpression>
+	</variable>
+	<variable name="total_pago" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{par_valorpago}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupHeader>
+			<band height="45">
+				<staticText>
+					<reportElement x="0" y="15" width="80" height="22" uuid="d5bc71dc-d4e7-4b6b-82b1-53b867c1b841">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="362" y="15" width="59" height="22" uuid="dc13f362-560e-4398-b2c7-84329cb3f9b4">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="146" y="15" width="134" height="22" uuid="1b28154c-aa4f-46a5-8f2e-a3cfa6e04ec0">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pessoa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="292" y="15" width="76" height="22" uuid="802d2783-2355-411f-9eed-d6c71059e270">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Vencmto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="15" width="67" height="22" uuid="9720d312-7c63-4bf5-a6a8-cc0a58683d88">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Recbmto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="499" y="15" width="76" height="22" uuid="b54fe77a-2bb1-4be0-82a5-0db79f3407ad">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Recebido]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="38f25c5c-46d7-486e-b9c7-412103de5773"/>
+				<staticText>
+					<reportElement x="20" y="11" width="150" height="43" forecolor="#FFFFFF" uuid="bf560f3b-ff0f-4629-a8cc-6369c27d9a6f"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SisCon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="56" width="203" height="30" forecolor="#FFFFFF" uuid="19c2f715-3cf3-4f3a-8044-ddf224fa3890"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Gerenciador de Condomínios]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="160" y="27" width="415" height="20" forecolor="#FFFFFF" uuid="33b964a4-3591-4f6f-ae11-73abaa86c3b9">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Titulo}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="223" y="50" width="352" height="42" forecolor="#FFFF00" uuid="46273c00-4458-4390-a8ea-ce5afd4f3fe1">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Subtitulo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="48226c48-f2ed-4809-a3fd-a88a2431156e"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="146" y="0" width="140" height="20" uuid="53b025df-a203-493d-af12-185dca0b3546">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pes_nome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="0" y="0" width="140" height="20" uuid="59ae5cfb-ea64-4060-a53f-64bd0f3e004f">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cr_numparcelas}!=null ?  $F{par_numero} == 0 ? $F{cr_descricao} +" (E"+"+"+$F{cr_numparcelas}+")" 
+:
+$F{cr_descricao} +" ("+$F{par_numero}+"/"+$F{cr_numparcelas}+")" :  $F{cr_descricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤#,##0.00">
+				<reportElement x="362" y="0" width="59" height="20" uuid="eae0e42c-e49d-4240-a932-d25ea917ef72">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{par_valor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="292" y="0" width="66" height="20" uuid="0d9a1b4c-14d5-48cd-ba1b-30cf30d9d0ec">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{par_dtvencimento})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+				<reportElement x="430" y="0" width="87" height="20" uuid="d531a278-ca03-4de2-9eda-a3d41be06a41">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{par_dtpagamento} !=null ? new SimpleDateFormat("dd/MM/yyyy").format($F{par_dtpagamento}) : "Pendente"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤#,##0.00">
+				<reportElement x="499" y="0" width="56" height="20" forecolor="#000000" uuid="bbe59575-2f0b-4413-b107-debc67bc9d7b">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{par_valorpago}!=null ? $F{par_valorpago} : "Pendente"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f668ab51-02dd-4bc4-b5ea-8728b5578828">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="4cac3c23-1714-452e-989f-32bc812deb14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c98e38b3-6419-4227-a49b-74e4ccc981a8">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+	</summary>
+</jasperReport>

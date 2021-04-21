@@ -1,0 +1,72 @@
+USUÁRIO
+- fazer controle de usuários e permissões de acesso
+
+- fazer controle de entrada e saída não só para pessoas, mas também veículos
+  * mesmo o dependente estará presente nessas tabelas, caso ele seja um condutor
+Ex.: Se a familia possui 2 carros, imagine a situação
+     Entrada e Saida, primeiramente eu sai com o Peugeout 207, 
+     depois se minha mãe for sair (ou seja ela está dentro) irá lista apenas o 307 como dentro. O 207 na tabela saída
+    
+
+*** REDIRECIONAR USUARIO, por exemplo, quando clicar para adicionar carro
+    ir a tela pro lado, desabiliar a tela de cadastro de pessoas atual.
+
+MENUS
+- Cadastros > Eventos (permite cadastrar evento)
+- Movimentações > Eventos (permite visualizar eventos ativos, filtrá-los, 
+  um botão para enviar o usuário para cadastrar evento.
+
+TELA PRINCIPAL
+- criar filtros, por categoria, também por data inicio e fim, e data prevista
+- desfazer movimentação, também remover e atualizar o histórico
+- REALIZAR MOVIMENTAÇÃO, também tem opção para DESFAZER.
+- Movimentação relacionada a um evento?
+- avisos, eventos marcados como importante na tool bar
+
+CADASTROS
+- pessoas, obras, ...
+
+VEICULOS
+- não tem sentido colocar uma tela de cadastrar veiculos, uma vez q cada veiculo
+ é unico (placa[pk]) e relacionado a alguma pessoa especifica.
+- pode fazer o cadastro sendo chamado pela tela de cadastro de pessoas
+- excluir cor, marca, categoria? Cuidado com chave estrangeira em outras tabelas (p.e.: veiculos)
+  notificar usuario caso haja chave estrangeira
+  
+
+PESSOAS
+- categoria (morador, visitante, etc), opção de gerenciar
+  - se for morador preenche campos endereço com CONDOMINIO ou desabilita, pede telefone e interfone
+- opção para relacionar veiculos 
+- opção de relacionar dependentes, seja familia ou ajudantes de pedreiro
+  * posso manter até mesmo os pedreiros na lista de dependência de um morador, colocar STATUS? ativo / inativo
+  * assim ficaria até mais fácil relacionar o morador e os pedreiros no evento de Obra 
+  - inserir parentesco
+  - dizer se o dependente é um condutor também. (O mesmo será listado nas movimentações caso seja um condutor)
+
+EVENTOS (obras, reuniões**, entregas, recados, lembretes, etc)
+** reuniões é no mesmo estilo de Obras? Reunião de família? Várias pessoas?
+- com data de início e fim previsto.
+- lembretes internos na barra de status.
+- filtrar por data, categoria, situação.
+- relacionar pessoas com eventos, em sua criação, seja entregador para uma entrega, pedreiro para uma obra.
+- opção de alterar o evento, suas informações, datas e pessoas relacionadas. (double click)
+  * inclui a opção de finalizar o evento, mas não de excluir.
+- fazer uma movimentação inteligente, manter as pessoas relacionadas aos eventos no fluxo "FORA / DENTRO", 
+  enquanto o evento estiver dentro da data fim prevista e "não finalizado".
+- Em Cadastrar Evento, manter histórico de eventos dos moradores? ativar sugestões?
+
+OBRAS / REUNIÕES (implementa o efeito em Eventos*)
+* pode implementar em Eventos, manter a interface, mas ao clicar em uma obra, redimensiona a tabelaEventos
+  e abre uma segunda tabela exibindo as pessoas envolvidas na obra
+- relacionar as pessoas envolvidas para cada obra, seriam 2 tabelas, uma que mostra as obras em geral,
+  outra tabela abaixo escondida, só aparece quando selecionar uma obra, nesta tabela aparece as pessoas da obra.
+- poderia movimentar uma pessoa diretamente da tabela da obra para o fluxo de entrada/saída.
+
+GERAL
+- sempre dar a opção de visualização detalhada pra qualquer tipo de informação,
+  seja pessoa, evento, movimentação?, etc, em todas as telas de interface.
+   
+
+
+

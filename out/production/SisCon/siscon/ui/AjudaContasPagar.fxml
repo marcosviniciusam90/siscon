@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.AjudaContasPagarController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/ajuda.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="9.0" text="Quando ver este ícone, passe o mouse para obter ajuda">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="34.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #446d95;">
+         <children>
+            <Hyperlink layoutX="14.0" layoutY="45.0" onAction="#clkLancar" text="Como faço para lançar uma conta a pagar ?" />
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/help.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="14.0" layoutY="71.0" onAction="#clkPreencher" text="Como preencher os campos ?" />
+            <Hyperlink layoutX="14.0" layoutY="97.0" onAction="#clkAjustar" text="Pra que serve o botão &quot;Ajustar&quot; ?" />
+            <Hyperlink layoutX="14.0" layoutY="123.0" onAction="#clkParcela" text="Como faço o pagamento de uma parcela ?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="234.0" prefHeight="355.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;">
+         <children>
+            <ScrollPane fx:id="scrollpane" prefHeight="355.0" prefWidth="600.0">
+              <content>
+                <AnchorPane fx:id="apTexto" minHeight="0.0" minWidth="0.0" prefHeight="660.0" prefWidth="598.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Na tela principal, no menu &quot;Operação&quot;, clique em &quot;Contas&quot;, depois &quot;Lançar Contas a Pagar&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbLancar" layoutX="14.0" layoutY="14.0" text="Como faço para lançar uma conta a pagar ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) Em seguida, clique no botão &quot;Novo&quot;, inferior a tabela de Contas. Preencha todas as informações a respeito da conta." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3) Quando tudo estiver preenchido, clique em &quot;Confirmar&quot;. Se não der certo, verifique se todos os campos foram preenchidos corretamente, os campos incorretos serão indicados em vermelho." wrappingWidth="552.0" />
+                        <Label fx:id="lbPreencher" layoutX="14.0" layoutY="287.0" text="Como preencher os campos ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Após a confirmação, se a conta for registrada com pagamento à vista ou a prazo com valor de entrada, deverá ser indicado o meio da realização deste pagamento. Quando o pagamento ocorrer por meio de Cartão de Crédito, o valor não será debitado do Caixa, sendo debitado posteriormente com o lançamento e pagamento da fatura do cartão." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa/Pessoa: deve ser indicada a empresa ou pessoa na qual a conta está vinculada." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forma de pagamento: à vista ou a prazo. Quando o pagamento for a prazo, informe o valor da conta e clique em &quot;Parcelas&quot; para calcular e configurar as parcelas. Informe o valor de entrada, número de parcelas e a data inicial, feito isso, clique no botão &quot;Gerar&quot; para gerar as parcelas. Você pode alterar a data de vencimento e valor de cada parcela dando dois cliques sobre a mesma." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Obs: você também pode alterar ou desativar contas, basta selecionar a conta na lista e clicar na opção desejada, alterar/conferir os dados e &quot;Confirmar&quot;. Durante a alteração, não será permitido alterar algumas informações da conta, quando a mesma for à vista ou possuir valor de entrada/parcela paga." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Após a confirmação, se a conta for à vista ou a prazo com valor de entrada, deverá ser indicado o meio da realização do pagamento." wrappingWidth="552.0" />
+                        <Label fx:id="lbAjustar" layoutX="14.0" layoutY="461.0" text="Pra que serve o botão &quot;Ajustar&quot; ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Com o intuito de melhorar a usabilidade, esta funcionalidade permite ajustar o valor das parcelas selecionadas para que a soma de todas as parcelas totalize o valor da conta.                                       Obs: você pode selecionar mais de uma parcela, basta segurar a tecla CTRL ou SHIFT e selecionar com o MOUSE." wrappingWidth="552.0" />
+                        <Label fx:id="lbParcela" layoutX="14.0" layoutY="567.0" text="Como faço o pagamento de uma parcela ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="608.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neste submenu &quot;Contas&quot;, também é possível notar a opção &quot;Realizar Pagamento&quot;, clique nela. Na tela de pagamentos, você deve localizar a parcela que deseja realizar o pagamento, podendo utilizar dos filtros para melhorar a busca, então selecione a parcela e clique em &quot;Pagar&quot;." wrappingWidth="552.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="661.0" prefWidth="887.0" style="-fx-background-image: url(&quot;planta.jpg&quot;); -fx-background-repeat: no-repeat; -fx-background-position: 14 14; -fx-background-size: 861 634;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.PlantaController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+      <ImageView fx:id="imvPlanta" disable="true" fitHeight="634.0" fitWidth="861.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@imagens/planta.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imvMarcador" fitHeight="47.0" fitWidth="47.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(./ajuda.png);;" />
+      <Label fx:id="lote23" layoutX="111.0" layoutY="147.0" text="Lote 23" visible="false" />
+      <Label fx:id="lote1" layoutX="478.0" layoutY="542.0" text="Lote 1" visible="false" />
+      
+   </children>
+</AnchorPane>

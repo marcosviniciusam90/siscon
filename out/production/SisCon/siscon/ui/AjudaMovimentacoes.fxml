@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.AjudaMovimentacoesController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/ajuda.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="9.0" text="Quando ver este ícone, passe o mouse para obter ajuda">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="34.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #446d95;">
+         <children>
+            <Hyperlink layoutX="14.0" layoutY="21.0" onAction="#clkRealizarMovimentacao" text="Como faço para realizar uma movimentação de E/S ?" />
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/help.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="14.0" layoutY="73.0" onAction="#clkVeiculoConduzido" text="Por que o veículo conduzido não aparece na lista ?" />
+            <Hyperlink layoutX="14.0" layoutY="99.0" onAction="#clkPassageiroNaoConsta" text="Por que o passageiro não consta na lista de sugestões ?" />
+            <Hyperlink layoutX="14.0" layoutY="125.0" onAction="#clkPessoaNaoEncontrada" text="Por que não encontro a pessoa que quero adicionar ?" />
+            <Hyperlink layoutX="14.0" layoutY="151.0" onAction="#clkMovimentacaoNaoRealizada" text="Por que a movimentação não foi realizada ?" />
+            <Hyperlink layoutX="14.0" layoutY="47.0" onAction="#clkDesfazer" text="Posso desfazer uma movimentação ?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="234.0" prefHeight="355.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;">
+         <children>
+            <ScrollPane fx:id="scrollpane" prefHeight="355.0" prefWidth="600.0">
+              <content>
+                <AnchorPane fx:id="apTexto" minHeight="0.0" minWidth="0.0" prefHeight="930.0" prefWidth="598.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Na tela principal, no canto inferior esquerdo, clique em &quot;Realizar Movimentação&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbRealizarMovimentacao" layoutX="14.0" layoutY="14.0" text="Como faço para realizar uma movimentação de E/S ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) Na tela de movimentações, selecione o Condutor, clicando no botão ao lado do campo indicado. Uma vez informado o Condutor, o sistema identificará o tipo de movimentação (E/S), possíveis veículos e passageiros, respeitando a condição do tipo de movimentação." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3) Indique o veículo utilizado. Caso nenhum veículo seja conduzido, marque a opção &quot;Não está conduzindo nenhum veículo&quot;." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4) Se houver, informe os passageiros do veículo. Utilize os botões entre as listas para mover pessoas de uma lista para outra. Os botões são habilitados quando uma pessoa for selecionada.                          Obs: se a pessoa desejada não estiver na lista de pessoas sugeridas, clique em &quot;Adicionar&quot;." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5) Quando tudo estiver preenchido, clique em &quot;Movimentar&quot;. Se não der certo, verifique se todos os campos foram preenchidos corretamente, os campos incorretos serão indicados em vermelho." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primeiramente, verifique se o veículo está cadastrado. Se estiver cadastrado, isto acontece porque o sistema guarda o tipo (E/S) da última movimentação realizada para cada pessoa, veículo. Portanto, quando um condutor for informado, serão exibidos os veículos que atendem aquele determinado tipo de movimentação, isto é, um condutor que fará saída do condomínio só terá ao seu dispor veículos que estão dentro do condomínio. Verifique a última movimentação registrada no cadastro do respectivo veículo." wrappingWidth="552.0" />
+                        <Label fx:id="lbVeiculoNaoAparece" layoutX="14.0" layoutY="373.0" text="Por que o veículo conduzido não aparece na lista ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primeiramente, verifique se o passageiro está cadastrado. Se estiver cadastrado, segue o mesmo princípio do tópico acima. A lista de pessoas sugeridas exibe pessoas próximas ao condutor satisfazendo a condição do tipo (E/S) de movimentação que está para ser realizada. Verifique a última movimentação registrada no cadastro da respectiva pessoa." wrappingWidth="552.0" />
+                        <Label fx:id="lbPassageiroNaoConsta" layoutX="14.0" layoutY="513.0" text="Por que o passageiro não consta na lista de sugestões ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verifique se a pessoa está cadastrada. Se estiver, segue o mesmo princípio dos dois tópicos acima. O sistema só exibe pessoas que atendem a condição do tipo (E/S) de movimentação que está para ser realizada. Verifique a última movimentação registrada no cadastro da respectiva pessoa." wrappingWidth="552.0" />
+                        <Label fx:id="lbPessoaNaoEncontrada" layoutX="14.0" layoutY="623.0" text="Por que não encontro a pessoa que quero adicionar ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="759.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Existem algumas circunstâncias para que a movimentação não seja realizada. São elas:" wrappingWidth="552.0" />
+                        <Label fx:id="lbMovimentacaoNaoRealizada" layoutX="14.0" layoutY="717.0" text="Por que a movimentação não foi realizada ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="780.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Verifique se todos os campos foram preenchidos. Campos incorretos serão indicados em vermelho." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="801.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) O sistema valida movimentações de entrada, verificando se existe alguma pessoa ou veículo não autorizado a ter acesso ao condomínio. As regras de validação ocorrem nesta ordem:" wrappingWidth="552.0" />
+                        <Text layoutX="24.0" layoutY="838.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.1) Pessoa/Veículo Não Autorizado: movimentação não autorizada;" wrappingWidth="542.0" />
+                        <Text layoutX="24.0" layoutY="859.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.2) Condutor com Livre Acesso: movimentação autorizada;" wrappingWidth="542.0" />
+                        <Text layoutX="24.0" layoutY="880.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.3) Condutor como Mediante Autorização: se este estiver participando de um evento que está em andamento, e com período de participação vigente, a movimentação é autorizada. Caso contrário, o usuário fica responsável por autorizar ou não a entrada." wrappingWidth="542.0" />
+                        <Text layoutX="14.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sim. O sistema permite desfazer a última movimentação realizada, basta clicar no botão &quot;Desfazer Última&quot;, localizado no canto inferior esquerdo na tela principal, verificar os dados e confirmar, clicando em &quot;Desfazer&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbDesfazer" layoutX="14.0" layoutY="279.0" text="Posso desfazer uma movimentação ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

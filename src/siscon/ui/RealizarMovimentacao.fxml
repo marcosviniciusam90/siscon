@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="apTela" prefHeight="683.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.RealizarMovimentacaoController">
+    <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="lbVeiculo" layoutX="20.0" layoutY="14.0" text="1. SELECIONE O VEÍCULO (*)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="apVeiculo" layoutX="20.0" layoutY="50.0" />
+      <Label fx:id="lbCondutor" layoutX="20.0" layoutY="190.0" text="2. SELECIONE O CONDUTOR (*)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="spCondutor" layoutX="20.0" layoutY="226.0" prefHeight="155.0" style="-fx-focus-color: steelblue;">
+         <content>
+            <AnchorPane fx:id="apCondutor" nodeOrientation="LEFT_TO_RIGHT" prefHeight="153.0" prefWidth="613.0" style="-fx-background-color: #ccc;" />
+         </content>
+      </ScrollPane>
+      
+      <Label fx:id="lbPassageiros" layoutX="20.0" layoutY="412.0" text="3. SELECIONE O(S) PASSAGEIRO(S)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="spPassageiros" layoutX="20.0" layoutY="448.0" prefHeight="155.0" style="-fx-focus-color: steelblue;">
+         <content>
+            <AnchorPane fx:id="apPassageiros" nodeOrientation="LEFT_TO_RIGHT" prefHeight="153.0" prefWidth="613.0" style="-fx-background-color: #ccc;" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="btMovimentar" layoutX="492.0" layoutY="634.0" mnemonicParsing="false" onAction="#clkMovimentar" prefHeight="40.0" prefWidth="143.0" text="MOVIMENTAR" />
+      <ImageView fx:id="imvAjuda" fitHeight="31.0" fitWidth="31.0" layoutX="604.0" layoutY="14.0" onMouseClicked="#clickAjuda" onMouseExited="#onMouseExitAjuda" onMouseMoved="#OnMouseOverAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+         <image>
+            <Image url="@icones/help_p.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbAutorizado" alignment="CENTER_RIGHT" layoutX="347.0" layoutY="175.0" prefHeight="17.0" prefWidth="253.0" />
+      <Label fx:id="lbHorario" alignment="CENTER_RIGHT" layoutX="347.0" layoutY="194.0" prefHeight="17.0" prefWidth="253.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="lbCamposObrigatorios" layoutX="384.0" layoutY="22.0" styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" />
+   </children>
+</AnchorPane>

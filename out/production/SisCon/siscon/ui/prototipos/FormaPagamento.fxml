@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+                     <children>
+                        <TextField fx:id="tfValorEntrada" layoutX="18.0" layoutY="34.0" onKeyPressed="#kpValorEntrada" prefHeight="25.0" prefWidth="116.0" promptText="Valor de entrada" />
+                        <Button fx:id="btCalcular" layoutX="144.0" layoutY="34.0" mnemonicParsing="false" onAction="#clickCalcular" text="Calcular parcelas" />
+                        <ComboBox fx:id="cbParcelas" layoutX="15.0" layoutY="84.0" onAction="#clickParcelas" prefHeight="25.0" prefWidth="186.0" promptText="Número de parcelas" />
+                        
+                        <DatePicker fx:id="dpDataInicio" layoutX="220.0" layoutY="84.0" onAction="#clickDataInicio" prefHeight="25.0" prefWidth="113.0" promptText="Data de início" />
+                        <TableView fx:id="tabelaParcelas" layoutX="16.0" layoutY="126.0" onKeyPressed="#kpTabela" onMouseClicked="#clickTabelaParcelas" prefHeight="246.0" prefWidth="569.0">
+                           <columns>
+                              <TableColumn fx:id="colNumero" prefWidth="114.0" text="Número" />
+                              <TableColumn fx:id="colValor" minWidth="0.0" prefWidth="202.0" text="Valor (R$)" />
+                              <TableColumn fx:id="colVencimento" minWidth="0.0" prefWidth="251.0" text="Vencimento" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btAlterarParcela" layoutX="17.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickAlterarParcela" text="Alterar parcela" textFill="#fa0202">
+                           
+                        </Button>
+                        <Button fx:id="btConfirmar" layoutX="438.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickConfirmar" text="Confirmar" />
+                        <Button fx:id="btCancelar" layoutX="521.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickCancelar" text="Cancelar" />
+                        
+                        <Label fx:id="lbTotal2" alignment="TOP_LEFT" layoutX="380.0" layoutY="50.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="192.0" text="Total: R$100,00" textAlignment="RIGHT" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+                        <Label fx:id="lbValor" layoutX="17.0" layoutY="14.0" text="Valor de entrada (R$):" />
+                        <Label fx:id="lbParcelas" layoutX="17.0" layoutY="65.0" text="Parcelas:" />
+                        <Label fx:id="lbDataInicio" layoutX="219.0" layoutY="63.0" text="Data de início:" />
+                        
+                     </children>
+    
+</AnchorPane>

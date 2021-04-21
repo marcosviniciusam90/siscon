@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="328.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.GerenciarOpcoesController">
+    <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+                  <BorderPane layoutX="10.0" layoutY="5.0" prefHeight="310.0" prefWidth="540.0">
+    
+                  <left>                    
+                              <AnchorPane fx:id="apEsquerdo" layoutX="10.0" prefHeight="343.0" prefWidth="262.0">
+                                 <children>
+                  <HBox alignment="CENTER" layoutX="5.0" layoutY="1.0" prefHeight="35.0" prefWidth="251.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="txPesquisa" onKeyPressed="#kpPesquisar" prefHeight="25.0" prefWidth="314.0" promptText="Pesquisar nome">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                    <Button mnemonicParsing="false" onAction="#clkIr" text="Ir">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
+                     </children>
+                     
+                        </HBox>
+                  <TableView fx:id="tabela" layoutX="5.0" layoutY="48.0" onMouseClicked="#clkTabela" prefHeight="231.0" prefWidth="252.0">
+                    <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                      <columns>
+                      <TableColumn fx:id="colNome" prefWidth="250.0" text="Nome" />
+                    </columns>
+                  </TableView>
+                  <HBox alignment="CENTER" layoutX="-3.0" layoutY="279.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="251.0" spacing="20.0">
+                     
+                           <children>
+                        <Button fx:id="btNovo" mnemonicParsing="false" onAction="#clkNovo" text="NOVO" textFill="#3903fc">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                        <Button fx:id="btAlterar" mnemonicParsing="false" onAction="#clkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                        <Button fx:id="btApagar" mnemonicParsing="false" onAction="#clkApagar" text="DESATIVAR" textFill="#fa1005">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                     </children>
+                                       <padding>
+                                          <Insets left="16.0" top="15.0" />
+                                       </padding>
+                     
+                        </HBox>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDados" layoutY="10.0" prefHeight="308.0" prefWidth="267.0" BorderPane.alignment="CENTER">
+         <children>
+                       
+            
+            <AnchorPane fx:id="aux_dados" layoutY="10.0" minWidth="262.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="268.0" prefWidth="267.0" style="-fx-background-color: silver;">
+               <children>
+                                    
+                        <Label fx:id="lbCod" layoutX="19.0" layoutY="10.0" text="Código:" />
+                  <TextField fx:id="tfCod" disable="true" editable="false" layoutX="19.0" layoutY="30.0" prefHeight="25.0" prefWidth="72.0" />
+                                    
+                        <Label fx:id="lbNome" layoutX="21.0" layoutY="69.0" text="Nome (*):" />
+                  <TextField fx:id="tfNome" layoutX="21.0" layoutY="89.0" prefHeight="25.0" prefWidth="225.0" />
+                  <Label fx:id="lbCamposObrigatorios" layoutX="140.0" layoutY="35.0" styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" visible="false" />
+   
+                                          
+                                    
+                                          
+                                       
+                     </children>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="11.0" />
+                     </VBox.margin>
+            </AnchorPane>
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="324.0" spacing="25.0">
+                                 <children> 
+                        <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#clkCancelar" text="CANCELAR" />
+                  <Button fx:id="btConfirmar" mnemonicParsing="false" onAction="#clkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children> 
+</AnchorPane>

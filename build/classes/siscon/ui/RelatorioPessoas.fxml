@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="326.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.RelatorioPessoasController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+      <AnchorPane fx:id="apRelatorio" layoutX="42.0" layoutY="21.0" visible="false">
+         <children>
+            <AnchorPane fx:id="apRelatorioPessoasXMovimentacoes" visible="false">
+               <children>
+                  <AnchorPane layoutY="26.0" prefHeight="70.0" prefWidth="338.0" style="-fx-background-color: #f2eea9;">
+                     <children>
+                        <RadioButton fx:id="rbFormatoDentro" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" selected="true" text="Todos que estão dentro do condomínio" />
+                        <RadioButton fx:id="rbFormatoFora" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" text="Todos que estão fora do condomínio" />
+                     </children>
+                  </AnchorPane>
+                  <Label text="Modelo de relatório:" />
+                  <Label fx:id="lbTiposPessoas" layoutY="107.0" text="Tipos de pessoas:" />
+                  <AnchorPane layoutY="132.0" prefHeight="98.0" prefWidth="338.0" style="-fx-background-color: #ccc;">
+                     <children>
+                        <CheckBox fx:id="ckbAssociados" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" onAction="#clkAssociados" selected="true" text="Associados" />
+                        <CheckBox fx:id="ckbFuncionarios" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" onAction="#clkFuncionarios" selected="true" text="Funcionários" />
+                        <CheckBox fx:id="ckbVisitantes" layoutX="6.0" layoutY="68.0" mnemonicParsing="false" onAction="#clkVisitantes" selected="true" text="Visitantes" />
+                        <Button fx:id="btMarcar" layoutX="193.0" layoutY="59.0" mnemonicParsing="false" onAction="#clkMarcar" prefHeight="26.0" prefWidth="133.0" text="DESMARCAR TODOS" />
+                        <Label fx:id="lbErro" layoutX="187.0" layoutY="12.0" text="Selecione pelo menos um" textFill="RED" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apRelatorioPessoas" visible="false">
+               <children>
+                  <AnchorPane layoutY="26.0" prefHeight="98.0" prefWidth="338.0" style="-fx-background-color: #f2eea9;">
+                     <children>
+                        <RadioButton fx:id="rbFormatoCategoria" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" text="Agrupado por Categoria" />
+                        <RadioButton fx:id="rbFormatoPessoa" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" text="Agrupado por Responsável (Responsável X Dependente)" />
+                        <RadioButton fx:id="rbFormatoListaPessoas" layoutX="6.0" layoutY="68.0" mnemonicParsing="false" selected="true" text="Lista de Pessoas" />
+                     </children>
+                  </AnchorPane>
+                  <ComboBox fx:id="cbTipoPessoas" layoutY="160.0" prefHeight="25.0" prefWidth="338.0" promptText="Escolha os tipos de pessoas" />
+                  <TextField fx:id="tfPessoa" editable="false" focusTraversable="false" layoutY="219.0" mouseTransparent="true" prefHeight="25.0" prefWidth="247.0" promptText="Selecione um responsável para filtrar" />
+                  <Button fx:id="btSelecionar" layoutX="255.0" layoutY="218.0" mnemonicParsing="false" onAction="#clkSelecionar" text="SELECIONAR" />
+                  <Label text="Modelo de relatório:" />
+                  <Label layoutY="140.0" text="Tipos de pessoas:" />
+                  <Label layoutY="199.0" text="Filtrar por responsável (opcional):" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apRelatorioFuncionarios" visible="false">
+               <children>
+                  <ComboBox fx:id="cbTipoFuncionarios" layoutY="20.0" onAction="#clkTipoFuncionario" prefHeight="25.0" prefWidth="338.0" promptText="Escolha os tipos de funcionários" />
+                  <Label text="Tipos de funcionários:" />
+                  <CheckBox fx:id="ckbFiltrarPeriodo" disable="true" layoutY="60.0" mnemonicParsing="false" onAction="#clkFiltrarPeriodo" text="Filtrar por período (opcional)" />
+                  <AnchorPane fx:id="apPeriodo" disable="true" layoutY="86.0" prefHeight="72.0" prefWidth="338.0" style="-fx-background-color: ccc;">
+                     <children>
+                        <DatePicker fx:id="dpDataInicial" layoutX="51.0" layoutY="23.0" prefHeight="25.0" prefWidth="103.0" promptText="Data inicial" />
+                        <DatePicker fx:id="dpDataFinal" layoutX="179.0" layoutY="23.0" prefHeight="25.0" prefWidth="103.0" promptText="Data final" />
+                        <Label layoutX="163.0" layoutY="27.0" text="a" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apRelatorioUsuarios" visible="false">
+               <children>
+                  <ComboBox fx:id="cbTipoUsuarios" layoutY="20.0" prefHeight="25.0" prefWidth="338.0" promptText="Escolha os tipos de usuários" />
+                  <Label text="Tipos de usuários:" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btCancelar" layoutY="252.0" mnemonicParsing="false" onAction="#clkCancelar" text="VOLTAR" />
+            <Button fx:id="btGerar" layoutX="284.0" layoutY="252.0" mnemonicParsing="false" onAction="#clkGerar" text="GERAR" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="apMenu" layoutX="94.0" layoutY="18.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#clkMenuRelPessoas" prefHeight="63.0" prefWidth="235.0" text="ASSOCIADOS X VISITANTES" />
+            <Button fx:id="btMenuRelFuncionarios" layoutY="79.0" mnemonicParsing="false" onAction="#clkMenuRelFuncionarios" prefHeight="63.0" prefWidth="235.0" text="FUNCIONÁRIOS" />
+            <Button fx:id="btPessoasxMovimentacoes" layoutY="158.0" mnemonicParsing="false" onAction="#clkMenuRelPessoasxMovimentacoes" prefHeight="63.0" prefWidth="235.0" text="PESSOAS X MOVIMENTAÇÕES" />
+            <Button fx:id="btMenuRelUsuarios" layoutY="237.0" mnemonicParsing="false" onAction="#clkMenuRelUsuarios" prefHeight="63.0" prefWidth="235.0" text="USUÁRIOS" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

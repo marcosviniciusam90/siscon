@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.RelatorioEventosController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+      <AnchorPane layoutX="42.0" layoutY="47.0" prefHeight="126.0" prefWidth="338.0" style="-fx-background-color: #f2eea9;">
+         <children>
+            <RadioButton fx:id="rbFormatoCategoria" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" text="Agrupado por Categoria" />
+            <RadioButton fx:id="rbFormatoOrganizador" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" text="Agrupado por Organizador" />
+            <RadioButton fx:id="rbFormatoEvento" layoutX="6.0" layoutY="68.0" mnemonicParsing="false" text="Agrupado por Evento (Evento X Participantes)" />
+            <RadioButton fx:id="rbFormatoPadrao" layoutX="6.0" layoutY="96.0" mnemonicParsing="false" selected="true" text="Lista de Eventos" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="42.0" layoutY="211.0" prefHeight="97.0" prefWidth="338.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="rbTipoTodos" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" selected="true" text="Todos os eventos" />
+            <RadioButton fx:id="rbTipoAndamento" layoutX="6.0" layoutY="40.0" mnemonicParsing="false" text="Todos que estão em andamento" />
+            <RadioButton fx:id="rbTipoFinalizado" layoutX="6.0" layoutY="68.0" mnemonicParsing="false" text="Todos que foram finalizados" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfPessoa" editable="false" focusTraversable="false" layoutX="42.0" layoutY="341.0" mouseTransparent="true" prefHeight="25.0" prefWidth="247.0" promptText="Selecione um organizador para filtrar" />
+      <Button fx:id="btSelecionar" layoutX="297.0" layoutY="340.0" mnemonicParsing="false" onAction="#clkSelecionar" text="SELECIONAR" />
+      <Label layoutX="42.0" layoutY="21.0" text="Modelo de relatório:" />
+      <Button layoutX="42.0" layoutY="387.0" mnemonicParsing="false" onAction="#clkCancelar" text="FECHAR" />
+      <Button layoutX="326.0" layoutY="387.0" mnemonicParsing="false" onAction="#clkGerar" text="GERAR" />
+      <Label layoutX="42.0" layoutY="321.0" text="Filtrar por organizador (opcional):" />
+      <Label layoutX="42.0" layoutY="185.0" text="Tipos de eventos:" />
+   </children>
+</AnchorPane>

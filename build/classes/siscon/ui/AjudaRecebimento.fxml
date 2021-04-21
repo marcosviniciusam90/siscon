@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.AjudaRecebimentoController">
+   <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icones/ajuda.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="9.0" text="Quando ver este ícone, passe o mouse para obter ajuda">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="10.0" layoutY="34.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #446d95;">
+         <children>
+            <Hyperlink layoutX="14.0" layoutY="56.0" onAction="#clkPagamento" text="Como faço um recebimento ?" />
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/help.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="14.0" layoutY="82.0" onAction="#clkEstornar" text="Posso estornar um recebimento ?" />
+            <Hyperlink layoutX="14.0" layoutY="108.0" onAction="#clkCaixa" text="Por que o sistema pede para abrir o caixa ?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="234.0" prefHeight="355.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;">
+         <children>
+            <ScrollPane fx:id="scrollpane" prefHeight="355.0" prefWidth="600.0">
+              <content>
+                <AnchorPane fx:id="apTexto" minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="598.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Na tela principal, no menu &quot;Operação&quot;, clique em &quot;Contas&quot;, depois &quot;Realizar Recebimento&quot;." wrappingWidth="552.0" />
+                        <Label fx:id="lbPagamento" layoutX="14.0" layoutY="14.0" text="Como faço um recebimento ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2) Em seguida, você deve buscar e selecionar a parcela desejada, feito isso, clique em &quot;Receber&quot;.           Obs: você pode filtrar as parcelas que serão exibidas, podendo filtrar por pessoa, período, entre outros." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3) Uma tela será aberta contendo todos os dados da respectiva parcela. Verifique os dados da parcela, tendo em vista que aquela é a parcela que deseja efetuar o recebimento, você só precisa preencher três campos, são eles:" wrappingWidth="552.0" />
+                        <Label fx:id="lbEstornar" layoutX="14.0" layoutY="285.0" text="Posso estornar um recebimento ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sim, o processo é o mesmo, você só precisa buscar e selecionar a parcela que deseja estornar, e então clicar em &quot;Estornar&quot;. É permitido estornar toda parcela que foi recebida. Quando uma parcela for recebida parcialmente, ela terá vários segmentos, somente sendo permitido estornar o último deles. Neste caso, você pode estornar toda a parcela, estornando do último segmento até o primeiro." wrappingWidth="552.0" />
+                        <Label fx:id="lbCaixa" layoutX="14.0" layoutY="393.0" text="Por que o sistema pede para abrir o caixa ?">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Text layoutX="14.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="É uma forma de controle, registra o horário que o caixa foi aberto e fechado, além de vincular todas as movimentações realizadas e o usuário responsável." wrappingWidth="552.0" />
+                        <Text layoutX="14.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="552.0" />
+                        <Text layoutX="24.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Data de pagamento: informe a data de pagamento;" wrappingWidth="542.0" />
+                        <Text layoutX="24.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Valor pago: informe o valor pago. Se informado um valor menor que o da parcela, será feito o pagamento parcial, gerando uma nova parcela com o valor restante;" wrappingWidth="542.0" />
+                        <Text layoutX="24.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Forma de pagamento: indique a forma de pagamento." wrappingWidth="542.0" />
+                        <Text layoutX="14.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4) Agora é só clicar em &quot;Confirmar&quot;." wrappingWidth="552.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

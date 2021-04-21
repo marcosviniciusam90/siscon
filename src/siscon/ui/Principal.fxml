@@ -1,0 +1,2474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane id="BorderPane" prefHeight="633.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.PrincipalController">
+     <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    
+    <left>
+      <AnchorPane fx:id="apEsquerdo" prefHeight="643.0" prefWidth="578.0" BorderPane.alignment="CENTER">
+         <children>
+             
+             <Label fx:id="lbUsuario" layoutX="409.0" layoutY="216.0" text="Usuário:" />
+             <TextField fx:id="tfUsuario" layoutX="409.0" layoutY="236.0" onKeyPressed="#kpUsuario" />             
+             <Label fx:id="lbSenha" layoutX="409.0" layoutY="273.0" text="Senha:" />
+             <PasswordField fx:id="tfSenha" layoutX="409.0" layoutY="293.0" onKeyPressed="#kpSenha" />
+             <Button fx:id="btLogin" layoutX="409" layoutY="333.0" mnemonicParsing="false" onAction="#clkLogin" prefHeight="31.0" prefWidth="149.0" text="LOGIN" />
+             
+             <Button fx:id="btIniciar" layoutX="409" layoutY="235.0" mnemonicParsing="false" onAction="#clkIniciar" prefHeight="51.0" prefWidth="149.0" text="INICIAR SISTEMA" />
+             <Button fx:id="btRestaurar" layoutX="409" layoutY="313.0" mnemonicParsing="false" onAction="#clkRestaurar" prefHeight="51.0" prefWidth="149.0" text="RESTAURAR BACKUP" />
+             
+             <TableView fx:id="tabelaEntrada" layoutX="15.0" layoutY="51.0" onMouseClicked="#clkTabelaEntrada" prefHeight="226.0" prefWidth="560.0">
+              <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                <columns>
+                <TableColumn fx:id="ENTRADAcolNome" prefWidth="244.0" text="Condutor" />
+                <TableColumn fx:id="ENTRADAcolVeiculo" minWidth="4.0" prefWidth="179.0" text="Veículo" />
+                  <TableColumn fx:id="ENTRADAcolData" prefWidth="135.0" text="Horário" />
+              </columns>
+            </TableView>
+            <Label fx:id="lbEntrada" layoutX="14.0" layoutY="15.0" text="ENTRADA" textFill="#3903fc">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txPesquisarEntrada" layoutX="136.0" layoutY="16.0" onKeyPressed="#kpPesquisarEntrada" prefHeight="25.0" prefWidth="400.0" promptText="Pesquisar por nome/cpf do condutor ou marca/modelo/placa do veículo" />
+            <Button layoutX="545.0" layoutY="16.0" mnemonicParsing="false" onAction="#clkIrEntrada" text="IR" />
+            <TableView fx:id="tabelaSaida" layoutX="16.0" layoutY="328.0" onMouseClicked="#clkTabelaSaida" prefHeight="226.0" prefWidth="560.0">
+               <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                <columns>
+                  <TableColumn fx:id="SAIDAcolNome" prefWidth="244.0" text="Condutor" />
+                  <TableColumn fx:id="SAIDAcolVeiculo" minWidth="4.0" prefWidth="179.0" text="Veículo" />
+                  <TableColumn fx:id="SAIDAcolData" prefWidth="135.0" text="Horário" />
+               </columns>
+            </TableView>
+            <Label fx:id="lbSaida" layoutX="15.0" layoutY="292.0" text="SAÍDA" textFill="#fa1005">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txPesquisarSaida" layoutX="136.0" layoutY="293.0" onKeyPressed="#kpPesquisarSaida" prefHeight="25.0" prefWidth="400.0" promptText="Pesquisar por nome/cpf do condutor ou marca/modelo/placa do veículo" />
+            <Button layoutX="545.0" layoutY="293.0" mnemonicParsing="false" onAction="#clkIrSaida" text="IR" />
+            <CheckBox fx:id="ckbUltimaMov" layoutX="15.0" layoutY="569.0" mnemonicParsing="false" onAction="#clkMostrarUltimasMovimentacoes" text="Mostrar apenas a última movimentação de cada pessoa" />
+            <Button fx:id="btDesfazer" alignment="CENTER" layoutX="199.0" layoutY="603.0" mnemonicParsing="false" onAction="#clkDesfazer" prefHeight="25.0" prefWidth="155.0" text="DESFAZER ÚLTIMA" textFill="#fa1005">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="381.0" layoutY="603.0" mnemonicParsing="false" onAction="#clkRealizarMovimentacao" prefHeight="25.0" prefWidth="195.0" text="REALIZAR MOVIMENTAÇÃO">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btVerDadosPessoais" alignment="CENTER" layoutX="16.0" layoutY="603.0" mnemonicParsing="false" onAction="#clkVerDadosPessoais" prefHeight="25.0" prefWidth="155.0" text="VISUALIZAR" />
+               
+            
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="apDireito" prefHeight="643.0" prefWidth="0.0" BorderPane.alignment="CENTER">
+         <children>
+             <AnchorPane fx:id="apServidor" layoutY="39.0">
+                 <children>
+             <AnchorPane fx:id="apTitulo" layoutX="-96.0" layoutY="4.0" prefHeight="200.0" prefWidth="680.0" style="-fx-background-color: #446d95;">
+         <children>
+             <ProgressIndicator fx:id="piCarregando" layoutX="170.0" layoutY="-60.0" visible="false" />
+            <Label layoutX="33.0" layoutY="40.0" text="Configurar" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="33.0" layoutY="100.0" prefHeight="40.0" prefWidth="225.0" text="Banco de Dados" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="256.0" layoutX="408.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icones/database.png" />
+               </image>
+            </ImageView>
+               <Hyperlink layoutX="40.0" layoutY="160.0" onAction="#clkIP" text="Qual o IP deste computador ?" />
+         </children>
+      </AnchorPane>
+         <Label fx:id="lbBancodeDados" layoutX="109.0" layoutY="190.0" text="BANCO DE DADOS" visible="false">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         
+         <AnchorPane fx:id="apBancoDados" layoutX="-96.0" layoutY="204.0" prefHeight="312.0" prefWidth="300.0" visible="false" styleClass="fundo-cinza" >
+            <children>
+               <AnchorPane fx:id="apConteudo" layoutX="15.0" layoutY="11.0">
+                  <children>
+                  <Label fx:id="lbDriver" text="Driver (*):" />
+                  <ComboBox fx:id="cbDriver" layoutY="22.0" prefHeight="25.0" prefWidth="270.0" promptText="Escolha o driver" />
+                     <CheckBox fx:id="ckbServidorLocal" layoutX="93.0" layoutY="65.0" mnemonicParsing="false" onAction="#clkServidorLocal" selected="true" text="Acesso local">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </CheckBox>
+                  <TextField fx:id="tfServidor" editable="false" focusTraversable="false" layoutY="87.0" mouseTransparent="true" prefHeight="25.0" prefWidth="194.0" promptText="Digite o IP do servidor" />
+                  <Label fx:id="lbServidor" layoutY="65.0" text="Servidor (*):" />
+                  <TextField fx:id="tfPorta" layoutX="215.0" layoutY="87.0" prefHeight="25.0" prefWidth="55.0" />
+                  <Label fx:id="lbPorta" layoutX="215.0" layoutY="65.0" text="Porta (*):" />
+                  <Label fx:id="lbBase" layoutY="195.0" text="Nome do banco de dados:" />
+                  <TextField fx:id="tfUsuarioServidor" layoutY="152.0" prefHeight="25.0" prefWidth="122.0" />
+                  <PasswordField fx:id="tfSenhaServidor" layoutX="148.0" layoutY="152.0" prefHeight="25.0" prefWidth="122.0" />
+                  <Label fx:id="lbUsuarioServidor" layoutY="130.0" text="Usuário (*):" />
+                  <Label fx:id="lbSenhaServidor" layoutX="148.0" layoutY="130.0" text="Senha (*):" />
+                  <TextField fx:id="tfBase" editable="false" focusTraversable="false" layoutY="217.0" mouseTransparent="true" prefHeight="25.0" prefWidth="270.0" />
+                  <Button layoutY="260.0" mnemonicParsing="false" onAction="#clkRedefinir" prefHeight="26.0" prefWidth="79.0" text="REDEFINIR" />
+                  <Button layoutX="191.0" layoutY="260.0" mnemonicParsing="false" onAction="#clkConectar" prefHeight="26.0" prefWidth="79.0" text="CONECTAR" />
+                  </children>
+               </AnchorPane>
+               
+            </children>
+         </AnchorPane>
+         <Hyperlink fx:id="lbIP" layoutX="53" layoutY="477.0" onAction="#clkIP" styleClass="hyperlink-preto" text="Qual o IP deste computador ?" visible="false" />
+         <ImageView fx:id="imvDicaBancoDados" fitHeight="312" fitWidth="380" layoutX="204" layoutY="204" pickOnBounds="true" preserveRatio="true"> 
+            <image>
+                <Image url="@imagens/bancodados.png" />
+            </image>
+            </ImageView>
+                 </children>
+</AnchorPane> 
+            <ImageView fx:id="imvLoginAviso" fitHeight="129.0" fitWidth="295.0" layoutX="3" layoutY="235" pickOnBounds="true" preserveRatio="true"> 
+            <image>
+                <Image url="@imagens/login_aviso.png" />
+            </image>
+            </ImageView>
+            <ImageView fx:id="imvIniciarAviso" fitHeight="129.0" fitWidth="295.0" layoutX="3" layoutY="235" pickOnBounds="true" preserveRatio="true"> 
+            <image>
+                <Image url="@imagens/iniciar_aviso.png" />
+            </image>
+            </ImageView>
+            
+                                                        
+            <AnchorPane fx:id="apPessoas" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="262.0">
+                                 <children>
+                              <Group fx:id="apTabelaPessoas" layoutX="5.0">
+                                 <children>
+                                          <Label text="PESSOAS">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaPessoas" fitHeight="31.0" fitWidth="31.0" layoutX="88.0" layoutY="-3" onMouseClicked="#clickAjudaPessoas" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox alignment="CENTER" layoutY="27.0" prefHeight="35.0" prefWidth="266.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="PESSOAStxPesquisa" layoutX="-2" onKeyPressed="#PESSOASkpPesquisar" prefHeight="25.0" prefWidth="120.0" promptText="Pesquisar nome/cpf ">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                          <ComboBox fx:id="PESSOAScbFiltrarCategoria" prefHeight="25.0" prefWidth="105.0" promptText="Exibir todos">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                          <Button mnemonicParsing="false" onAction="#PESSOASclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="PESSOAStabela" layoutY="72.0" onMouseClicked="#PESSOASclkTabela" prefHeight="353.0" prefWidth="265.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="PESSOAScolNome" prefWidth="164.0" text="Nome" />
+                            <TableColumn fx:id="PESSOAScolCPF" prefWidth="99.0" text="CPF" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="5" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" spacing="15.0">
+                           
+                           <children>
+                              <Button fx:id="PESSOASbtNovo" mnemonicParsing="false" onAction="#PESSOASclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="PESSOASbtAlterar" mnemonicParsing="false" onAction="#PESSOASclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="PESSOASbtApagar" mnemonicParsing="false" onAction="#PESSOASclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                    
+                                    
+                                 </children>
+                              </Group>
+                              <Group fx:id="apVeiculos" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="VEÍCULOS">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="VEICULOSlbNomePessoa" layoutX="89.0" layoutY="7.0" maxWidth="178.0" />
+                                    <AnchorPane layoutY="37.0" prefHeight="317.0" prefWidth="267.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <ComboBox fx:id="VEICULOScbCategoria" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="188.0" promptText="Escolha a categoria" />                                          
+                                          <Button fx:id="VEICULOSbtCategoria" layoutX="218.0" layoutY="31.0" mnemonicParsing="false" onAction="#VEICULOSclkCategoria" text="+" />
+                                          <ComboBox fx:id="VEICULOScbMarca" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="188.0" promptText="Escolha a marca" />
+                                          <Button fx:id="VEICULOSbtMarca" layoutX="218.0" layoutY="92.0" mnemonicParsing="false" onAction="#VEICULOSclkMarca" text="+" />
+                                          <Label fx:id="VEICULOSlbCategoria" layoutX="20.0" layoutY="10.0" text="Categoria:" />
+                                          <Label fx:id="VEICULOSlbMarca" layoutX="20.0" layoutY="71.0" text="Marca:" />
+                                          <Label fx:id="VEICULOSlbModelo" layoutX="20.0" layoutY="132.0" text="Modelo:" />
+                                          <TextField fx:id="VEICULOStfModelo" layoutX="20.0" layoutY="153.0" prefHeight="25.0" prefWidth="227.0" />
+                                          <ComboBox fx:id="VEICULOScbCor" layoutX="20.0" layoutY="214.0" prefHeight="25.0" prefWidth="188.0" promptText="Escolha a cor" />
+                                          <Button fx:id="VEICULOSbtCor" layoutX="218.0" layoutY="214.0" mnemonicParsing="false" onAction="#VEICULOSclkCor" text="+" />
+                                          <Label fx:id="VEICULOSlbPlaca" layoutX="20.0" layoutY="254.0" text="Placa:" />
+                                          <TextField fx:id="VEICULOStfPlaca" layoutX="20.0" layoutY="275.0" prefHeight="25.0" prefWidth="127.0" />
+                                          <Label fx:id="VEICULOSlbCor" layoutX="20.0" layoutY="193.0" text="Cor:" />
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutY="354.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="VEICULOSbtCancelar" mnemonicParsing="false" onAction="#VEICULOSclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="VEICULOSbtConfirmar" mnemonicParsing="false" onAction="#VEICULOSclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apDependentes" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="DEPENDENTES">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="DEPENDENTESlbNomePessoa" layoutX="89.0" layoutY="7.0" maxWidth="178.0" />
+                                    <AnchorPane layoutY="37.0" prefHeight="245.0" prefWidth="267.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <Label fx:id="DEPENDENTESlbNome" layoutX="20.0" layoutY="10.0" text="Nome completo:" />
+                                          <TextField fx:id="DEPENDENTEStfNome" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="227.0" />
+                                          <HBox alignment="CENTER" layoutX="20.0" layoutY="71.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="DEPENDENTESlbDescricao" layoutX="0.0" layoutY="0.0" text="Descrição:" />
+                                                        <ImageView fx:id="ajudaPESSOASDepDescricao" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                          
+                                          <TextField fx:id="DEPENDENTEStfDescricao" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="227.0" />
+                                          <Label fx:id="DEPENDENTESlbCondutor" layoutX="20.0" layoutY="132.0" text="Condutor:" />
+                                          <RadioButton fx:id="DEPENDENTESrbNao" layoutX="20.0" layoutY="153.0" mnemonicParsing="false" text="Não" />
+                                          <RadioButton fx:id="DEPENDENTESrbSim" layoutX="76.0" layoutY="153.0" mnemonicParsing="false" text="Sim" />
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutY="282.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="DEPENDENTESbtCancelar" mnemonicParsing="false" onAction="#DEPENDENTESclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="DEPENDENTESbtConfirmar" mnemonicParsing="false" onAction="#DEPENDENTESclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apLotes" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="LOTES">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="LOTESlbNomePessoa" layoutX="89.0" layoutY="7.0" maxWidth="178.0" />
+                                    <AnchorPane layoutY="37.0" prefHeight="245.0" prefWidth="267.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <Label fx:id="LOTESlbNumero" layoutX="20.0" layoutY="10.0" text="Número:" />
+                                          <TextField fx:id="LOTEStfNumero" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="50.0" />
+                                          <Label fx:id="LOTESlbQuadra" layoutX="20.0" layoutY="71.0" text="Quadra:" />
+                                          <TextField fx:id="LOTEStfQuadra" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="50.0" />
+                                          <HBox alignment="CENTER" layoutX="20.0" layoutY="132.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="LOTESlbDescricao" layoutX="0.0" layoutY="0.0" text="Descrição:" />
+                                                        <ImageView fx:id="ajudaPESSOASLoteDescricao" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                          
+                                          <TextField fx:id="LOTEStfDescricao" layoutX="20.0" layoutY="153.0" prefHeight="25.0" prefWidth="227.0" />
+                                          <Label fx:id="LOTESlbResidencia" layoutX="20.0" layoutY="193.0" text="Residência:" />
+                                          <RadioButton fx:id="LOTESrbNao" layoutX="20.0" layoutY="214.0" mnemonicParsing="false" text="Não" />
+                                          <RadioButton fx:id="LOTESrbSim" layoutX="76.0" layoutY="214.0" mnemonicParsing="false" text="Sim" />
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutY="282.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="LOTESbtCancelar" mnemonicParsing="false" onAction="#LOTESclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="LOTESbtConfirmar" mnemonicParsing="false" onAction="#LOTESclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosPessoas" prefHeight="470.0" prefWidth="407.0" BorderPane.alignment="CENTER">
+         <children>
+                              <ScrollPane fx:id="scrollDadosPessoas" prefHeight="425.0" prefWidth="411.0">
+                                 <content>
+                                     <TabPane fx:id="TabPane" layoutY="252.0" prefHeight="420.0" prefWidth="384.0">
+         <tabs>
+            <Tab fx:id="tabDadosPessoais" closable="false" onSelectionChanged="#PESSOASclkTabUDadosPessoais" text="Dados pessoais">
+               <content>
+                  <AnchorPane fx:id="aux_dadospessoas" minWidth="382.0" prefHeight="423.0" prefWidth="382.0" style="-fx-background-color: silver;">
+                     <children>
+                         <Label fx:id="PESSOASlbCod" layoutX="21.0" layoutY="10.0" text="Última movimentação:" />
+                        <TextField fx:id="PESSOAStfCod" disable="true" editable="false" layoutX="21.0" layoutY="34.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
+      <AnchorPane fx:id="PESSOASapUltimaMovimentacao" layoutX="21.0" layoutY="33.0" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="PESSOASrbEntrada" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Entrada" />
+            <RadioButton fx:id="PESSOASrbSaida" layoutX="94.0" layoutY="5.0" mnemonicParsing="false" text="Saída" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="PESSOASapAcesso" layoutX="21.0" layoutY="96.0" prefHeight="79.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="PESSOASrbLivreAcesso" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" text="Livre Acesso" />
+            <RadioButton fx:id="PESSOASrbMedianteAutorizacao" layoutX="8.0" layoutY="30.0" mnemonicParsing="false" text="Mediante Autorização" />
+            <RadioButton fx:id="PESSOASrbNaoAutorizado" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" text="Não Autorizado" textFill="RED" />
+         </children>
+      </AnchorPane>
+                        
+                        <AnchorPane layoutX="179.0" layoutY="14.0" maxHeight="244.0" maxWidth="180.0" prefHeight="130.0" prefWidth="180.0" style="-fx-background-color: lightgrey;">
+                           <children>
+                              <Button fx:id="PESSOASbtCarregarIMG" layoutX="45.0" layoutY="132.0" minWidth="62.0" mnemonicParsing="false" onAction="#PESSOASclkCarregaIMG" prefHeight="25.0" prefWidth="62.0" text="Carregar" />
+                              <Button fx:id="PESSOASbtApagarIMG" layoutX="113.0" layoutY="132.0" minWidth="60.0" mnemonicParsing="false" onAction="#PESSOASclkApagaIMG" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
+                              <ImageView fx:id="PESSOASimg" fitHeight="118.0" fitWidth="118.0" layoutX="31.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-image: url(&quot;siscon/icones\usuario.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center;">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                                   <image>
+                                                      <Image url="@icones/usuario.png" />
+                                                   </image>
+                              </ImageView>
+                                                <ImageView fx:id="PESSOASbtnCamera" fitHeight="32.0" fitWidth="32.0" layoutX="-48.0" layoutY="-47.0" onMouseClicked="#PESSOASclkCamera" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" x="56.0" y="176.0">
+                                                   <image>
+                                                      <Image url="@icones/camera.png" />
+                                                   </image>
+                                                </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="PESSOASlbNome" layoutX="21.0" layoutY="183.0" text="Nome completo (*):" />
+                        <TextField fx:id="PESSOAStfNome" layoutX="21.0" layoutY="203.0" prefHeight="25.0" prefWidth="224.0" />
+                         <Label fx:id="PESSOASlbCategoria" layoutX="257.0" layoutY="183.0" text="Categoria (*):" />
+                         <ComboBox fx:id="PESSOAScbCategoria" layoutX="253.0" layoutY="203.0" onAction="#PESSOASclkCategoria" prefHeight="25.0" prefWidth="104.0" promptText="Escolha" />
+                                          
+                        <Label fx:id="PESSOASlbCpf" layoutX="21.0" layoutY="245.0" text="CPF:" />
+                        <TextField fx:id="PESSOAStfCPF" layoutX="21.0" layoutY="265.0" prefHeight="25.0" prefWidth="203.0" />                  
+                        <DatePicker fx:id="PESSOASdpData" layoutX="241.0" layoutY="265.0" prefHeight="25.0" prefWidth="119.0" />
+                        <ComboBox fx:id="PESSOAScbTipoLog" layoutX="21.0" layoutY="329.0" prefHeight="25.0" prefWidth="92.0" />
+                        <Label fx:id="PESSOASlbLog" layoutX="124.0" layoutY="309.0" text="Logradouro:" />
+                        <TextField fx:id="PESSOAStfLogradouro" layoutX="124.0" layoutY="329.0" prefHeight="25.0" prefWidth="179.0" />
+                        <Label fx:id="PESSOASlbNumero" layoutX="313.0" layoutY="309.0" text="Número:" />
+                        <TextField fx:id="PESSOAStfNum" layoutX="313.0" layoutY="329.0" prefHeight="25.0" prefWidth="47.0" />
+                        <TextField fx:id="PESSOAStfCEP" layoutX="20.0" layoutY="395.0" prefHeight="25.0" prefWidth="82.0" />
+                        <Button fx:id="PESSOASbtCEP" layoutX="109.0" layoutY="395.0" mnemonicParsing="false" onAction="#PESSOASclkBuscarCep" prefHeight="25.0" prefWidth="30.0" text="IR" />
+                        <Label fx:id="PESSOASlbBairro" layoutX="150.0" layoutY="375.0" text="Bairro:" />
+                        <TextField fx:id="PESSOAStfBairro" layoutX="150.0" layoutY="395.0" prefHeight="25.0" prefWidth="211.0" />
+                        <Label fx:id="PESSOASlbCidade" layoutX="97.0" layoutY="442.0" text="Cidade:" />
+                        <Label fx:id="PESSOASlbCep" layoutX="21.0" layoutY="375.0" text="CEP:" />
+                        
+                        
+                        <Label fx:id="PESSOASlbTipoLog" layoutX="21.0" layoutY="309.0" text="Tipo logradouro:" />
+                        <ComboBox fx:id="PESSOAScbUF" layoutX="21.0" layoutY="462.0" onAction="#PESSOASclkUF" onKeyPressed="#PESSOASkpUF" prefHeight="25.0" prefWidth="66.0" />
+                        <Label fx:id="PESSOASlbUf" layoutX="21.0" layoutY="442.0" text="UF:" />
+                        <ComboBox fx:id="PESSOAScbCidade" layoutX="97.0" layoutY="462.0" prefHeight="25.0" prefWidth="264.0" promptText="Escolha o Estado" />
+                        <Label fx:id="PESSOASlbTelefone" layoutX="21.0" layoutY="505.0" text="Telefone 1:" />
+                        <TextField fx:id="PESSOAStfTelfone" layoutX="21.0" layoutY="525.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="PESSOAStfTelfone2" layoutX="162.0" layoutY="525.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <TextField fx:id="PESSOAStfInterfone" layoutX="302.0" layoutY="525.0" prefHeight="25.0" prefWidth="58.0" />
+                                          <Label fx:id="PESSOASlbInterfone" layoutX="302.0" layoutY="505.0" text="Interfone:" />
+                        <Label fx:id="PESSOASlbEmail" layoutX="21.0" layoutY="569.0" text="Email:" />
+                        <TextField fx:id="PESSOAStfEmail" layoutX="21.0" layoutY="589.0" prefHeight="25.0" prefWidth="339.0" />
+                        <HBox alignment="CENTER" layoutX="242.0" layoutY="245.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="PESSOASlbData" layoutX="0.0" layoutY="0.0" text="Data nascimento:" />
+                                                        <ImageView fx:id="ajudaPESSOASDataNasc" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                        
+                        
+                        <Label fx:id="PESSOASlbTelefone2" layoutX="162.0" layoutY="505.0" text="Telefone 2:" />
+                        
+                        <TextField fx:id="PESSOAStxPesquisarCPF" layoutX="150.0" layoutY="86.0" visible="false" />
+                        <HBox alignment="CENTER" layoutX="21.0" layoutY="631.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="PESSOASlbVeiculos" layoutX="0.0" layoutY="0.0" text="Veículos:" />
+                                                        <ImageView fx:id="ajudaPESSOASveiculo" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                          
+                                                      <CheckBox fx:id="PESSOASckbCondutor" layoutX="183.0" layoutY="629.0" mnemonicParsing="false" text="Sim, ele conduz um veículo" textFill="#3903fc">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font></CheckBox>
+         
+                                          <TableView fx:id="PESSOAStabelaVeiculos" layoutX="21.0" layoutY="652.0" onMouseClicked="#PESSOASclkTabelaVeiculos" prefHeight="112.0" prefWidth="339.0">
+                                            <placeholder>
+                                    <Label text="Nenhum veículo adicionado." />
+                                  </placeholder>
+                                              <columns>
+                                              <TableColumn fx:id="PESSOAScolMarca" prefWidth="83.0" text="Marca" />
+                                              <TableColumn fx:id="PESSOAScolModelo" prefWidth="104.0" text="Modelo" />
+                                                <TableColumn fx:id="PESSOAScolCor" prefWidth="73.0" text="Cor" />
+                                                <TableColumn fx:id="PESSOAScolPlaca" prefWidth="77.0" text="Placa" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="PESSOASbtAdicionarVeiculo" layoutX="22.0" layoutY="772.0" mnemonicParsing="false" onAction="#PESSOASclkAdicionarVeiculo" text="Adicionar" />
+                                          <Button fx:id="PESSOASbtAlterarVeiculo" layoutX="169.0" layoutY="772.0" mnemonicParsing="false" onAction="#PESSOASclkAlterarVeiculo" text="Alterar" />
+                                          <Button fx:id="PESSOASbtExcluirVeiculo" layoutX="307.0" layoutY="772.0" mnemonicParsing="false" onAction="#PESSOASclkExcluirVeiculo" text="Excluir" />
+                                          
+                                          <AnchorPane fx:id="PESSOASapDadosFuncionario" layoutX="21" layoutY="816.0" prefHeight="135.0" prefWidth="339.0" style="-fx-background-color: #f2eea9;">
+                                       <children>
+                                          <Label fx:id="PESSOASlbDataAdmissao" layoutX="20.0" layoutY="71.0" text="Data admissão:" />
+                                          <Label fx:id="PESSOASlbDataDemissao" layoutX="180.0" layoutY="71.0" text="Data demissão:" />
+                                          <Label fx:id="PESSOASlbSalario" layoutX="20.0" layoutY="10.0" text="Salário:" />
+                                          <TextField fx:id="PESSOAStfSalario" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="100.0" promptText="R$" />
+                                          <DatePicker fx:id="PESSOASdpDataAdmissao" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="140.0" promptText="Data de admissão" />
+                                          <DatePicker fx:id="PESSOASdpDataDemissao" layoutX="180.0" layoutY="92.0" prefHeight="25.0" prefWidth="140.0" promptText="Data de demissão" />
+                                          
+                                       </children>
+                                          </AnchorPane>
+                                    
+                                          <HBox alignment="CENTER" layoutX="21.0" layoutY="816.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="PESSOASlbDependentes" layoutX="21.0" layoutY="816.0" text="Dependentes:" />
+                                                        <ImageView fx:id="ajudaPESSOASdependente" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                          
+                                          <TableView fx:id="PESSOAStabelaDependentes" layoutX="21.0" layoutY="837.0" onMouseClicked="#PESSOASclkTabelaDependentes" prefHeight="112.0" prefWidth="339.0">
+                                            <placeholder>
+                                    <Label text="Nenhum dependente adicionado." />
+                                  </placeholder>
+                                              <columns>
+                                              <TableColumn fx:id="PESSOAScolNomeDep" prefWidth="160.0" text="Nome" />
+                                              <TableColumn fx:id="PESSOAScolDescricaoDep" prefWidth="100.0" text="Descrição" />
+                                                <TableColumn fx:id="PESSOAScolCondutorDep" prefWidth="77.0" text="Condutor" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="PESSOASbtAdicionarDependente" layoutX="22.0" layoutY="957.0" mnemonicParsing="false" onAction="#PESSOASclkAdicionarDependente" text="Adicionar" />
+                                          <Button fx:id="PESSOASbtAlterarDependente" layoutX="169.0" layoutY="957.0" mnemonicParsing="false" onAction="#PESSOASclkAlterarDependente" text="Alterar" />
+                                          <Button fx:id="PESSOASbtExcluirDependente" layoutX="307.0" layoutY="957.0" mnemonicParsing="false" onAction="#PESSOASclkExcluirDependente" text="Excluir" />  
+                                          
+                                                
+                                                <HBox alignment="CENTER" layoutX="21.0" layoutY="1001.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="PESSOASlbLotes" layoutX="0" layoutY="0" text="Lotes:" />
+                                                        <ImageView fx:id="ajudaPESSOASlote" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                                                
+                                                
+                                          
+                                          <TableView fx:id="PESSOAStabelaLotes" layoutX="21.0" layoutY="1022.0" onMouseClicked="#PESSOASclkTabelaLotes" prefHeight="112.0" prefWidth="339.0">
+                                            <placeholder>
+                                    <Label text="Nenhum lote adicionado." />
+                                  </placeholder>
+                                              <columns>
+                                              <TableColumn fx:id="PESSOAScolNumeroLote" prefWidth="77" text="Lote" />
+                                              <TableColumn fx:id="PESSOAScolQuadraLote" prefWidth="77" text="Quadra" />
+                                              <TableColumn fx:id="PESSOAScolDescricaoLote" prefWidth="105.0" text="Descrição" />
+                                              <TableColumn fx:id="PESSOAScolResidenciaLote" prefWidth="78.0" text="Residência" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="PESSOASbtAdicionarLote" layoutX="22.0" layoutY="1142.0" mnemonicParsing="false" onAction="#PESSOASclkAdicionarLote" text="Adicionar" />
+                                          <Button fx:id="PESSOASbtAlterarLote" layoutX="169.0" layoutY="1142.0" mnemonicParsing="false" onAction="#PESSOASclkAlterarLote" text="Alterar" />
+                                          <Button fx:id="PESSOASbtExcluirLote" layoutX="307.0" layoutY="1142.0" mnemonicParsing="false" onAction="#PESSOASclkExcluirLote" text="Excluir" />
+      <Label fx:id="PESSOASlbAcesso" layoutX="21.0" layoutY="73.0" text="Acesso:" />    
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabDadosUsuario" closable="false" onSelectionChanged="#PESSOASclkTabUsuario" text="Usuário/senha">
+               <content>
+                  <AnchorPane fx:id="aux_dadosusuario" minWidth="382.0" prefHeight="423.0" prefWidth="395.0" style="-fx-background-color: silver;">
+                     <children>
+                         <Label fx:id="USUARIOlbNome" layoutX="21.0" layoutY="10.0" text="Usuário:" />
+                        <TextField fx:id="USUARIOtfNome" layoutX="21.0" layoutY="30.0" prefHeight="25.0" prefWidth="148.0" />
+                        <PasswordField fx:id="USUARIOtfSenha" layoutX="21.0" layoutY="85.0" onKeyPressed="#PESSOASkpSenha" />
+                        <Label fx:id="USUARIOlbNivel" layoutX="21.0" layoutY="120.0" text="Nível:" />
+                        <RadioButton fx:id="USUARIOrbAdministrador" layoutX="21.0" layoutY="140.0" mnemonicParsing="false" text="[1] ADMINISTRADOR" />
+                        <RadioButton fx:id="USUARIOrbBasico" layoutX="21.0" layoutY="162.0" mnemonicParsing="false" text="[2] BÁSICO" />
+                        
+                        <Label fx:id="USUARIOlbSenha" layoutX="21.0" layoutY="65.0" prefHeight="0.0" prefWidth="36.0" text="Senha:" />
+                                                      <ImageView fx:id="PESSOASbtVerSenha" fitHeight="17.0" fitWidth="26.0" layoutX="178.0" layoutY="89.0" onMouseClicked="#PESSOASclkVerSenha" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                                         <image>
+                                                            <Image url="@icones/olho.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label fx:id="PESSOASlbVerSenha" layoutX="212.0" layoutY="89.0" textFill="#fa1005" visible="false" />
+                                                      <ImageView fitHeight="168.0" fitWidth="333.0" layoutX="24.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@imagens/usuario_aviso.png" />
+                                                         </image>
+                                                      </ImageView>                         
+                         </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+                                     </TabPane>
+                                 </content>
+                              </ScrollPane>
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                        <Label fx:id="PESSOASlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="PESSOASbtCancelar" mnemonicParsing="false" onAction="#PESSOASclkCancelar" prefWidth="74.0" text="CANCELAR" />
+                  <Button fx:id="PESSOASbtConfirmar" mnemonicParsing="false" onAction="#PESSOASclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            <AnchorPane fx:id="apDependentesTela" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="262.0">
+                                 <children>
+                              <Group fx:id="apTabelaDependentes" layoutX="5.0">
+                                 <children>
+                                          <Label text="DEPENDENTES">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaDependentes" fitHeight="31.0" fitWidth="31.0" layoutX="134.0" layoutY="-3" onMouseClicked="#clickAjudaDependentes" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox alignment="CENTER" layoutY="27.0" prefHeight="35.0" prefWidth="264.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="DEPENDENTEStxPesquisa" layoutX="-2" onKeyPressed="#DEPENDENTESkpPesquisar" prefHeight="25.0" prefWidth="120.0" promptText="Pesquisar nome/cpf ">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                          <ComboBox fx:id="DEPENDENTEScbFiltrarCategoria" prefHeight="25.0" prefWidth="105.0" promptText="Exibir todos">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                          <Button mnemonicParsing="false" onAction="#DEPENDENTESclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="DEPENDENTEStabela" layoutY="72.0" onMouseClicked="#DEPENDENTESclkTabela" prefHeight="353.0" prefWidth="265.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="DEPENDENTEScolNome" prefWidth="163.0" text="Nome" />
+                            <TableColumn fx:id="DEPENDENTEScolCPF" prefWidth="100.0" text="CPF" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="5" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" spacing="15.0">
+                           
+                           <children>
+                              <Button fx:id="DEPENDENTESbtNovo" mnemonicParsing="false" onAction="#DEPENDENTESclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="DEPENDENTESbtAlterar" mnemonicParsing="false" onAction="#DEPENDENTESclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="DEPENDENTESbtApagar" mnemonicParsing="false" onAction="#DEPENDENTESclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosDependentes" prefHeight="470.0" prefWidth="407.0" BorderPane.alignment="CENTER">
+         <children>
+                              <ScrollPane fx:id="scrollDadosDependentes" prefHeight="425.0" prefWidth="407.0">
+                                 <content>
+                             
+            
+                  <AnchorPane fx:id="aux_dadosdependentes" minWidth="382.0" prefHeight="423.0" prefWidth="384.0" style="-fx-background-color: silver;">
+                     <children>
+                                        
+                        <Label fx:id="DEPENDENTESlbCod" layoutX="21.0" layoutY="10.0" text="Última movimentação:" />
+                        <TextField fx:id="DEPENDENTEStfCod" disable="true" editable="false" layoutX="21.0" layoutY="34.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
+      <AnchorPane fx:id="DEPENDENTESapUltimaMovimentacao" layoutX="21.0" layoutY="33.0" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="DEPENDENTESrbEntrada" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Entrada" />
+            <RadioButton fx:id="DEPENDENTESrbSaida" layoutX="94.0" layoutY="5.0" mnemonicParsing="false" text="Saída" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="DEPENDENTESlbAcesso" layoutX="21.0" layoutY="73.0" text="Acesso:" />   
+      <AnchorPane fx:id="DEPENDENTESapAcesso" layoutX="21.0" layoutY="96.0" prefHeight="79.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="DEPENDENTESrbLivreAcesso" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" text="Livre Acesso" />
+            <RadioButton fx:id="DEPENDENTESrbMedianteAutorizacao" layoutX="8.0" layoutY="30.0" mnemonicParsing="false" text="Mediante Autorização" />
+            <RadioButton fx:id="DEPENDENTESrbNaoAutorizado" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" text="Não Autorizado" textFill="RED" />
+         </children>
+      </AnchorPane>  
+      <AnchorPane layoutX="179.0" layoutY="14.0" maxHeight="244.0" maxWidth="180.0" prefHeight="130.0" prefWidth="180.0" style="-fx-background-color: lightgrey;">
+                           <children>
+                              <Button fx:id="DEPENDENTESbtCarregarIMG" layoutX="45.0" layoutY="132.0" minWidth="62.0" mnemonicParsing="false" onAction="#DEPENDENTESclkCarregaIMG" prefHeight="25.0" prefWidth="62.0" text="Carregar" />
+                              <Button fx:id="DEPENDENTESbtApagarIMG" layoutX="113.0" layoutY="132.0" minWidth="60.0" mnemonicParsing="false" onAction="#DEPENDENTESclkApagaIMG" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
+                              <ImageView fx:id="DEPENDENTESimg" fitHeight="118.0" fitWidth="118.0" layoutX="31.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-image: url(&quot;siscon/icones\usuario.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center;">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                                   <image>
+                                                      <Image url="@icones/usuario.png" />
+                                                   </image>
+                              </ImageView>
+                                                <ImageView fx:id="DEPENDENTESbtnCamera" fitHeight="32.0" fitWidth="32.0" layoutX="-48.0" layoutY="-47.0" onMouseClicked="#DEPENDENTESclkCamera" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" x="56.0" y="176.0">
+                                                   <image>
+                                                      <Image url="@icones/camera.png" />
+                                                   </image>
+                                                </ImageView>
+                           </children>
+                        </AnchorPane> 
+                                       
+                        
+                        <Label fx:id="DEPENDENTESTelalbNome" layoutX="21.0" layoutY="183.0" text="Nome completo (*):" />
+                        <TextField fx:id="DEPENDENTESTelatfNome" layoutX="21.0" layoutY="203.0" prefHeight="25.0" prefWidth="224.0" />
+                           
+                        <HBox alignment="CENTER" layoutX="253.0" layoutY="183.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="DEPENDENTESTelalbDescricao" layoutX="0.0" layoutY="0.0" text="Descrição (*):" />
+                                                        <ImageView fx:id="ajudaDEPENDENTESDescricao" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                        
+                        <TextField fx:id="DEPENDENTESTelatfDescricao" layoutX="253.0" layoutY="203.0" prefHeight="25.0" prefWidth="107.0" />
+                         <Label fx:id="DEPENDENTESlbCategoria" layoutX="21.0" layoutY="245.0" text="Categoria (*):" />
+                         <ComboBox fx:id="DEPENDENTEScbCategoria" layoutX="21.0" layoutY="265.0" onAction="#DEPENDENTESclkCategoria" prefHeight="25.0" prefWidth="104.0" promptText="Escolha" />
+                         <Label fx:id="DEPENDENTESlbCpf" layoutX="137.0" layoutY="245.0" text="CPF:" />
+                         <TextField fx:id="DEPENDENTEStfCPF" layoutX="137.0" layoutY="265.0" prefHeight="25.0" prefWidth="104.0" />              
+                        <DatePicker fx:id="DEPENDENTESdpData" layoutX="253.0" layoutY="265.0" prefHeight="25.0" prefWidth="107.0" />
+                        <ComboBox fx:id="DEPENDENTEScbTipoLog" layoutX="21.0" layoutY="329.0" prefHeight="25.0" prefWidth="92.0" />
+                        <Label fx:id="DEPENDENTESlbLog" layoutX="124.0" layoutY="309.0" text="Logradouro:" />
+                        <TextField fx:id="DEPENDENTEStfLogradouro" layoutX="124.0" layoutY="329.0" prefHeight="25.0" prefWidth="179.0" />
+                        <Label fx:id="DEPENDENTESlbNumero" layoutX="313.0" layoutY="309.0" text="Número:" />
+                        <TextField fx:id="DEPENDENTEStfNum" layoutX="313.0" layoutY="329.0" prefHeight="25.0" prefWidth="47.0" />
+                        <TextField fx:id="DEPENDENTEStfCEP" layoutX="20.0" layoutY="395.0" prefHeight="25.0" prefWidth="82.0" />
+                        <Button fx:id="DEPENDENTESbtCEP" layoutX="109.0" layoutY="395.0" mnemonicParsing="false" onAction="#DEPENDENTESclkBuscarCep" prefHeight="25.0" prefWidth="30.0" text="IR" />
+                        <Label fx:id="DEPENDENTESlbBairro" layoutX="150.0" layoutY="375.0" text="Bairro:" />
+                        <TextField fx:id="DEPENDENTEStfBairro" layoutX="150.0" layoutY="395.0" prefHeight="25.0" prefWidth="211.0" />
+                        <Label fx:id="DEPENDENTESlbCidade" layoutX="97.0" layoutY="442.0" text="Cidade:" />
+                        <Label fx:id="DEPENDENTESlbCep" layoutX="21.0" layoutY="375.0" text="CEP:" />
+                        
+                        
+                        <Label fx:id="DEPENDENTESlbTipoLog" layoutX="21.0" layoutY="309.0" text="Tipo logradouro:" />
+                        <ComboBox fx:id="DEPENDENTEScbUF" layoutX="21.0" layoutY="462.0" onAction="#DEPENDENTESclkUF" onKeyPressed="#DEPENDENTESkpUF" prefHeight="25.0" prefWidth="66.0" />
+                        <Label fx:id="DEPENDENTESlbUf" layoutX="21.0" layoutY="442.0" text="UF:" />
+                        <ComboBox fx:id="DEPENDENTEScbCidade" layoutX="97.0" layoutY="462.0" prefHeight="25.0" prefWidth="264.0" promptText="Escolha o Estado" />
+                        <Label fx:id="DEPENDENTESlbTelefone" layoutX="21.0" layoutY="505.0" text="Telefone 1:" />
+                        <TextField fx:id="DEPENDENTEStfTelfone" layoutX="21.0" layoutY="525.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="DEPENDENTEStfTelfone2" layoutX="162.0" layoutY="525.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <TextField fx:id="DEPENDENTEStfInterfone" layoutX="302.0" layoutY="525.0" prefHeight="25.0" prefWidth="58.0" />
+                                          <Label fx:id="DEPENDENTESlbInterfone" layoutX="302.0" layoutY="505.0" text="Interfone:" />
+                        <Label fx:id="DEPENDENTESlbEmail" layoutX="21.0" layoutY="569.0" text="Email:" />
+                        <TextField fx:id="DEPENDENTEStfEmail" layoutX="21.0" layoutY="589.0" prefHeight="25.0" prefWidth="339.0" />
+                        
+                        <Label fx:id="DEPENDENTESlbData" layoutX="254.0" layoutY="245.0" text="Data nascimento:" />
+                        
+                        <Label fx:id="DEPENDENTESlbTelefone2" layoutX="162.0" layoutY="505.0" text="Telefone 2:" />
+                        
+                        <TextField fx:id="DEPENDENTEStxPesquisarCPF" layoutX="150.0" layoutY="86.0" visible="false" />
+                        <Label fx:id="DEPENDENTESlbSupervisor" layoutX="22.0" layoutY="629.0" text="Responsável (*):" />
+                        <TextField fx:id="DEPENDENTEStfSupervisor" layoutX="22.0" layoutY="649.0" prefHeight="25.0" prefWidth="303.0" promptText="Selecione o responsável" />
+                        <Button fx:id="DEPENDENTESbtSupervisor" layoutX="332.0" layoutY="649.0" mnemonicParsing="false" onAction="#DEPENDENTESclkSupervisor" text="..." />
+                        
+                                         
+                        <CheckBox fx:id="DEPENDENTESckbCondutor" layoutX="22.0" layoutY="689.0" mnemonicParsing="false" text="Sim, ele conduz um veículo" textFill="#3903fc">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </CheckBox>
+         
+                                          
+                                          
+                                          
+                                             
+                     </children>
+                  </AnchorPane>
+                  </content>
+                  </ScrollPane>
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                        <Label fx:id="DEPENDENTESlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="DEPENDENTESTelabtCancelar" mnemonicParsing="false" onAction="#DEPENDENTESTelaclkCancelar" text="CANCELAR" />
+                  <Button fx:id="DEPENDENTESTelabtConfirmar" mnemonicParsing="false" onAction="#DEPENDENTESTelaclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            
+            
+            
+            <AnchorPane fx:id="apEmpresas" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="262.0">
+                                 <children>
+                              <Group fx:id="apTabelaEmpresas" layoutX="5.0">
+                                 <children>
+                                          <Label text="EMPRESAS">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaEmpresas" fitHeight="31.0" fitWidth="31.0" layoutX="102.0" layoutY="-3" onMouseClicked="#clickAjudaEmpresas" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox alignment="CENTER" layoutX="-3" layoutY="27.0" prefHeight="35.0" prefWidth="266.0" spacing="9.0">
+                           <children>
+                              <TextField fx:id="EMPRESAStxPesquisa" onKeyPressed="#EMPRESASkpPesquisar" prefHeight="25.0" prefWidth="224.0" promptText="Pesquisar nome/cnpj ">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                          <Button mnemonicParsing="false" onAction="#EMPRESASclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="EMPRESAStabela" layoutY="72.0" onMouseClicked="#EMPRESASclkTabela" prefHeight="353.0" prefWidth="262.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="EMPRESAScolNome" prefWidth="141.0" text="Nome" />
+                            <TableColumn fx:id="EMPRESAScolCNPJ" prefWidth="119.0" text="CNPJ" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="5" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" spacing="15.0">
+                           
+                           <children>
+                              <Button fx:id="EMPRESASbtNovo" mnemonicParsing="false" onAction="#EMPRESASclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="EMPRESASbtAlterar" mnemonicParsing="false" onAction="#EMPRESASclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="EMPRESASbtApagar" mnemonicParsing="false" onAction="#EMPRESASclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosEmpresas" prefHeight="470.0" prefWidth="405.0" BorderPane.alignment="CENTER">
+         <children>
+                              <ScrollPane fx:id="scrollDadosEmpresas" prefHeight="425.0" prefWidth="411.0">
+                                 <content>
+                             
+            
+                  <AnchorPane fx:id="aux_dadosempresas" minWidth="382.0" prefHeight="585.0" prefWidth="384.0" style="-fx-background-color: silver;">
+                     <children>
+                                       
+                        <Label fx:id="EMPRESASlbCod" layoutX="102.0" layoutY="65.0" text="Código:" />
+                        <TextField fx:id="EMPRESAStfCod" disable="true" editable="false" layoutX="102.0" layoutY="85.0" prefHeight="25.0" prefWidth="72.0" />
+                        
+                        <AnchorPane layoutX="100.0" layoutY="24.0" maxHeight="244.0" maxWidth="180.0" prefHeight="130.0" prefWidth="180.0" style="-fx-background-color: lightgrey;">
+                           <children>
+                              <Button fx:id="EMPRESASbtCarregarIMG" layoutX="46.0" layoutY="132.0" minWidth="62.0" mnemonicParsing="false" onAction="#EMPRESASclkCarregaIMG" prefHeight="25.0" prefWidth="62.0" text="Carregar" />
+                              <Button fx:id="EMPRESASbtApagarIMG" layoutX="113.0" layoutY="132.0" minWidth="60.0" mnemonicParsing="false" onAction="#EMPRESASclkApagaIMG" prefHeight="25.0" prefWidth="55.0" text="Apagar" />
+                              <ImageView fx:id="EMPRESASimg" fitHeight="118.0" fitWidth="118.0" layoutX="31.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-image: url(&quot;siscon/icones\logotipo.png&quot;); -fx-background-repeat: no-repeat; -fx-background-position: center center;">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                                   <image>
+                                                      <Image url="@icones/logotipo.png" />
+                                                   </image>
+                              </ImageView>
+                                                <ImageView fx:id="EMPRESASbtnCamera" fitHeight="32.0" fitWidth="32.0" layoutX="-50.0" layoutY="-47.0" onMouseClicked="#EMPRESASclkCamera" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" x="56.0" y="176.0">
+                                                   <image>
+                                                      <Image url="@icones/camera.png" />
+                                                   </image>
+                                                </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="EMPRESASlbNome" layoutX="21.0" layoutY="196.0" text="Nome (*):" />
+                        <TextField fx:id="EMPRESAStfNome" layoutX="21.0" layoutY="216.0" prefHeight="25.0" prefWidth="190.0" />
+                                          
+                        <Label fx:id="EMPRESASlbCnpj" layoutX="230.0" layoutY="196.0" text="CNPJ:" />
+                        <TextField fx:id="EMPRESAStfCNPJ" layoutX="230.0" layoutY="216.0" prefHeight="25.0" prefWidth="130.0" />      
+                        
+                        <Label fx:id="EMPRESASlbTipoLog" layoutX="21.0" layoutY="258.0" text="Tipo logradouro:" />
+                        <ComboBox fx:id="EMPRESAScbTipoLog" layoutX="21.0" layoutY="278.0" prefHeight="25.0" prefWidth="92.0" />
+                        <Label fx:id="EMPRESASlbLog" layoutX="124.0" layoutY="258.0" text="Logradouro:" />
+                        <TextField fx:id="EMPRESAStfLogradouro" layoutX="124.0" layoutY="278.0" prefHeight="25.0" prefWidth="179.0" />
+                        <Label fx:id="EMPRESASlbNumero" layoutX="313.0" layoutY="258.0" text="Número:" />
+                        <TextField fx:id="EMPRESAStfNum" layoutX="313.0" layoutY="278.0" prefHeight="25.0" prefWidth="47.0" />
+                        
+                        <Label fx:id="EMPRESASlbCep" layoutX="21.0" layoutY="322.0" text="CEP:" /> 
+                        <TextField fx:id="EMPRESAStfCEP" layoutX="20.0" layoutY="342.0" prefHeight="25.0" prefWidth="82.0" />                        
+                        <Button fx:id="EMPRESASbtCEP" layoutX="109.0" layoutY="342.0" mnemonicParsing="false" onAction="#EMPRESASclkBuscarCep" prefHeight="25.0" prefWidth="30.0" text="IR" />
+                        <Label fx:id="EMPRESASlbBairro" layoutX="150.0" layoutY="322.0" text="Bairro:" />
+                        <TextField fx:id="EMPRESAStfBairro" layoutX="150.0" layoutY="342.0" prefHeight="25.0" prefWidth="211.0" />
+                        
+                        
+                        <Label fx:id="EMPRESASlbCidade" layoutX="97.0" layoutY="388.0" text="Cidade (*):" />                                               
+                        <ComboBox fx:id="EMPRESAScbUF" layoutX="21.0" layoutY="408.0" onAction="#EMPRESASclkUF" onKeyPressed="#EMPRESASkpUF" prefHeight="25.0" prefWidth="66.0" />
+                        <Label fx:id="EMPRESASlbUf" layoutX="21.0" layoutY="388.0" text="UF (*):" />
+                        <ComboBox fx:id="EMPRESAScbCidade" layoutX="97.0" layoutY="408.0" prefHeight="25.0" prefWidth="264.0" promptText="Escolha o Estado" />
+                        
+                        <Label fx:id="EMPRESASlbTelefone2" layoutX="162.0" layoutY="455.0" text="Telefone 2:" />
+                        <Label fx:id="EMPRESASlbTelefone" layoutX="21.0" layoutY="455.0" text="Telefone 1:" />
+                        <TextField fx:id="EMPRESAStfTelfone" layoutX="21.0" layoutY="475.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="EMPRESAStfTelfone2" layoutX="162.0" layoutY="475.0" prefHeight="25.0" prefWidth="130.0" />
+                                          
+                        <Label fx:id="EMPRESASlbEmail" layoutX="21.0" layoutY="518.0" text="Email:" />
+                        <TextField fx:id="EMPRESAStfEmail" layoutX="21.0" layoutY="538.0" prefHeight="25.0" prefWidth="339.0" />
+                        
+                        <TextField fx:id="EMPRESAStxPesquisarCNPJ" layoutX="150.0" layoutY="86.0" visible="false" />
+                        
+                  
+                                             
+                     </children>
+                  </AnchorPane>
+                  </content>
+                  </ScrollPane>
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                  <Label fx:id="EMPRESASlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="EMPRESASbtCancelar" mnemonicParsing="false" onAction="#EMPRESASclkCancelar" text="CANCELAR" />
+                  <Button fx:id="EMPRESASbtConfirmar" mnemonicParsing="false" onAction="#EMPRESASclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            
+            
+            
+            
+            <AnchorPane fx:id="apVeiculosTela" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="356.0">
+                                 <children>
+                              <Group fx:id="apTabelaVeiculos" layoutX="5.0">
+                                 <children>
+                                          <Label text="VEÍCULOS">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaVeiculos" fitHeight="31.0" fitWidth="31.0" layoutX="95.0" layoutY="-3" onMouseClicked="#clickAjudaVeiculos" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox alignment="CENTER" layoutY="27.0" prefHeight="35.0" prefWidth="350.0" spacing="5.0">
+                           <children>
+                              <TextField fx:id="VEICULOStxPesquisa" onKeyPressed="#VEICULOSkpPesquisar" prefHeight="25.0" prefWidth="196.0" promptText="Pesquisar marca/modelo/placa">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>
+                                                <ComboBox fx:id="VEICULOScbFiltrarCategoria" prefHeight="25.0" prefWidth="110.0" promptText="Exibir todos">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </ComboBox>
+                                          
+                                          <Button mnemonicParsing="false" onAction="#VEICULOSclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="VEICULOStabela" layoutX="3.0" layoutY="72.0" onMouseClicked="#VEICULOSclkTabela" prefHeight="353.0" prefWidth="345.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                                          <TableColumn fx:id="VEICULOScolMarca" prefWidth="92.0" text="Marca" />
+                            <TableColumn fx:id="VEICULOScolModelo" prefWidth="92.0" text="Modelo" />
+                                          <TableColumn fx:id="VEICULOScolCor" prefWidth="77.0" text="Cor" />
+                            <TableColumn fx:id="VEICULOScolPlaca" prefWidth="82.0" text="Placa" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="5" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="330.0" spacing="20.0">
+                           
+                           <children>
+                              <Button fx:id="VEICULOSbtNovo" mnemonicParsing="false" onAction="#VEICULOSclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="VEICULOSbtAlterar" mnemonicParsing="false" onAction="#VEICULOSclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="VEICULOSbtApagar" mnemonicParsing="false" onAction="#VEICULOSclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosVeiculos" prefHeight="470.0" prefWidth="407.0" BorderPane.alignment="CENTER">
+         <children>
+                       
+            
+            <AnchorPane fx:id="aux_dadosveiculos" minWidth="239.0" prefHeight="424.0" prefWidth="0.0" style="-fx-background-color: silver;">
+               <children>
+                   <Label fx:id="VEICULOSlbAutorizado" layoutX="19.0" layoutY="16.0" text="Autorizado:" />
+         <AnchorPane fx:id="VEICULOSapAutorizado" layoutX="19.0" layoutY="39.0" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #f2eea9;">
+            <children>
+               <RadioButton fx:id="VEICULOSrbSim" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Sim" />
+               <RadioButton fx:id="VEICULOSrbNao" layoutX="63.0" layoutY="5.0" mnemonicParsing="false" text="Não" />
+            </children>
+         </AnchorPane>
+                   <Label fx:id="VEICULOSlbCod" layoutX="144.0" layoutY="16.0" text="Última movimentação:" />
+                        <TextField fx:id="VEICULOStfCod" disable="true" editable="false" layoutX="21.0" layoutY="40.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
+      <AnchorPane fx:id="VEICULOSapUltimaMovimentacao" layoutX="144.0" layoutY="39.0" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="VEICULOSrbEntrada" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Entrada" />
+            <RadioButton fx:id="VEICULOSrbSaida" layoutX="94.0" layoutY="5.0" mnemonicParsing="false" text="Saída" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="VEICULOSTelalbCategoria" layoutX="19.0" layoutY="79.0" text="Categoria (*):" />
+                   <ComboBox fx:id="VEICULOSTelacbCategoria" layoutX="19.0" layoutY="99.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a categoria" />
+                   <Button fx:id="VEICULOSTelabtCategoria" layoutX="268.0" layoutY="99.0" mnemonicParsing="false" onAction="#VEICULOSclkCategoria" text="+" />
+                   <Label fx:id="VEICULOSTelalbMarca" layoutX="19.0" layoutY="134.0" text="Marca (*):" />
+                   <ComboBox fx:id="VEICULOSTelacbMarca" layoutX="19.0" layoutY="154.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a marca" /> 
+                    <Button fx:id="VEICULOSTelabtMarca" layoutX="268.0" layoutY="154.0" mnemonicParsing="false" onAction="#VEICULOSclkMarca" text="+" />         
+                  <Label fx:id="VEICULOSTelalbModelo" layoutX="19.0" layoutY="189.0" text="Modelo (*):" />
+                  <TextField fx:id="VEICULOSTelatfModelo" layoutX="19.0" layoutY="209.0" prefHeight="25.0" prefWidth="239.0" />
+                  
+                        <Label fx:id="VEICULOSTelalbCor" layoutX="19.0" layoutY="244.0" text="Cor (*):" />
+                  <ComboBox fx:id="VEICULOSTelacbCor" layoutX="19.0" layoutY="264.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a cor" /> 
+                  <Button fx:id="VEICULOSTelabtCor" layoutX="268.0" layoutY="264.0" mnemonicParsing="false" onAction="#VEICULOSclkCor" text="+" />
+                  <Label fx:id="VEICULOSTelalbPlaca" layoutX="19.0" layoutY="299.0" text="Placa (*):" />
+                  <TextField fx:id="VEICULOSTelatfPlaca" layoutX="19.0" layoutY="319.0" prefHeight="25.0" prefWidth="127.0" />
+                   
+                        <Label fx:id="VEICULOSlbProprietario" layoutX="19.0" layoutY="354.0" text="Proprietário (*):" />
+                  <TextField fx:id="VEICULOStfProprietario" layoutX="19.0" layoutY="374.0" prefHeight="25.0" prefWidth="239.0" promptText="Selecione o proprietário" />
+                  <Button fx:id="VEICULOSbtProprietario" layoutX="268.0" layoutY="374.0" mnemonicParsing="false" onAction="#VEICULOSclkProprietario" text="..." />
+                  
+         
+                                    
+                                          
+                                    
+                                             
+               </children>
+            </AnchorPane>
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                         <Label fx:id="VEICULOSlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" />           
+                        <Button fx:id="VEICULOSTelabtCancelar" mnemonicParsing="false" onAction="#VEICULOSTelaclkCancelar" text="CANCELAR" />
+                  <Button fx:id="VEICULOSTelabtConfirmar" mnemonicParsing="false" onAction="#VEICULOSTelaclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            <AnchorPane fx:id="apBackup" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaBackup" layoutX="5.0">
+                                 <children>
+                                          <Label text="BACKUP">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          
+                                          <TextField fx:id="BACKUPtfArquivo" editable="false" focusTraversable="false" layoutY="62.0" mouseTransparent="true" prefHeight="25.0" prefWidth="266.0" promptText="Escolha o nome do backup" />
+                                          <Label fx:id="BACKUPlbArquivo" layoutY="40.0" text="Arquivo:" />
+                                          <Button fx:id="BACKUPbtSelecionar" layoutX="278.0" layoutY="62.0" mnemonicParsing="false" onAction="#BACKUPclkSelecionar" prefWidth="100.0" text="SALVAR" />
+
+                                          
+                                          
+                        
+                                 </children>
+                              </Group>
+                              
+                              
+                              
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            <AnchorPane fx:id="apRestauracao" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaRestauracao" layoutX="5.0">
+                                 <children>
+                                          <Label text="RESTAURAÇÃO">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          
+                                          <TextField fx:id="RESTAURACAOtfArquivo" editable="false" focusTraversable="false" layoutY="62.0" mouseTransparent="true" prefHeight="25.0" prefWidth="266.0" promptText="Selecione o backup para restauração" />
+                                          <Label fx:id="RESTAURACAOlbArquivo" layoutY="40.0" text="Arquivo:" />
+                                          <Button fx:id="RESTAURACAObtSelecionar" layoutX="278.0" layoutY="62.0" mnemonicParsing="false" onAction="#RESTAURACAOclkSelecionar" prefWidth="100.0" text="SELECIONAR" />
+
+                                          
+                                          
+                        
+                                 </children>
+                              </Group>
+                              
+                              
+                              
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            <AnchorPane fx:id="apContas" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaContas" layoutX="5.0">
+                                 <children>
+                                          <Label text="CONTAS">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvContasaPagar" fitHeight="128.0" fitWidth="128.0" layoutX="-3" layoutY="40.0" onMouseClicked="#clkContasPagar" onMouseExited="#onMouseExitItemContasaPagar" onMouseMoved="#OnMouseOverItemContasaPagar" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@botoes/itens_menu/item_lancarcontapagar.png" />
+                                            </image>
+                                          </ImageView>
+                                          <ImageView fx:id="imvContasaReceber" fitHeight="128.0" fitWidth="128.0" layoutX="136" layoutY="40.0" onMouseClicked="#clkContasReceber" onMouseExited="#onMouseExitItemContasaReceber" onMouseMoved="#OnMouseOverItemContasaReceber" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@botoes/itens_menu/item_lancarcontareceber.png" />
+                                            </image>
+                                          </ImageView>
+                                          <ImageView fx:id="imvRealizarPagamento" fitHeight="128.0" fitWidth="128.0" layoutX="275" layoutY="40.0" onMouseClicked="#clkRealizarPagamento" onMouseExited="#onMouseExitItemRealizarPagamento" onMouseMoved="#OnMouseOverItemRealizarPagamento" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@botoes/itens_menu/item_pagamento.png" />
+                                            </image>
+                                          </ImageView>
+                                          <ImageView fx:id="imvRealizarRecebimento" fitHeight="128.0" fitWidth="128.0" layoutX="414" layoutY="40.0" onMouseClicked="#clkRealizarRecebimento" onMouseExited="#onMouseExitItemRealizarRecebimento" onMouseMoved="#OnMouseOverItemRealizarRecebimento" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@botoes/itens_menu/item_recebimento.png" />
+                                            </image>
+                                          </ImageView>
+                                          
+                        
+                                 </children>
+                              </Group>
+                              
+                              
+                              
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      
+      </BorderPane>
+                </children>                
+            </AnchorPane>            
+            <AnchorPane fx:id="apContasReceber" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaContasReceber" layoutX="5.0">
+                                 <children>
+                                          <Label text="LANÇAR CONTAS A RECEBER">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaContasReceber" fitHeight="31.0" fitWidth="31.0" layoutX="257.0" layoutY="-3" onMouseClicked="#clickAjudaContasReceber" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox layoutY="27.0" prefHeight="35.0" prefWidth="320.0">
+                           <children>
+                              <TextField fx:id="CONTARECEBERtxPesquisa" onKeyPressed="#CONTARECEBERkpPesquisar" prefHeight="25.0" prefWidth="282.0" promptText="Pesquisar código/descrição/pessoa">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>                                                
+                                          
+                                          <Button mnemonicParsing="false" onAction="#CONTARECEBERclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="CONTARECEBERtabela" layoutY="72.0" onMouseClicked="#CONTARECEBERclkTabela" prefHeight="353.0" prefWidth="317.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="CONTARECEBERcolDescricao" prefWidth="124.0" text="Descrição" />
+                            <TableColumn fx:id="CONTARECEBERcolPessoa" prefWidth="124.0" text="Pessoa" />
+                            <TableColumn fx:id="CONTARECEBERcolValor" prefWidth="67.0" text="Valor (R$)" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="306.0" spacing="20.0">
+                           
+                           <children>
+                              <Button fx:id="CONTARECEBERbtNovo" mnemonicParsing="false" onAction="#CONTARECEBERclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="CONTARECEBERbtAlterar" mnemonicParsing="false" onAction="#CONTARECEBERclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="CONTARECEBERbtApagar" mnemonicParsing="false" onAction="#CONTARECEBERclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apParcelasReceber" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="PARCELAS">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="apParcelasReceberaux" layoutY="37.0" prefHeight="349.0" prefWidth="317.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <AnchorPane fx:id="PARCELASRECEBERapAlterarParcela" layoutX="20.0" layoutY="20.0" prefHeight="105.0" prefWidth="275.0" style="-fx-background-color: #A4A4A4;" visible="false">
+                                              <children>
+                                                  <TextField fx:id="PARCELASRECEBERtfParcelaNumero" layoutX="15.0" layoutY="30.0" prefHeight="25.0" prefWidth="42.0" />
+                                                  <Label fx:id="PARCELASRECEBERlbParcelaNumero" layoutX="15.0" layoutY="8.0" text="Nº:" />
+                                                  <DatePicker fx:id="PARCELASRECEBERdpParcelaData" layoutX="72.0" layoutY="30.0" prefHeight="25.0" prefWidth="103.0" />
+                                                  <Label fx:id="PARCELASRECEBERlbParcelaData" layoutX="72.0" layoutY="8.0" text="Vencimento (*):" />
+                                                  <TextField fx:id="PARCELASRECEBERtfParcelaValor" layoutX="190.0" layoutY="30.0" prefHeight="25.0" prefWidth="70.0" promptText="R$" />
+                                                  <Label fx:id="PARCELASRECEBERlbParcelaValor" layoutX="190.0" layoutY="8.0" text="Valor (*):" />
+                                                  <Button fx:id="PARCELASRECEBERbtCancelarParcela" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#PARCELASRECEBERclkCancelarParcela" prefWidth="100.0" text="CANCELAR" />
+                                                  <Button fx:id="PARCELASRECEBERbtConfirmarParcela" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" onAction="#PARCELASRECEBERclkConfirmarParcela" prefWidth="100.0" text="ALTERAR">
+                                                      <font>
+                                                          <Font name="System Bold" size="12.0" />
+                                                      </font>
+                                                  </Button>
+                                              </children>
+                                          </AnchorPane>
+                                          <AnchorPane fx:id="PARCELASRECEBERapGerarParcela">
+                                              <children>
+                                          <Label fx:id="PARCELASRECEBERlbValorEntrada" layoutX="20.0" layoutY="10.0" text="Valor de entrada (*):" />
+                                          <TextField fx:id="PARCELASRECEBERtfValorEntrada" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="125.0" promptText="R$" />
+                                          <Label fx:id="PARCELASRECEBERlbNumeroParcelas" layoutX="170.0" layoutY="10.0" text="Nº de parcelas (1-12):" />
+                                          <Spinner fx:id="PARCELASRECEBERtfNumeroParcelas" editable="true" layoutX="170.0" layoutY="31.0" prefHeight="25.0" prefWidth="125.0" />
+                                          <Label fx:id="PARCELASRECEBERlbDataInicio" layoutX="20.0" layoutY="71.0" text="Data de início (*):" />
+                                          <DatePicker fx:id="PARCELASRECEBERdpDataInicio" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="110.0" />
+                                          <Button fx:id="PARCELASRECEBERbtGerar" layoutX="155.0" layoutY="92.0" mnemonicParsing="false" onAction="#PARCELASRECEBERclkGerar" prefWidth="65.0" text="GERAR" />
+                                          <Button fx:id="PARCELASRECEBERbtAjustar" layoutX="230.0" layoutY="92.0" mnemonicParsing="false" onAction="#PARCELASRECEBERclkAjustar" prefWidth="65.0" text="AJUSTAR" />
+                                          </children>
+                                          </AnchorPane>
+                                          <Label fx:id="PARCELASRECEBERlbParcelas" layoutX="20.0" layoutY="132.0" text="Parcelas:" />
+                                          <Label fx:id="PARCELASRECEBERlbDoisCliques" layoutX="100.0" layoutY="132.0" text="Dois cliques na parcela para alterá-la" />
+                                          <TableView fx:id="PARCELASRECEBERtabela" layoutX="20.0" layoutY="153.0" onMousePressed="#PARCELASRECEBERclkTabela" prefHeight="176.0" prefWidth="275.0">
+                                            <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                                              <columns>
+                                               <TableColumn fx:id="PARCELASRECEBERcolNumero" prefWidth="40.0" text="Nº" />
+                                               <TableColumn fx:id="PARCELASRECEBERcolDataVencimento" prefWidth="73.0" text="Vencimento" />
+                                               <TableColumn fx:id="PARCELASRECEBERcolValor" prefWidth="67.0" text="Valor (R$)" />
+                                               <TableColumn fx:id="PARCELASRECEBERcolValorPago" prefWidth="93.0" text="Valor pago (R$)" />
+                                            </columns>
+                                         </TableView>
+                                         <Label fx:id="PARCELASRECEBERlbSoma" layoutX="20.0" layoutY="330.0" text="" />
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutX="23" layoutY="385.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="PARCELASRECEBERbtCancelar" mnemonicParsing="false" onAction="#PARCELASRECEBERclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="PARCELASRECEBERbtConfirmar" mnemonicParsing="false" onAction="#PARCELASRECEBERclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              
+                              <Group fx:id="apFormaRecebimento" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="DADOS DO RECEBIMENTO">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="apFormaRecebimentoaux" layoutY="37.0" prefHeight="349.0" prefWidth="317.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <Label fx:id="RECEBIMENTOlbFormaPagamento" layoutX="19.0" layoutY="10.0" text="Forma de pagamento:" />
+                   <ComboBox fx:id="RECEBIMENTOcbFormaPagamento" layoutX="19.0" layoutY="31.0" onAction="#RECEBIMENTOclkFormaPagamento" prefHeight="25.0" prefWidth="157.0" promptText="Selecione" />
+            
+            <AnchorPane fx:id="RECEBIMENTOapCheque" layoutX="19.0" layoutY="71.0" prefHeight="187.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="RECEBIMENTOtfChequeNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Número do cheque" />
+                  <Label fx:id="RECEBIMENTOlbChequeNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                  <TextField fx:id="RECEBIMENTOtfChequeConta" layoutX="15.0" layoutY="87.0" prefHeight="25.0" prefWidth="249.0" promptText="Conta do cheque" />
+                  <Label fx:id="RECEBIMENTOlbChequeConta" layoutX="15.0" layoutY="65.0" text="Conta:" />
+                  <TextField fx:id="RECEBIMENTOtfChequeBanco" layoutX="15.0" layoutY="147.0" prefHeight="25.0" prefWidth="249.0" promptText="Banco do cheque" />
+                  <Label fx:id="RECEBIMENTOlbChequeBanco" layoutX="15.0" layoutY="125.0" text="Banco:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="RECEBIMENTOapBoleto" layoutX="19.0" layoutY="71.0" prefHeight="65.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="RECEBIMENTOtfBoletoNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Número do boleto" />
+                  <Label fx:id="RECEBIMENTOlbBoletoNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="RECEBIMENTOapDeposito" layoutX="19.0" layoutY="71.0" prefHeight="65.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="RECEBIMENTOtfDepositoIdentificacao" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Identificação do depósito" />
+                  <Label fx:id="RECEBIMENTOlbDepositoIdentificacao" layoutX="15.0" layoutY="5.0" text="Identificação:" />                  
+               </children>
+            </AnchorPane>
+            <Text fx:id="RECEBIMENTOlbAviso" fill="RED" layoutX="19.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O recebimento em Cheque deve ser registrado somente após o cheque ter sido debitado." visible="false" wrappingWidth="279.0" />
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutX="23" layoutY="385.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="RECEBIMENTObtCancelar" mnemonicParsing="false" onAction="#RECEBIMENTOclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="RECEBIMENTObtConfirmar" mnemonicParsing="false" onAction="#RECEBIMENTOclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosContaReceber" prefHeight="470.0" prefWidth="368.0" BorderPane.alignment="CENTER">
+         <children>
+                       
+            
+            <AnchorPane fx:id="aux_dadoscontareceber" minWidth="239.0" prefHeight="424.0" prefWidth="343.0" style="-fx-background-color: silver;">
+               <children>
+                   <Label fx:id="CONTARECEBERlbCod" layoutX="19.0" layoutY="10.0" text="Código:" />
+                  <TextField fx:id="CONTARECEBERtfCod" disable="true" editable="false" layoutX="19.0" layoutY="30.0" prefHeight="25.0" prefWidth="72.0" />
+                   <Label fx:id="CONTARECEBERlbDescricao" layoutX="19.0" layoutY="65.0" text="Descrição (*):" />
+                   <Label fx:id="CONTARECEBERlbPessoa" layoutX="19.0" layoutY="120.0" text="Pessoa (*):" />
+                  <TextField fx:id="CONTARECEBERtfDescricao" layoutX="19.0" layoutY="85.0" prefHeight="25.0" prefWidth="210.0" />
+                  <TextField fx:id="CONTARECEBERtfValor" layoutX="243.0" layoutY="85.0" prefHeight="25.0" prefWidth="81.0" promptText="R$" /> 
+                  <TextField fx:id="CONTARECEBERtfPessoa" layoutX="19.0" layoutY="139.0" prefHeight="25.0" prefWidth="263.0" promptText="Selecione uma pessoa" />
+                  <Button fx:id="CONTARECEBERbtSelecionarPessoa" layoutX="296.0" layoutY="138.0" mnemonicParsing="false" onAction="#CONTARECEBERclkSelecionarPessoa" text="..." />
+                  <Label fx:id="CONTARECEBERlbForma" layoutX="19.0" layoutY="178.0" text="Forma de pagamento (*):" />
+                  <ComboBox fx:id="CONTARECEBERcbForma" layoutX="19.0" layoutY="198.0" onAction="#CONTARECEBERclkFormaPagamento" prefHeight="25.0" prefWidth="220.0" promptText="Escolha a forma de pagamento" /> 
+                  <Button fx:id="CONTARECEBERbtConfigurar" disable="true" layoutX="253.0" layoutY="198.0" mnemonicParsing="false" onAction="#CONTARECEBERclkConfigurar" text="PARCELAS" />
+                  <Label fx:id="CONTARECEBERlbDataVencimento" layoutX="19.0" layoutY="237.0" text="Data de vencimento:" />
+                                    
+                                    
+                                    
+                                    <Label fx:id="CONTARECEBERlbValor" layoutX="243.0" layoutY="65.0" text="Valor (*):" />
+                                    
+                                    <DatePicker fx:id="CONTARECEBERdpDataVencimento" disable="true" layoutX="19.0" layoutY="257.0" prefHeight="25.0" prefWidth="111.0" />
+                                    <Label layoutX="19.0" layoutY="295.0" text="Observações:" />
+                                    <TextArea fx:id="CONTARECEBERtfObservacoes" layoutX="19.0" layoutY="315.0" prefHeight="89.0" prefWidth="306.0" />
+                  
+               </children>
+            </AnchorPane>
+            
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                  <Label fx:id="CONTARECEBERlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="CONTARECEBERbtCancelar" mnemonicParsing="false" onAction="#CONTARECEBERclkCancelar" text="CANCELAR" />
+                  <Button fx:id="CONTARECEBERbtConfirmar" mnemonicParsing="false" onAction="#CONTARECEBERclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            
+            
+            
+            <AnchorPane fx:id="apContasPagar" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaContasPagar" layoutX="5.0">
+                                 <children>
+                                          <Label text="LANÇAR CONTAS A PAGAR">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaContasPagar" fitHeight="31.0" fitWidth="31.0" layoutX="242.0" layoutY="-3" onMouseClicked="#clickAjudaContasPagar" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox layoutY="27.0" prefHeight="35.0" prefWidth="320.0">
+                           <children>
+                              <TextField fx:id="CONTAPAGARtxPesquisa" onKeyPressed="#CONTAPAGARkpPesquisar" prefHeight="25.0" prefWidth="282.0" promptText="Pesquisar código/descrição/empresa/pessoa">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>                                                
+                                          
+                                          <Button mnemonicParsing="false" onAction="#CONTAPAGARclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="CONTAPAGARtabela" layoutY="72.0" onMouseClicked="#CONTAPAGARclkTabela" prefHeight="353.0" prefWidth="317.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="CONTAPAGARcolDescricao" prefWidth="124.0" text="Descrição" />
+                            <TableColumn fx:id="CONTAPAGARcolPessoa" prefWidth="124.0" text="Empresa/Pessoa" />
+                            <TableColumn fx:id="CONTAPAGARcolValor" prefWidth="67.0" text="Valor (R$)" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="306.0" spacing="20.0">
+                           
+                           <children>
+                              <Button fx:id="CONTAPAGARbtNovo" mnemonicParsing="false" onAction="#CONTAPAGARclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="CONTAPAGARbtAlterar" mnemonicParsing="false" onAction="#CONTAPAGARclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="CONTAPAGARbtApagar" mnemonicParsing="false" onAction="#CONTAPAGARclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apParcelasPagar" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="PARCELAS">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="PARCELASPAGARlbSaldo" alignment="CENTER_RIGHT" layoutX="136.0" layoutY="7.0" prefHeight="17.0" prefWidth="159.0" />
+                                    <AnchorPane fx:id="apParcelasPagaraux" layoutY="37.0" prefHeight="349.0" prefWidth="317.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <AnchorPane fx:id="PARCELASPAGARapAlterarParcela" layoutX="20.0" layoutY="20.0" prefHeight="105.0" prefWidth="275.0" style="-fx-background-color: #A4A4A4;" visible="false">
+                                              <children>
+                                                  <TextField fx:id="PARCELASPAGARtfParcelaNumero" layoutX="15.0" layoutY="30.0" prefHeight="25.0" prefWidth="42.0" />
+                                                  <Label fx:id="PARCELASPAGARlbParcelaNumero" layoutX="15.0" layoutY="8.0" text="Nº:" />
+                                                  <DatePicker fx:id="PARCELASPAGARdpParcelaData" layoutX="72.0" layoutY="30.0" prefHeight="25.0" prefWidth="103.0" />
+                                                  <Label fx:id="PARCELASPAGARlbParcelaData" layoutX="72.0" layoutY="8.0" text="Vencimento (*):" />
+                                                  <TextField fx:id="PARCELASPAGARtfParcelaValor" layoutX="190.0" layoutY="30.0" prefHeight="25.0" prefWidth="70.0" promptText="R$" />
+                                                  <Label fx:id="PARCELASPAGARlbParcelaValor" layoutX="190.0" layoutY="8.0" text="Valor (*):" />
+                                                  <Button fx:id="PARCELASPAGARbtCancelarParcela" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#PARCELASPAGARclkCancelarParcela" prefWidth="100.0" text="CANCELAR" />
+                                                  <Button fx:id="PARCELASPAGARbtConfirmarParcela" layoutX="160.0" layoutY="65.0" mnemonicParsing="false" onAction="#PARCELASPAGARclkConfirmarParcela" prefWidth="100.0" text="ALTERAR">
+                                                      <font>
+                                                          <Font name="System Bold" size="12.0" />
+                                                      </font>
+                                                  </Button>
+                                              </children>
+                                          </AnchorPane>
+                                          <AnchorPane fx:id="PARCELASPAGARapGerarParcela">
+                                              <children>
+                                          <Label fx:id="PARCELASPAGARlbValorEntrada" layoutX="20.0" layoutY="10.0" text="Valor de entrada (*):" />
+                                          <TextField fx:id="PARCELASPAGARtfValorEntrada" layoutX="20.0" layoutY="31.0" prefHeight="25.0" prefWidth="125.0" promptText="R$" />
+                                          <Label fx:id="PARCELASPAGARlbNumeroParcelas" layoutX="170.0" layoutY="10.0" text="Nº de parcelas (1-12):" />
+                                          <Spinner fx:id="PARCELASPAGARtfNumeroParcelas" editable="true" layoutX="170.0" layoutY="31.0" prefHeight="25.0" prefWidth="125.0" />
+                                          <Label fx:id="PARCELASPAGARlbDataInicio" layoutX="20.0" layoutY="71.0" text="Data de início (*):" />
+                                          <DatePicker fx:id="PARCELASPAGARdpDataInicio" layoutX="20.0" layoutY="92.0" prefHeight="25.0" prefWidth="110.0" />
+                                          <Button fx:id="PARCELASPAGARbtGerar" layoutX="155.0" layoutY="92.0" mnemonicParsing="false" onAction="#PARCELASPAGARclkGerar" prefWidth="65.0" text="GERAR" />
+                                          <Button fx:id="PARCELASPAGARbtAjustar" layoutX="230.0" layoutY="92.0" mnemonicParsing="false" onAction="#PARCELASPAGARclkAjustar" prefWidth="65.0" text="AJUSTAR" />
+                                          </children>
+                                          </AnchorPane>
+                                          <Label fx:id="PARCELASPAGARlbParcelas" layoutX="20.0" layoutY="132.0" text="Parcelas:" />
+                                          <Label fx:id="PARCELASPAGARlbDoisCliques" layoutX="100.0" layoutY="132.0" text="Dois cliques na parcela para alterá-la" />
+                                          <TableView fx:id="PARCELASPAGARtabela" layoutX="20.0" layoutY="153.0" onMousePressed="#PARCELASPAGARclkTabela" prefHeight="176.0" prefWidth="275.0">
+                                            <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                                              <columns>
+                                               <TableColumn fx:id="PARCELASPAGARcolNumero" prefWidth="40.0" text="Nº" />
+                                               <TableColumn fx:id="PARCELASPAGARcolDataVencimento" prefWidth="73.0" text="Vencimento" />
+                                               <TableColumn fx:id="PARCELASPAGARcolValor" prefWidth="67.0" text="Valor (R$)" />
+                                               <TableColumn fx:id="PARCELASPAGARcolValorPago" prefWidth="93.0" text="Valor pago (R$)" />
+                                            </columns>
+                                         </TableView>
+                                         <Label fx:id="PARCELASPAGARlbSoma" layoutX="20.0" layoutY="330.0" text="" />
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutX="23" layoutY="385.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="PARCELASPAGARbtCancelar" mnemonicParsing="false" onAction="#PARCELASPAGARclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="PARCELASPAGARbtConfirmar" mnemonicParsing="false" onAction="#PARCELASPAGARclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              
+                              <Group fx:id="apFormaPagamento" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="DADOS DO PAGAMENTO">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="apFormaPagamentoaux" layoutY="37.0" prefHeight="349.0" prefWidth="317.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+                                          <Label fx:id="PAGAMENTOlbFormaPagamento" layoutX="19.0" layoutY="10.0" text="Forma de pagamento:" />
+                   <ComboBox fx:id="PAGAMENTOcbFormaPagamento" layoutX="19.0" layoutY="31.0" onAction="#PAGAMENTOclkFormaPagamento" prefHeight="25.0" prefWidth="157.0" promptText="Selecione" />
+            
+            <AnchorPane fx:id="PAGAMENTOapCheque" layoutX="19.0" layoutY="71.0" prefHeight="187.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="PAGAMENTOtfChequeNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Número do cheque" />
+                  <Label fx:id="PAGAMENTOlbChequeNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                  <TextField fx:id="PAGAMENTOtfChequeConta" layoutX="15.0" layoutY="87.0" prefHeight="25.0" prefWidth="249.0" promptText="Conta do cheque" />
+                  <Label fx:id="PAGAMENTOlbChequeConta" layoutX="15.0" layoutY="65.0" text="Conta:" />
+                  <TextField fx:id="PAGAMENTOtfChequeBanco" layoutX="15.0" layoutY="147.0" prefHeight="25.0" prefWidth="249.0" promptText="Banco do cheque" />
+                  <Label fx:id="PAGAMENTOlbChequeBanco" layoutX="15.0" layoutY="125.0" text="Banco:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PAGAMENTOapBoleto" layoutX="19.0" layoutY="71.0" prefHeight="65.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="PAGAMENTOtfBoletoNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Número do boleto" />
+                  <Label fx:id="PAGAMENTOlbBoletoNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PAGAMENTOapDeposito" layoutX="19.0" layoutY="71.0" prefHeight="65.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="PAGAMENTOtfDepositoIdentificacao" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Identificação do depósito" />
+                  <Label fx:id="PAGAMENTOlbDepositoIdentificacao" layoutX="15.0" layoutY="5.0" text="Identificação:" />                  
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PAGAMENTOapCartao" layoutX="19.0" layoutY="71.0" prefHeight="65.0" prefWidth="279.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <ComboBox fx:id="PAGAMENTOcbCartao" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="249.0" promptText="Selecione" />
+                  <Label fx:id="PAGAMENTOlbCartao" layoutX="15.0" layoutY="5.0" text="Cartão de Crédito:" />                  
+               </children>
+            </AnchorPane>
+            <Text fx:id="PAGAMENTOlbAviso" fill="RED" layoutX="19.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O pagamento de uma parcela feito no Cartão de Crédito não altera o Fluxo de Caixa." visible="false" wrappingWidth="279.0" />
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutX="23" layoutY="385.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="PAGAMENTObtCancelar" mnemonicParsing="false" onAction="#PAGAMENTOclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="PAGAMENTObtConfirmar" mnemonicParsing="false" onAction="#PAGAMENTOclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosContaPagar" prefHeight="470.0" prefWidth="368.0" BorderPane.alignment="CENTER">
+         <children>
+                       
+            
+            <AnchorPane fx:id="aux_dadoscontapagar" minWidth="239.0" prefHeight="424.0" prefWidth="343.0" style="-fx-background-color: silver;">
+               <children>
+                   <Label fx:id="CONTAPAGARlbCod" layoutX="19.0" layoutY="10.0" text="Código:" />
+                  <TextField fx:id="CONTAPAGARtfCod" disable="true" editable="false" layoutX="19.0" layoutY="30.0" prefHeight="25.0" prefWidth="72.0" />
+                   <Label fx:id="CONTAPAGARlbDescricao" layoutX="19.0" layoutY="65.0" text="Descrição (*):" />
+                   <Label fx:id="CONTAPAGARlbPessoa" layoutX="19.0" layoutY="120.0" text="Empresa/Pessoa (*):" />
+                  <TextField fx:id="CONTAPAGARtfDescricao" layoutX="19.0" layoutY="85.0" prefHeight="25.0" prefWidth="210.0" />
+                  <TextField fx:id="CONTAPAGARtfValor" layoutX="243.0" layoutY="85.0" prefHeight="25.0" prefWidth="81.0" promptText="R$" /> 
+                  <TextField fx:id="CONTAPAGARtfPessoa" layoutX="19.0" layoutY="139.0" prefHeight="25.0" prefWidth="263.0" promptText="Selecione uma empresa/pessoa" />
+                  <Button fx:id="CONTAPAGARbtSelecionarPessoaEmpresa" layoutX="296.0" layoutY="138.0" mnemonicParsing="false" onAction="#CONTAPAGARclkSelecionarPessoaEmpresa" text="..." />
+                  <Label fx:id="CONTAPAGARlbForma" layoutX="19.0" layoutY="178.0" text="Forma de pagamento (*):" />
+                  <ComboBox fx:id="CONTAPAGARcbForma" layoutX="19.0" layoutY="198.0" onAction="#CONTAPAGARclkFormaPagamento" prefHeight="25.0" prefWidth="220.0" promptText="Escolha a forma de pagamento" /> 
+                  <Button fx:id="CONTAPAGARbtConfigurar" disable="true" layoutX="253.0" layoutY="198.0" mnemonicParsing="false" onAction="#CONTAPAGARclkConfigurar" text="PARCELAS" />
+                  <Label fx:id="CONTAPAGARlbDataVencimento" layoutX="19.0" layoutY="237.0" text="Data de vencimento:" />
+                                    
+                                    
+                                    
+                                    <Label fx:id="CONTAPAGARlbValor" layoutX="243.0" layoutY="65.0" text="Valor (*):" />
+                                    
+                                    <DatePicker fx:id="CONTAPAGARdpDataVencimento" disable="true" layoutX="19.0" layoutY="257.0" prefHeight="25.0" prefWidth="111.0" />
+                                    <Label layoutX="19.0" layoutY="295.0" text="Observações:" />
+                                    <TextArea fx:id="CONTAPAGARtfObservacoes" layoutX="19.0" layoutY="315.0" prefHeight="89.0" prefWidth="306.0" />
+                  <Label fx:id="CONTAPAGARlbSaldo" alignment="CENTER_RIGHT" layoutX="164.0" layoutY="10.0" prefHeight="17.0" prefWidth="159.0" />
+               </children>
+            </AnchorPane>
+            
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                  <Label fx:id="CONTAPAGARlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="CONTAPAGARbtCancelar" mnemonicParsing="false" onAction="#CONTAPAGARclkCancelar" text="CANCELAR" />
+                  <Button fx:id="CONTAPAGARbtConfirmar" mnemonicParsing="false" onAction="#CONTAPAGARclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            
+            <AnchorPane fx:id="apEventos" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+                <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">    
+                  <left>                    
+                              <AnchorPane prefHeight="470.0" prefWidth="326.0">
+                                 <children>
+                              <Group fx:id="apTabelaEventos" layoutX="5.0">
+                                 <children>
+                                          <Label text="EVENTOS">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fx:id="imvAjudaEventos" fitHeight="31.0" fitWidth="31.0" layoutX="90.0" layoutY="-3" onMouseClicked="#clickAjudaEventos" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                        <HBox layoutY="27.0" prefHeight="35.0" prefWidth="320.0">
+                           <children>
+                              <TextField fx:id="EVENTOtxPesquisa" onKeyPressed="#EVENTOkpPesquisar" prefHeight="25.0" prefWidth="172.0" promptText="Cód./descrição/responsável">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </TextField>    
+                                                <ComboBox fx:id="EVENTOcbFiltrarCategoria" prefHeight="25.0" prefWidth="105.0" promptText="Exibir todos">
+                                             <HBox.margin>
+                                                <Insets left="5" top="10.0" />
+                                             </HBox.margin>
+                                          </ComboBox>                                            
+                                          
+                                          <Button mnemonicParsing="false" onAction="#EVENTOclkIr" text="IR">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </Button>
+                           </children>
+                           
+                        </HBox>
+                        <TableView fx:id="EVENTOtabela" layoutY="72.0" onMouseClicked="#EVENTOclkTabela" prefHeight="353.0" prefWidth="317.0">
+                          <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                            <columns>
+                            <TableColumn fx:id="EVENTOcolDescricao" prefWidth="124.0" text="Descrição" />
+                            <TableColumn fx:id="EVENTOcolPessoa" prefWidth="119.0" text="Responsável" />
+                            <TableColumn fx:id="EVENTOcolSituacao" prefWidth="72.0" text="Situação" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutY="425.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="306.0" spacing="20.0">
+                           
+                           <children>
+                              <Button fx:id="EVENTObtNovo" mnemonicParsing="false" onAction="#EVENTOclkNovo" text="NOVO" textFill="#3903fc">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="EVENTObtAlterar" mnemonicParsing="false" onAction="#EVENTOclkAlterar" text="ALTERAR" textFill="#ff7e00">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                              <Button fx:id="EVENTObtApagar" mnemonicParsing="false" onAction="#EVENTOclkApagar" text="DESATIVAR" textFill="#fa1005">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font>
+                                                </Button>
+                           </children>
+                                             <padding>
+                                                <Insets left="16.0" top="15.0" />
+                                             </padding>
+                           
+                        </HBox>
+                                 </children>
+                              </Group>
+                              <Group fx:id="apParticipantes" layoutX="5.0" visible="false">
+                                 <children>
+                                    <Label text="PARTICIPANTES">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane fx:id="apParticipantesaux" layoutY="37.0" prefHeight="349.0" prefWidth="317.0" style="-fx-background-color: #bee1ff;">
+                                       <children>
+               <AnchorPane fx:id="PARTICIPANTEapAdicionar" layoutX="20.0" layoutY="20.0" prefHeight="308.0" prefWidth="275.0" style="-fx-background-color: #A4A4A4;" visible="false">
+                  <children>
+                     <TextField fx:id="PARTICIPANTEtfParticipante" editable="false" focusTraversable="false" layoutX="14.0" layoutY="34.0" mouseTransparent="true" prefHeight="25.0" prefWidth="247.0" promptText="Selecione o participante" />
+                     <Button fx:id="PARTICIPANTEbtSelecionar" layoutX="14.0" layoutY="69.0" mnemonicParsing="false" onAction="#PARTICIPANTEclkSelecionar" prefHeight="41.0" prefWidth="247.0" text="SELECIONAR" />
+                     <AnchorPane layoutX="14.0" layoutY="132.0" prefHeight="41.0" prefWidth="247.0" style="-fx-background-color: #f2eea9;">
+                        <children>
+                           <RadioButton fx:id="PARTICIPANTErbSim" layoutX="108.0" layoutY="12.0" mnemonicParsing="false" selected="true" text="Sim" />
+                           <RadioButton fx:id="PARTICIPANTErbNao" layoutX="187.0" layoutY="12.0" mnemonicParsing="false" text="Não" />
+                           <Label fx:id="PARTICIPANTElbAutorizado" alignment="TOP_LEFT" layoutX="17.0" layoutY="12.0" prefHeight="17.0" prefWidth="74.0" text="Autorizado:" textAlignment="CENTER" />
+                        </children>
+                     </AnchorPane>                     
+                     <Label fx:id="PARTICIPANTElbPeriodo" layoutX="14.0" layoutY="189.0" text="Período de particip. (*):" />
+                     <CheckBox fx:id="PARTICIPANTEckbTodoEvento" layoutX="162.0" layoutY="189.0" mnemonicParsing="false" onAction="#PARTICIPANTEclkTodoEvento" text="Todo o evento" />
+                                          <DatePicker fx:id="PARTICIPANTEdpDataInicial" layoutX="14.0" layoutY="215.0" prefHeight="25.0" prefWidth="105.0" promptText="Data inicial" />
+                                          <Label fx:id="ADICIONARPARTICIPANTElbDataFinal" layoutX="156.0" layoutY="8.0" text="Data final:" visible="false" />
+                                          <DatePicker fx:id="PARTICIPANTEdpDataFinal" layoutX="156.0" layoutY="215.0" prefHeight="25.0" prefWidth="105.0" promptText="Data final" />
+                     <Label layoutX="134.0" layoutY="219.0" text="a" />
+                     <Label fx:id="PARTICIPANTElbParticipante" layoutX="14.0" layoutY="11.0" text="Participante (*):" />
+                     <Button fx:id="PARTICIPANTEbtCancelar" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" onAction="#PARTICIPANTEclkCancelar" text="CANCELAR" />
+                     <Button fx:id="PARTICIPANTEbtAdicionar" layoutX="171.0" layoutY="265.0" mnemonicParsing="false" onAction="#PARTICIPANTEclkAdicionar" prefHeight="26.0" prefWidth="90.0" text="ADICIONAR">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Button>
+                  </children>
+               </AnchorPane>
+               <AnchorPane fx:id="PARTICIPANTEapTabela" layoutX="20.0" layoutY="20.0" prefHeight="314.0">
+                  <children>
+                      <Button fx:id="PARTICIPANTEbtAjustar" layoutY="-5.0" mnemonicParsing="false" onAction="#PARTICIPANTEclkAjustar" prefHeight="26.0" prefWidth="275.0" text="AJUSTAR PERÍODO" />
+                                                <TableView fx:id="PARTICIPANTEtabela" layoutY="30" onMousePressed="#PARTICIPANTEclkTabela" prefHeight="242.0" prefWidth="275.0">
+                                                  <placeholder>
+                                          <Label text="Nenhum participante adicionado." />
+                                        </placeholder>
+                                                    <columns>
+                                                     <TableColumn fx:id="PARTICIPANTEcolNome" prefWidth="97.0" text="Nome" />
+                                                     <TableColumn fx:id="PARTICIPANTEcolPeriodo" prefWidth="136.0" text="Período de particip." />
+                                                     <TableColumn fx:id="PARTICIPANTEcolAutorizado" prefWidth="40.0" text="Autor." />
+                                                   </columns>
+                                               </TableView>
+                                          <Button fx:id="PARTICIPANTETelabtAdicionar" layoutY="283.0" mnemonicParsing="false" onAction="#PARTICIPANTETelaclkAdicionar" prefHeight="26.0" prefWidth="82.0" text="Adicionar" />
+                     <Button fx:id="PARTICIPANTETelabtAlterar" disable="true" layoutX="96.0" layoutY="283.0" mnemonicParsing="false" onAction="#PARTICIPANTETelaclkAlterar" prefHeight="26.0" prefWidth="82.0" text="Alterar" />
+                     <Button fx:id="PARTICIPANTETelabtExcluir" disable="true" layoutX="192.0" layoutY="283.0" mnemonicParsing="false" onAction="#PARTICIPANTETelaclkExcluir" prefHeight="26.0" prefWidth="82.0" text="Excluir" />
+                  </children>
+               </AnchorPane>
+                                          
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" layoutX="23" layoutY="385.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="267.0" spacing="25.0">
+                                       <children>
+                                          <Button fx:id="PARTICIPANTETelabtCancelar" mnemonicParsing="false" onAction="#PARTICIPANTETelaclkCancelar" text="CANCELAR" />
+                                          <Button fx:id="PARTICIPANTETelabtConfirmar" mnemonicParsing="false" onAction="#PARTICIPANTETelaclkConfirmar" text="CONFIRMAR">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </Group>
+                              
+                              
+                              
+                                 </children>
+                              </AnchorPane>
+         
+      </left>
+      <center>
+      <VBox fx:id="apDadosEvento" prefHeight="470.0" prefWidth="368.0" BorderPane.alignment="CENTER">
+         <children>
+                       
+            
+            <AnchorPane fx:id="aux_dadosevento" minWidth="239.0" prefHeight="424.0" prefWidth="343.0" style="-fx-background-color: silver;">
+               <children>
+                   <Label fx:id="EVENTOlbCod" layoutX="19.0" layoutY="10.0" text="Código:" />
+                  <TextField fx:id="EVENTOtfCod" disable="true" editable="false" layoutX="19.0" layoutY="30.0" prefHeight="25.0" prefWidth="72.0" />
+                  <AnchorPane fx:id="EVENTOapSituacao" layoutX="119.0" layoutY="17.0" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: #f2eea9;">
+            <children>
+               <RadioButton fx:id="EVENTOrbAndamento" layoutX="6.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Em andamento" />
+               <RadioButton fx:id="EVENTOrbFinalizado" layoutX="123.0" layoutY="10.0" mnemonicParsing="false" text="Finalizado" />
+            </children>
+         </AnchorPane> 
+                  <Label fx:id="EVENTOlbDescricao" layoutX="19.0" layoutY="65.0" text="Descrição (*):" />
+                   <Label fx:id="EVENTOlbPessoa" layoutX="19.0" layoutY="120.0" text="Organizador (*):" />
+                  <TextField fx:id="EVENTOtfDescricao" layoutX="19.0" layoutY="85.0" prefHeight="25.0" prefWidth="180.0" />
+                  <Label fx:id="EVENTOlbCategoria" layoutX="213.0" layoutY="65.0" text="Categoria (*):" />
+                  <ComboBox fx:id="EVENTOcbCategoria" layoutX="213.0" layoutY="85.0" prefHeight="25.0" prefWidth="111.0" promptText="Escolha" />
+                  <TextField fx:id="EVENTOtfPessoa" disable="true" layoutX="19.0" layoutY="139.0" prefHeight="25.0" prefWidth="263.0" promptText="Selecione o organizador do evento" />
+                  <Button fx:id="EVENTObtSelecionarPessoa" layoutX="295.0" layoutY="138.0" mnemonicParsing="false" onAction="#EVENTOclkSelecionarPessoa" text="..." />
+                  
+                  <Label fx:id="EVENTOlbPeriodo" layoutX="19.0" layoutY="178.0" text="Período (*):" />
+                  <DatePicker fx:id="EVENTOdpDataInicial" layoutX="19.0" layoutY="198.0" prefHeight="25.0" prefWidth="111.0" promptText="Data inicial" />
+                  <Label layoutX="140.0" layoutY="202.0" text="a" />
+                  <DatePicker fx:id="EVENTOdpDataFinal" layoutX="156.0" layoutY="198.0" prefHeight="25.0" prefWidth="111.0" promptText="Data final" />
+                  
+                  <Label fx:id="EVENTOlbParticipantes" layoutX="19.0" layoutY="237.0" text="Participantes:" />
+                  <TextField fx:id="EVENTOtfParticipantes" editable="false" focusTraversable="false" layoutX="19.0" layoutY="257.0" mouseTransparent="true" prefHeight="25.0" prefWidth="230.0" promptText="Nenhum participante adicionado" /> 
+                  <Button fx:id="EVENTObtConfigurar" layoutX="263.0" layoutY="257.0" mnemonicParsing="false" onAction="#EVENTOclkConfigurar" text="DEFINIR" />
+                  
+                    <Label layoutX="19.0" layoutY="295.0" text="Observações:" />
+                    <TextArea fx:id="EVENTOtfObservacoes" layoutX="19.0" layoutY="315.0" prefHeight="89.0" prefWidth="306.0" />
+
+               </children>
+            </AnchorPane>
+            
+                              <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="25.0">
+                                 <children>
+                  <Label fx:id="EVENTOlbCamposObrigatorios"  styleClass="campo-obrigatorio" text="(*) Campos obrigatórios" /> 
+                        <Button fx:id="EVENTObtCancelar" mnemonicParsing="false" onAction="#EVENTOclkCancelar" text="CANCELAR" />
+                  <Button fx:id="EVENTObtConfirmar" mnemonicParsing="false" onAction="#EVENTOclkConfirmar" text="CONFIRMAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding>
+                              </HBox>
+         </children>
+                           <BorderPane.margin>
+                              <Insets left="11.0" />
+                           </BorderPane.margin>
+      </VBox>
+   </center>
+      </BorderPane>
+                </children>                
+            </AnchorPane>
+            
+            
+            
+            
+            <ImageView fx:id="imvCadastros" fitHeight="128.0" fitWidth="128.0" layoutX="9.0" layoutY="14.0" onMouseClicked="#clickMenuCadastros" onMouseExited="#onMouseExitCadastros" onMouseMoved="#OnMouseOverCadastros" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+               <image>
+                  <Image url="@botoes/botao_cadastros.png" />
+               </image>               
+            </ImageView>
+            <ImageView fx:id="imvMovimentacao" fitHeight="128.0" fitWidth="128.0" layoutX="148.0" layoutY="14.0" onMouseClicked="#clickMenuMovimentacao" onMouseExited="#onMouseExitMovimentacao" onMouseMoved="#OnMouseOverMovimentacao" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" visible="false">
+               <image>
+                  <Image url="@botoes/botao_movimentacoes.png" />
+               </image>               
+            </ImageView>
+            <ImageView fx:id="imvRelatorios" fitHeight="128.0" fitWidth="128.0" layoutX="287.0" layoutY="14.0" onMouseClicked="#clickMenuRelatorio" onMouseExited="#onMouseExitRelatorios" onMouseMoved="#OnMouseOverRelatorios" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+               <image>
+                  <Image url="@botoes/botao_relatorio.png" />
+               </image>               
+            </ImageView>
+            <ImageView fx:id="imvConfiguracoes" fitHeight="128.0" fitWidth="128.0" layoutX="426.0" layoutY="14.0" onMouseClicked="#clickMenuConfiguracoes" onMouseExited="#onMouseExitConfiguracoes" onMouseMoved="#OnMouseOverConfiguracoes" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+               <image>
+                  <Image url="@botoes/botao_configuracoes.png" />
+               </image>
+            </ImageView>            
+            <ImageView fx:id="imvMenu" fitHeight="40.0" fitWidth="92.0" layoutX="148.0" layoutY="14.0" onMouseClicked="#clickMenu" onMouseExited="#onMouseExitMenu" onMouseMoved="#OnMouseOverMenu" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" visible="false">
+               <image>
+                  <Image url="@botoes/menu.png" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="apSubCadastros" layoutX="148.0" layoutY="70.0" visible="false">
+               <children>
+                  <ImageView fx:id="imvDependentes" fitHeight="40.0" fitWidth="128.0" onMouseClicked="#clickMenuDependentes" onMouseExited="#onMouseExitDependentes" onMouseMoved="#OnMouseOverDependentes" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subDependentes.png" />
+                     </image>
+                  </ImageView>                  
+                  <ImageView fx:id="imvEmpresas" fitHeight="40.0" fitWidth="128.0" layoutX="139.0" onMouseClicked="#clickMenuEmpresas" onMouseExited="#onMouseExitEmpresas" onMouseMoved="#OnMouseOverEmpresas" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subEmpresas.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvPessoas" fitHeight="40.0" fitWidth="128.0" layoutX="278.0" onMouseClicked="#clickMenuPessoas" onMouseExited="#onMouseExitPessoas" onMouseMoved="#OnMouseOverPessoas" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subPessoas.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvVeiculos" fitHeight="40.0" fitWidth="128.0" layoutX="417.0" onMouseClicked="#clickMenuVeiculos" onMouseExited="#onMouseExitVeiculos" onMouseMoved="#OnMouseOverVeiculos" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subVeiculos.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apSubMovimentacoes" layoutX="148.0" layoutY="70.0" visible="false">
+               <children>
+                  <ImageView fx:id="imvCaixa" fitHeight="40.0" fitWidth="128.0" onMouseClicked="#clickMenuCaixa" onMouseExited="#onMouseExitCaixa" onMouseMoved="#OnMouseOverCaixa" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subCaixa.png" />
+                     </image>
+                  </ImageView>                  
+                  <ImageView fx:id="imvContas" fitHeight="40.0" fitWidth="128.0" layoutX="139.0" onMouseClicked="#clickMenuContas" onMouseExited="#onMouseExitContas" onMouseMoved="#OnMouseOverContas" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subContas.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvEventos" fitHeight="40.0" fitWidth="128.0" layoutX="278.0" onMouseClicked="#clickMenuEventos" onMouseExited="#onMouseExitEventos" onMouseMoved="#OnMouseOverEventos" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subEventos.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRecebimentos" fitHeight="40.0" fitWidth="128.0" layoutX="278.0" onMouseClicked="#clickMenuRecebimentos" onMouseExited="#onMouseExitRecebimentos" onMouseMoved="#OnMouseOverRecebimentos" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" visible="false">
+                     <image>
+                        <Image url="@botoes/sub_menu/subRecebimentos.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apSubRelatorios" layoutX="148.0" layoutY="57.0">
+               <children>
+                   <ImageView fx:id="imvRelEventos" fitHeight="40.0" fitWidth="128.0" onMouseClicked="#clickMenuRelEventos" onMouseExited="#onMouseExitEventos" onMouseMoved="#OnMouseOverEventos" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subEventos.png" />
+                     </image>
+                  </ImageView>
+                   <ImageView fx:id="imvRelFinanceiro" fitHeight="40.0" fitWidth="128.0" layoutX="139.0" onMouseClicked="#clickMenuRelContas" onMouseExited="#onMouseExitFinanceiro" onMouseMoved="#OnMouseOverFinanceiro" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subFinanceiro.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRelMovimentacoes" fitHeight="40.0" fitWidth="128.0" layoutX="278.0" onMouseClicked="#clickMenuRelMovimentacoes" onMouseExited="#onMouseExitRelMovimentacoes" onMouseMoved="#OnMouseOverRelMovimentacoes" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subMovimentacoes.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRelOutros" fitHeight="40.0" fitWidth="128.0" layoutX="417.0" onMouseClicked="#clickMenuRelOutros" onMouseExited="#onMouseExitRelOutros" onMouseMoved="#OnMouseOverRelOutros" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subOutros.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRelPessoas" fitHeight="40.0" fitWidth="128.0" layoutY="44.0" onMouseClicked="#clickMenuRelPessoas" onMouseExited="#onMouseExitPessoas" onMouseMoved="#OnMouseOverPessoas" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subPessoas.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRelVeiculos" fitHeight="40.0" fitWidth="128.0" layoutX="139.0" layoutY="44.0" onMouseClicked="#clickMenuRelVeiculos" onMouseExited="#onMouseExitVeiculos" onMouseMoved="#OnMouseOverVeiculos" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subVeiculos.png" />
+                     </image>
+                  </ImageView>
+                  
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apSubConfiguracoes" layoutX="148.0" layoutY="57.0" visible="false">
+               <children>
+                   <ImageView fx:id="imvAjudaMenu" fitHeight="40.0" fitWidth="128.0" onMouseClicked="#clickMenuAjuda" onMouseExited="#onMouseExitMenuAjuda" onMouseMoved="#OnMouseOverMenuAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subAjuda.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvBackup" fitHeight="40.0" fitWidth="128.0" layoutX="139.0" onMouseClicked="#clickMenuBackup" onMouseExited="#onMouseExitBackup" onMouseMoved="#OnMouseOverBackup" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subBackup.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvBancoDados" fitHeight="40.0" fitWidth="128.0" layoutX="278.0" onMouseClicked="#clickMenuBancoDados" onMouseExited="#onMouseExitBancoDados" onMouseMoved="#OnMouseOverBancoDados" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subBancoDados.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvRestauracao" fitHeight="40.0" fitWidth="128.0" layoutX="417" onMouseClicked="#clickMenuRestauracao" onMouseExited="#onMouseExitRestauracao" onMouseMoved="#OnMouseOverRestauracao" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subRestauracao.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imvSistema" fitHeight="40.0" fitWidth="128.0" layoutY="44" onMouseClicked="#clickMenuSistema" onMouseExited="#onMouseExitSistema" onMouseMoved="#OnMouseOverSistema" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                     <image>
+                        <Image url="@botoes/sub_menu/subSistema.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="iconeerro" fitHeight="31.0" fitWidth="31.0" layoutX="309" layoutY="600" onMouseClicked="#clickRelatorioErros" onMouseExited="#onMouseExitIconeErro" onMouseMoved="#OnMouseOverIconeErro" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" visible="false"> 
+                <image>
+                    <Image url="@icones/icone-erro.png" />
+                </image>
+            </ImageView>
+            <ImageView fx:id="msgerro" fitHeight="16.0" fitWidth="123.0" layoutX="345" layoutY="609" onMouseClicked="#clickRelatorioErros" onMouseExited="#onMouseExitMsgErro" onMouseMoved="#OnMouseOverMsgErro" pickOnBounds="true" preserveRatio="true" styleClass="handcursor" visible="false"> 
+                <image>
+                    <Image url="@icones/msg-erro.png" />
+                </image>
+            </ImageView>
+            
+            <AnchorPane fx:id="apCaixa" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+               <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+                     <left>
+                        <AnchorPane prefHeight="470.0" prefWidth="356.0">
+                           <children>
+                              <Group fx:id="apTabelaVeiculos1" layoutX="5.0">
+                                 <children>
+                                    <Label text="CAIXA">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="imvAjudaCaixa" fitHeight="31.0" fitWidth="31.0" layoutX="62.0" layoutY="-3" onMouseClicked="#clickAjudaCaixa" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                                 </children>
+                              </Group>
+                              <TableView fx:id="CAIXAtabelaEntrada" layoutX="4.0" layoutY="147.0" prefHeight="318.0" prefWidth="335.0">
+                                  <placeholder>
+                                    <Label text="Nenhuma movimentação realizada." />
+                                  </placeholder>
+                                  <columns>
+                                  <TableColumn fx:id="CAIXAcolValorEntrada" prefWidth="65.0" text="Valor (R$)" />
+                                  <TableColumn fx:id="CAIXAcolHorarioEntrada" prefWidth="116.0" text="Horário" />
+                                    <TableColumn fx:id="CAIXAcolDescricaoEntrada" prefWidth="152.0" text="Descrição" />
+                                </columns>
+                              </TableView>
+                              <HBox alignment="CENTER" layoutX="4.0" layoutY="124.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="CAIXAlbEntrada" layoutX="0.0" layoutY="0.0" text="Entrada:" />
+                                                        <ImageView fx:id="ajudaCAIXAEntrada" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                              
+                              
+                              <TableView fx:id="CAIXAtabelaSaida" layoutX="349.0" layoutY="147.0" prefHeight="318.0" prefWidth="335.0">
+                                 <placeholder>
+                                    <Label text="Nenhuma movimentação realizada." />
+                                  </placeholder>
+                                  <columns>
+                                  <TableColumn fx:id="CAIXAcolValorSaida" prefWidth="65.0" text="Valor (R$)" />
+                                  <TableColumn fx:id="CAIXAcolHorarioSaida" prefWidth="116.0" text="Horário" />
+                                    <TableColumn fx:id="CAIXAcolDescricaoSaida" prefWidth="152.0" text="Descrição" />
+                                </columns>
+                              </TableView>
+                              <HBox alignment="CENTER" layoutX="349.0" layoutY="124.0" spacing="5.0">
+                                                    <children>
+                                                        <Label fx:id="CAIXAlbSaida" layoutX="0.0" layoutY="0.0" text="Retirada:" />
+                                                        <ImageView fx:id="ajudaCAIXASaida" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" styleClass="handcursor"> 
+                                                            <image>
+                                                                <Image url="@icones/ajuda.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </HBox>
+                              
+                              <Label fx:id="CAIXAlbData" layoutX="267.0" layoutY="30.0" text="Data: 16/02/2018">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="CAIXAlbSaldo" layoutX="267.0" layoutY="60.0" text="Saldo: R$00,00">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="CAIXAlbHoje" layoutX="270.0" layoutY="95.0" text="Hoje: +R$00,00   -R$00,00" />
+                              <AnchorPane layoutX="4.0" layoutY="35.0" prefHeight="79.0" prefWidth="248.0" style="-fx-background-color: #ccc;">
+                                 <children>
+                                    <Label fx:id="CAIXAlbSituacao" layoutX="14.0" layoutY="14.0" text="Situação: Fechado" textFill="#f80202" />
+                                    <Button fx:id="CAIXAbtAbrir" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#CAIXAclkAbrir" prefHeight="25.0" prefWidth="95.0" text="ABRIR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="CAIXAbtMovimentar" disable="true" layoutX="138.0" layoutY="40.0" mnemonicParsing="false" onAction="#CAIXAclkMovimentar" prefHeight="25.0" prefWidth="95.0" text="MOVIMENTAR">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apRecebimentos" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+               <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+                     <left>
+                        <AnchorPane prefHeight="470.0" prefWidth="356.0">
+                           <children>
+                              <Group layoutX="5.0">
+                                 <children>
+                                    <Label text="REALIZAR RECEBIMENTO">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="imvAjudaRecebimento" fitHeight="31.0" fitWidth="31.0" layoutX="221.0" layoutY="-3" onMouseClicked="#clickAjudaRecebimento" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                                 </children>
+                              </Group>
+                               <AnchorPane layoutX="4.0" layoutY="35.0" prefHeight="108.0" prefWidth="679.0" style="-fx-background-color: #ccc;">
+                                 <children>
+                                     <TextField fx:id="tfPessoa" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="328.0" promptText="Selecione uma pessoa para filtrar (opcional)" />
+                              <Button fx:id="btSelecionarPessoa" layoutX="349.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkSelecionarPessoa" text="SELECIONAR" />
+                               <CheckBox fx:id="ckbFiltrarPorPessoa" disable="true" layoutX="446.0" layoutY="18.0" mnemonicParsing="false" onAction="#clkFiltrarPorPessoa" text="Exibir somente parcelas desta pessoa" />
+                                  <ComboBox fx:id="cbFiltrarParcelasReceber" layoutX="14.0" layoutY="62.0" onAction="#clkFiltrarParcelas" prefHeight="25.0" prefWidth="218.0" promptText="Filtrar parcelas" />
+                                   <CheckBox fx:id="ckbFiltrarPeriodoReceber" layoutX="243.0" layoutY="66.0" mnemonicParsing="false" onAction="#clkFiltrarPeriodo" text="Filtrar por período" />
+                                    
+                                     
+                                    <AnchorPane fx:id="apDatasReceber" layoutX="371.0" layoutY="52.0" prefHeight="44.0" prefWidth="294.0" style="-fx-background-color: #A4A4A4;">
+                                       <children>
+                                          <DatePicker fx:id="dpDataInicial" disable="true" layoutX="9.0" layoutY="10.0" onAction="#clkDataInicial" prefHeight="25.0" prefWidth="122.0" promptText="Data inicial" />
+                                          <DatePicker fx:id="dpDataFinal" disable="true" layoutX="163.0" layoutY="10.0" onAction="#clkDataFinal" prefHeight="25.0" prefWidth="122.0" promptText="Data final" />
+                                          <Label layoutX="143.0" layoutY="14.0" text="a" />
+                                       </children>
+                                    </AnchorPane>
+                                    </children>
+                              </AnchorPane>
+                              <TableView fx:id="tabelaParcelasReceber" layoutX="4.0" layoutY="170.0" onMouseClicked="#clkTabelaParcelasReceber" prefHeight="295.0" prefWidth="592.0">
+                                 <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                                  <columns>
+                                    <TableColumn fx:id="RECEBIMENTOScolConta" prefWidth="155.0" text="Conta" />
+                                    <TableColumn fx:id="RECEBIMENTOScolNumero" prefWidth="42.0" text="Nº" />
+                                    <TableColumn fx:id="RECEBIMENTOScolVencimento" text="Vencimento" />
+                                    <TableColumn fx:id="RECEBIMENTOScolValor" prefWidth="74.0" text="Valor (R$)" />
+                                    <TableColumn fx:id="RECEBIMENTOScolPagamento" text="Pagamento" />
+                                    <TableColumn fx:id="RECEBIMENTOScolValorPago" prefWidth="93.0" text="Valor pago (R$)" />
+                                    <TableColumn fx:id="RECEBIMENTOScolForma" prefWidth="66.0" text="Forma" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="4.0" layoutY="149.0" text="Parcelas:" />
+                              
+                              <Button fx:id="btLimparRecebimento" layoutX="625.0" layoutY="170.0" mnemonicParsing="false" onAction="#clkLimparRecebimento" text="LIMPAR" textFill="#fa1005">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btVer" layoutX="644.0" layoutY="259.0" mnemonicParsing="false" onAction="#clkVerRecebimento" text="VER" />
+                              <Button fx:id="btEstornarRecebimento" disable="true" layoutX="610.0" layoutY="302.0" mnemonicParsing="false" onAction="#clkEstornarRecebimento" text="ESTORNAR" />
+                              
+                              <Button fx:id="btReceber" disable="true" layoutX="622.0" layoutY="345.0" mnemonicParsing="false" onAction="#clkReceber" text="RECEBER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              
+                           </children>
+                        </AnchorPane>
+                     </left>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+            
+            <AnchorPane fx:id="apPagamentos" layoutX="7.0" layoutY="163.0" prefHeight="463.0" prefWidth="684.0" visible="false">
+               <children>
+                  <BorderPane prefHeight="470.0" prefWidth="682.0">
+                     <left>
+                        <AnchorPane prefHeight="470.0" prefWidth="356.0">
+                           <children>
+                              <Group layoutX="5.0">
+                                 <children>
+                                    <Label text="REALIZAR PAGAMENTO">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="imvAjudaPagamento" fitHeight="31.0" fitWidth="31.0" layoutX="211.0" layoutY="-3" onMouseClicked="#clickAjudaPagamento" onMouseExited="#onMouseExitObterAjuda" onMouseMoved="#OnMouseOverObterAjuda" pickOnBounds="true" preserveRatio="true" styleClass="handcursor">
+                                            <image>
+                                               <Image url="@icones/help_p.png" />
+                                            </image>
+                                         </ImageView>
+                                 </children>
+                              </Group>
+                              <AnchorPane layoutX="4.0" layoutY="35.0" prefHeight="108.0" prefWidth="679.0" style="-fx-background-color: #ccc;">
+                                 <children>
+                                     <TextField fx:id="tfPessoaEmpresa" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="328.0" promptText="Selecione uma empresa/pessoa para filtrar (opcional)" />
+                                    <Button fx:id="btSelecionarPessoaEmpresa" layoutX="349.0" layoutY="14.0" mnemonicParsing="false" onAction="#clkSelecionarPessoaEmpresa" text="SELECIONAR" />
+                                    <CheckBox fx:id="ckbFiltrarPorPessoaEmpresa" disable="true" layoutX="446.0" layoutY="18.0" mnemonicParsing="false" onAction="#clkFiltrarPorPessoaEmpresa" text="Exibir somente desta empresa/pessoa" />
+                                    
+                                    <ComboBox fx:id="cbFiltrarParcelasPagar" layoutX="14.0" layoutY="62.0" onAction="#clkFiltrarParcelasPagar" prefHeight="25.0" prefWidth="218.0" promptText="Filtrar parcelas" />
+                                    <CheckBox fx:id="ckbFiltrarPeriodoPagar" layoutX="243.0" layoutY="66.0" mnemonicParsing="false" onAction="#clkFiltrarPeriodoPagar" text="Filtrar por período" />
+                                    <AnchorPane fx:id="apDatasPagar" layoutX="371.0" layoutY="52.0" prefHeight="44.0" prefWidth="294.0" style="-fx-background-color: #A4A4A4;">
+                                       <children>
+                                          <DatePicker fx:id="dpDataInicialPagar" disable="true" layoutX="9.0" layoutY="10.0" onAction="#clkDataInicialPagar" prefHeight="25.0" prefWidth="122.0" promptText="Data inicial" />
+                                          <DatePicker fx:id="dpDataFinalPagar" disable="true" layoutX="163.0" layoutY="10.0" onAction="#clkDataFinalPagar" prefHeight="25.0" prefWidth="122.0" promptText="Data final" />
+                                          <Label layoutX="143.0" layoutY="14.0" text="a" />
+                                       </children>
+                                    </AnchorPane>
+                                    
+                                    
+                                 </children>
+                              </AnchorPane>
+                              <TableView fx:id="tabelaParcelasPagar" layoutX="4.0" layoutY="170.0" onMouseClicked="#clkTabelaParcelasPagar" prefHeight="295.0" prefWidth="592.0">
+                                 <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+                                  <columns>
+                                    <TableColumn fx:id="PAGAMENTOScolConta" prefWidth="155.0" text="Conta" />
+                                    <TableColumn fx:id="PAGAMENTOScolNumero" prefWidth="42.0" text="Nº" />
+                                    <TableColumn fx:id="PAGAMENTOScolVencimento" text="Vencimento" />
+                                    <TableColumn fx:id="PAGAMENTOScolValor" prefWidth="74.0" text="Valor (R$)" />
+                                    <TableColumn fx:id="PAGAMENTOScolPagamento" text="Pagamento" />
+                                    <TableColumn fx:id="PAGAMENTOScolValorPago" prefWidth="93.0" text="Valor pago (R$)" />
+                                    <TableColumn fx:id="PAGAMENTOScolForma" prefWidth="66.0" text="Forma" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="4.0" layoutY="149.0" text="Parcelas:" />
+                              
+                              <Button fx:id="btLimparPagamento" layoutX="625.0" layoutY="170.0" mnemonicParsing="false" onAction="#clkLimparPagamento" text="LIMPAR" textFill="#fa1005">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btVerPagamento" layoutX="644.0" layoutY="259.0" mnemonicParsing="false" onAction="#clkVerPagamento" text="VER" />
+                              <Button fx:id="btEstornarPagamento" disable="true" layoutX="610.0" layoutY="302.0" mnemonicParsing="false" onAction="#clkEstornarPagamento" text="ESTORNAR" />
+                              <Button fx:id="btPagar" disable="true" layoutX="629.0" layoutY="345.0" mnemonicParsing="false" onAction="#clkPagar" text="PAGAR">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              
+                              
+                              
+                           </children>
+                        </AnchorPane>
+                     </left>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+            
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane fx:id="apTopo" prefHeight="7.0" prefWidth="1274.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar visible="false">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <AnchorPane layoutX="1175.0" layoutY="6.0">
+               <children>
+                  <Label fx:id="lbBemVindo" alignment="CENTER_RIGHT" layoutX="-245.0" layoutY="16" prefHeight="17.0" prefWidth="293.0">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="btSair" layoutX="50.0" layoutY="12" mnemonicParsing="false" onAction="#clkSair" text="SAIR" visible="false" />
+               </children>
+            </AnchorPane>            
+         </children>
+      </AnchorPane>
+      
+   </top>
+</BorderPane>

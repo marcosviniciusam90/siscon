@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="612.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siscon.ui.RealizarRecebimentoController">
+    <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <children>
+      <TableView fx:id="tabela" layoutX="14.0" layoutY="32.0" onMouseClicked="#clkTabela" prefHeight="172.0" prefWidth="452.0">
+         <placeholder>
+                                    <Label text="Nenhum registro encontrado." />
+                                  </placeholder>
+          <columns>
+            <TableColumn fx:id="RECEBIMENTOScolNumero" prefWidth="42.0" text="Nº" />
+            <TableColumn fx:id="RECEBIMENTOScolVencimento" prefWidth="79.0" text="Vencimento" />
+            <TableColumn fx:id="RECEBIMENTOScolValor" prefWidth="74.0" text="Valor (R$)" />
+            <TableColumn fx:id="RECEBIMENTOScolPagamento" text="Pagamento" />
+            <TableColumn fx:id="RECEBIMENTOScolValorPago" minWidth="0.0" prefWidth="94.0" text="Valor pago (R$)" />
+            <TableColumn fx:id="RECEBIMENTOScolForma" minWidth="0.0" prefWidth="79.0" text="Forma" />
+         </columns>
+      </TableView>
+      <AnchorPane fx:id="apDados" layoutX="14.0" layoutY="240.0" prefHeight="329.0" prefWidth="452.0" style="-fx-background-color: #ccc;">
+         <children>
+            <TextField fx:id="tfConta" layoutX="14.0" layoutY="34.0" prefHeight="25.0" prefWidth="325.0" />
+            <Label layoutX="14.0" layoutY="14.0" text="Conta:" />
+            <TextField fx:id="tfParcela" layoutX="352.0" layoutY="34.0" prefHeight="25.0" prefWidth="85.0" />
+            <Label layoutX="352.0" layoutY="14.0" text="Parcela Nº:" />
+            <Label layoutX="14.0" layoutY="133.0" text="Data de vencimento:" />
+            <TextField fx:id="tfValor" layoutX="134.0" layoutY="158.0" prefHeight="25.0" prefWidth="85.0" />
+            <Label layoutX="134.0" layoutY="133.0" text="Valor (R$):" />
+            <TextField fx:id="tfPessoa" layoutX="14.0" layoutY="94.0" prefHeight="25.0" prefWidth="425.0" />
+            <Label layoutX="14.0" layoutY="74.0" text="Pessoa:" />
+            <DatePicker fx:id="dpDataVencimento" layoutX="14.0" layoutY="158.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label fx:id="lbDataPagamento" layoutX="234.0" layoutY="133.0" text="Data de pagamento:" />
+            <DatePicker fx:id="dpDataPagamento" layoutX="233.0" layoutY="158.0" prefHeight="25.0" prefWidth="106.0" />
+            <TextField fx:id="tfValorPago" layoutX="352.0" layoutY="158.0" prefHeight="25.0" prefWidth="85.0" />
+            <Label fx:id="lbValorPago" layoutX="352.0" layoutY="133.0" text="Valor pago (R$):" />
+            <ComboBox fx:id="cbFormaPagamento" layoutX="14.0" layoutY="221.0" onAction="#clkFormaPagamento" prefHeight="25.0" prefWidth="157.0" promptText="Selecione" />
+            <Label fx:id="lbFormaPagamento" layoutX="14.0" layoutY="197.0" text="Forma de pagamento:" />
+            <AnchorPane fx:id="apCheque" layoutY="264.0" prefHeight="65.0" prefWidth="452.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="tfChequeNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="183.0" promptText="Número do cheque" />
+                  <Label fx:id="lbChequeNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                  <TextField fx:id="tfChequeConta" layoutX="206.0" layoutY="27.0" prefHeight="25.0" prefWidth="112.0" promptText="Conta do cheque" />
+                  <Label fx:id="lbChequeConta" layoutX="206.0" layoutY="5.0" text="Conta:" />
+                  <TextField fx:id="tfChequeBanco" layoutX="326.0" layoutY="27.0" prefHeight="25.0" prefWidth="112.0" promptText="Banco do cheque" />
+                  <Label fx:id="lbChequeBanco" layoutX="326.0" layoutY="5.0" text="Banco:" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apBoleto" layoutY="264.0" prefHeight="65.0" prefWidth="452.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="tfBoletoNumero" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="233.0" promptText="Número do boleto" />
+                  <Label fx:id="lbBoletoNumero" layoutX="15.0" layoutY="5.0" text="Número:" />
+                </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apDeposito" layoutY="264.0" prefHeight="65.0" prefWidth="452.0" style="-fx-background-color: #A4A4A4;" visible="false">
+               <children>
+                  <TextField fx:id="tfDepositoIdentificacao" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="233.0" promptText="Identificação do depósito" />
+                  <Label fx:id="lbDepositoIdentificacao" layoutX="15.0" layoutY="5.0" text="Identificação:" />                  
+               </children>
+            </AnchorPane>
+            <Text fx:id="lbAvisoCheque" fill="RED" layoutX="187.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O recebimento em Cheque deve ser registrado somente após o cheque ter sido debitado." visible="false" wrappingWidth="250.0" />
+         <Label fx:id="lbPagamentoPendente" layoutX="103.0" layoutY="231.0" text="RECEBIMENTO PENDENTE" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      
+      <Label layoutX="14.0" layoutY="220.0" text="Dados da parcela" textFill="#e80b0b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="11.0" text="Parcelas da conta:" />
+      <Button fx:id="btCancelar" layoutX="262.0" layoutY="583.0" mnemonicParsing="false" onAction="#clkCancelar" prefHeight="25.0" prefWidth="88.0" text="CANCELAR" />
+      <Button fx:id="btConfirmar" layoutX="384.0" layoutY="583.0" mnemonicParsing="false" onAction="#clkConfirmar" text="CONFIRMAR">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="lbSaldoCaixa" alignment="CENTER_RIGHT" layoutX="268.0" layoutY="220.0" prefHeight="17.0" prefWidth="183.0" textFill="GREEN" />
+   </children>
+</AnchorPane>

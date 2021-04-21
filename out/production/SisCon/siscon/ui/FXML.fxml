@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../util/estilo.css" />
+    </stylesheets>
+    <AnchorPane fx:id="aux_dadosveiculos" minWidth="239.0" prefHeight="424.0" prefWidth="0.0" style="-fx-background-color: silver;">
+               <children>
+         <Label fx:id="VEICULOSlbAutorizado" layoutX="19.0" layoutY="16.0" text="Autorizado:" />
+         <AnchorPane fx:id="VEICULOSapAutorizado" layoutX="19.0" layoutY="39.0" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #ccc;">
+            <children>
+               <RadioButton fx:id="VEICULOSrbSim" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Sim" />
+               <RadioButton fx:id="VEICULOSrbNao" layoutX="63.0" layoutY="5.0" mnemonicParsing="false" text="Não" />
+            </children>
+         </AnchorPane>
+                   <Label fx:id="VEICULOSlbCod" layoutX="144.0" layoutY="16.0" text="Última movimentação:" />
+                        <TextField fx:id="VEICULOStfCod" disable="true" editable="false" layoutX="21.0" layoutY="40.0" prefHeight="25.0" prefWidth="72.0" visible="false" />
+      <AnchorPane fx:id="VEICULOSapUltimaMovimentacao" layoutX="144.0" layoutY="39.0" prefHeight="30.0" prefWidth="152.0" style="-fx-background-color: #ccc;">
+         <children>
+            <RadioButton fx:id="VEICULOSrbEntrada" layoutX="8.0" layoutY="5.0" mnemonicParsing="false" text="Entrada" />
+            <RadioButton fx:id="VEICULOSrbSaida" layoutX="94.0" layoutY="5.0" mnemonicParsing="false" text="Saída" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="VEICULOSTelalbCategoria" layoutX="19.0" layoutY="79.0" text="Categoria (*):" />
+                   <ComboBox fx:id="VEICULOSTelacbCategoria" layoutX="19.0" layoutY="99.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a categoria" />
+                   <Button fx:id="VEICULOSTelabtCategoria" layoutX="268.0" layoutY="99.0" mnemonicParsing="false" onAction="#VEICULOSclkCategoria" text="+" />
+                   <Label fx:id="VEICULOSTelalbMarca" layoutX="19.0" layoutY="134.0" text="Marca (*):" />
+                   <ComboBox fx:id="VEICULOSTelacbMarca" layoutX="19.0" layoutY="154.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a marca" /> 
+                    <Button fx:id="VEICULOSTelabtMarca" layoutX="268.0" layoutY="154.0" mnemonicParsing="false" onAction="#VEICULOSclkMarca" text="+" />         
+                  <Label fx:id="VEICULOSTelalbModelo" layoutX="19.0" layoutY="189.0" text="Modelo (*):" />
+                  <TextField fx:id="VEICULOSTelatfModelo" layoutX="19.0" layoutY="209.0" prefHeight="25.0" prefWidth="239.0" />
+                  
+                        <Label fx:id="VEICULOSTelalbCor" layoutX="19.0" layoutY="244.0" text="Cor (*):" />
+                  <ComboBox fx:id="VEICULOSTelacbCor" layoutX="19.0" layoutY="264.0" prefHeight="25.0" prefWidth="239.0" promptText="Escolha a cor" /> 
+                  <Button fx:id="VEICULOSTelabtCor" layoutX="268.0" layoutY="264.0" mnemonicParsing="false" onAction="#VEICULOSclkCor" text="+" />
+                  <Label fx:id="VEICULOSTelalbPlaca" layoutX="19.0" layoutY="299.0" text="Placa (*):" />
+                  <TextField fx:id="VEICULOSTelatfPlaca" layoutX="19.0" layoutY="319.0" prefHeight="25.0" prefWidth="127.0" />
+                   
+                        <Label fx:id="VEICULOSlbProprietario" layoutX="19.0" layoutY="354.0" text="Proprietário (*):" />
+                  <TextField fx:id="VEICULOStfProprietario" layoutX="19.0" layoutY="374.0" prefHeight="25.0" prefWidth="239.0" promptText="Selecione o proprietário" />
+                  <Button fx:id="VEICULOSbtProprietario" layoutX="268.0" layoutY="374.0" mnemonicParsing="false" onAction="#VEICULOSclkProprietario" text="..." />
+                  
+         
+                                    
+                                          
+                                    
+                                             
+               </children>
+            </AnchorPane>
+    
+</AnchorPane>

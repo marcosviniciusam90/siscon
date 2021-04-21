@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2018-05-09T02:54:12 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rel_FinanceiroDia" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77e40810-60b0-4fd4-bc1a-339906192eab">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Cores">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{Total} < 0]]></conditionExpression>
+			<style forecolor="#FF0400"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{Total} > 0]]></conditionExpression>
+			<style forecolor="#0011FF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Titulo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Subtitulo" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from
+(select parcelapag.pp_seq as seq, mov_horario, cast(mov_horario as date) as horario, cp_descricao as descricao, par_numero || '/' || cp_numparcelas as parcela, pes_nome, par_valorpago*-1 as valor, 0.0 as entrada, par_valorpago as retirada from movcaixa 
+INNER JOIN parcelapag ON movcaixa.pp_seq = parcelapag.pp_seq INNER JOIN contapagar ON contapagar.cp_cod = parcelapag.cp_cod INNER JOIN caixa ON caixa.cai_cod = movcaixa.cai_cod INNER JOIN pessoa ON pessoa.pes_cod = caixa.pes_cod
+WHERE car_cod is null
+UNION
+select acertocaixa.ac_cod, mov_horario, cast(mov_horario as date), ac_descricao, '- - - - - - -', pes_nome, ac_valor*-1, 0.0, ac_valor from movcaixa 
+INNER JOIN acertocaixa ON movcaixa.ac_cod = acertocaixa.ac_cod INNER JOIN caixa ON caixa.cai_cod = movcaixa.cai_cod INNER JOIN pessoa ON pessoa.pes_cod = caixa.pes_cod
+WHERE ac_tipo = 'S'
+
+UNION
+
+select parcelarec.pr_seq as seq, mov_horario, cast(mov_horario as date), cr_descricao, par_numero || '/' || cr_numparcelas, pes_nome, par_valorpago*1, par_valorpago as entrada, 0.0 as retirada from movcaixa 
+INNER JOIN parcelarec ON movcaixa.pr_seq = parcelarec.pr_seq INNER JOIN contareceber ON contareceber.cr_cod = parcelarec.cr_cod INNER JOIN caixa ON caixa.cai_cod = movcaixa.cai_cod INNER JOIN pessoa ON pessoa.pes_cod = caixa.pes_cod
+UNION
+select acertocaixa.ac_cod, mov_horario, cast(mov_horario as date), ac_descricao, '- - - - - - -', pes_nome, ac_valor*1, ac_valor, 0.0 from movcaixa 
+INNER JOIN acertocaixa ON movcaixa.ac_cod = acertocaixa.ac_cod INNER JOIN caixa ON caixa.cai_cod = movcaixa.cai_cod INNER JOIN pessoa ON pessoa.pes_cod = caixa.pes_cod
+WHERE ac_tipo = 'A') T1
+
+INNER JOIN 
+
+(select * from(SELECT max(cai_cod) As UltimoRegistroDia
+FROM caixa GROUP BY cai_data) Reg
+
+INNER JOIN caixa ON caixa.cai_cod = Reg.UltimoRegistroDia) T2 ON T1.horario = T2.cai_data
+
+ORDER BY horario]]>
+	</queryString>
+	<field name="seq" class="java.lang.Integer"/>
+	<field name="mov_horario" class="java.sql.Timestamp"/>
+	<field name="horario" class="java.sql.Date"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="parcela" class="java.lang.String"/>
+	<field name="pes_nome" class="java.lang.String"/>
+	<field name="valor" class="java.math.BigDecimal"/>
+	<field name="entrada" class="java.math.BigDecimal"/>
+	<field name="retirada" class="java.math.BigDecimal"/>
+	<field name="ultimoregistrodia" class="java.lang.Integer"/>
+	<field name="cai_cod" class="java.lang.Integer"/>
+	<field name="cai_data" class="java.sql.Date"/>
+	<field name="cai_entrada" class="java.math.BigDecimal"/>
+	<field name="cai_saida" class="java.math.BigDecimal"/>
+	<field name="cai_total" class="java.math.BigDecimal"/>
+	<field name="cai_status" class="java.lang.String"/>
+	<field name="pes_cod" class="java.lang.Integer"/>
+	<field name="cai_horaabriu" class="java.sql.Timestamp"/>
+	<field name="cai_horafechou" class="java.sql.Timestamp"/>
+	<sortField name="horario"/>
+	<sortField name="mov_horario"/>
+	<sortField name="descricao"/>
+	<sortField name="parcela"/>
+	<sortField name="seq"/>
+	<variable name="TotalDia" class="java.lang.Double" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="subtotal_entrada" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{entrada}]]></variableExpression>
+	</variable>
+	<variable name="subtotal_saida" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{retirada}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{horario}]]></groupExpression>
+		<groupHeader>
+			<band height="67">
+				<textField>
+					<reportElement mode="Opaque" x="-20" y="10" width="595" height="53" forecolor="#006699" backcolor="#E6E6E6" uuid="6212be73-9957-4542-9e2e-da7440e4230d">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<box topPadding="2" leftPadding="20"/>
+					<textElement verticalAlignment="Top">
+						<font size="15" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{horario})]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="99" y="39" width="80" height="22" uuid="d5bc71dc-d4e7-4b6b-82b1-53b867c1b841">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="329" y="39" width="86" height="22" uuid="dc13f362-560e-4398-b2c7-84329cb3f9b4">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="435" y="39" width="100" height="22" uuid="1b28154c-aa4f-46a5-8f2e-a3cfa6e04ec0">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Responsável]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="39" width="80" height="22" uuid="6babc029-edfe-4b38-945a-a190411a63e2">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Horário]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<textField pattern="¤#,##0.00">
+					<reportElement x="329" y="3" width="78" height="20" uuid="924f460d-c034-4a18-9cff-cc9e31faa1a1">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TotalDia}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤#,##0.00">
+					<reportElement x="473" y="3" width="76" height="20" uuid="ee92b045-1ac6-4344-8c03-fe791c89303d">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cai_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="378" y="3" width="90" height="20" uuid="08ccf4e3-796d-4bbc-92f6-8e215e977b26">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Caixa:"]]></textFieldExpression>
+				</textField>
+				<textField pattern="">
+					<reportElement x="234" y="3" width="90" height="20" uuid="736e9ecb-8aec-43d5-8caf-40de2a7bad16">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Subtotal:"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="38f25c5c-46d7-486e-b9c7-412103de5773"/>
+				<staticText>
+					<reportElement x="20" y="11" width="150" height="43" forecolor="#FFFFFF" uuid="bf560f3b-ff0f-4629-a8cc-6369c27d9a6f"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SisCon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="56" width="203" height="30" forecolor="#FFFFFF" uuid="19c2f715-3cf3-4f3a-8044-ddf224fa3890"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Gerenciador de Condomínios]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="160" y="27" width="415" height="20" forecolor="#FFFFFF" uuid="0e2d463a-c641-4dd0-8958-39acd3579d06">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="14" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Titulo}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="223" y="50" width="352" height="42" forecolor="#FFFF00" uuid="8050131c-a203-41e7-bf40-dcfb5b5ff01c">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Subtitulo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="48226c48-f2ed-4809-a3fd-a88a2431156e"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="99" y="0" width="211" height="20" uuid="59ae5cfb-ea64-4060-a53f-64bd0f3e004f">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parcela}!=null ? $F{parcela}.equals("- - - - - - -") ? $F{descricao} : $F{descricao} +" ("+$F{parcela}+")" :  $F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤#,##0.00">
+				<reportElement x="329" y="0" width="86" height="20" uuid="eae0e42c-e49d-4240-a932-d25ea917ef72">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="435" y="0" width="120" height="20" uuid="bcea9357-dbaf-476f-87ff-0108bdcdd4e5">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pes_nome}.split(" ")[0]]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement x="0" y="0" width="80" height="20" uuid="fb5eb185-e02e-4970-a61d-b3dfc178983d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("HH:mm:ss").format($F{mov_horario})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="1" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f668ab51-02dd-4bc4-b5ea-8728b5578828">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="516" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="4cac3c23-1714-452e-989f-32bc812deb14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c98e38b3-6419-4227-a49b-74e4ccc981a8">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="4" width="555" height="13" uuid="4b0f0f25-2a49-4267-b292-f5024ab8834d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["(+) Soma dos valores	(=) Resultado"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="55">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<rectangle>
+				<reportElement x="0" y="15" width="556" height="40" backcolor="#CCCCCC" uuid="9730c40f-45dd-4f97-8cac-b25e9fcc4a0d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="¤#,##0.00">
+				<reportElement x="90" y="28" width="110" height="14" uuid="b681c8a8-28a0-4df0-bd80-e6436aea9c6a">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{subtotal_entrada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00">
+				<reportElement x="234" y="28" width="66" height="14" uuid="4483394b-427f-43cb-9ac4-e383ddd0afbd">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{subtotal_saida}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00">
+				<reportElement x="369" y="28" width="66" height="14" uuid="26f7b6ef-33da-40cc-8bbb-6b5441c123ec">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{subtotal_entrada} - $V{subtotal_saida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="28" width="65" height="14" uuid="92eecdd0-00ac-42e6-810a-bcc8efe070f7">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(+) Entrada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="28" width="100" height="14" uuid="463d81fb-d875-44fc-a12a-1d639375c983">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(+) Retirada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="28" width="114" height="14" uuid="532ac42b-5eb6-48a0-afec-67f74be0273a">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(+) Saldo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="28" width="114" height="14" uuid="2f0ec7bc-4787-4b4b-9086-a25e40aa3a9c">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(=) Caixa:]]></text>
+			</staticText>
+			<textField pattern="¤#,##0.00">
+				<reportElement x="491" y="28" width="65" height="14" uuid="e4661874-1544-4d1c-b2b3-9f493d440e7c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cai_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
